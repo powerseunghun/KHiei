@@ -1,0 +1,4 @@
+1. main method definition
+2. method Call
+3. data format explane
+4. data combine, print ASCII CODE
