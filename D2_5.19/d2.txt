@@ -2,3 +2,6 @@
 2. method Call
 3. data format explane
 4. data combine, print ASCII CODE
+5. String variable's memory use. referrence variable
+6. mac preferrence -> general -> other -> workspace
+   change encoding type
