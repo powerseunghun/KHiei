@@ -12,4 +12,6 @@
    - byte or short data type operation is int
 5. short + byte operation is unconditionally int
 6. data loss test
-
+7. operator priority
+8. logic operator &&, ||.. and operator && is first
+9. solving pratical problems (variable, casting operator)
