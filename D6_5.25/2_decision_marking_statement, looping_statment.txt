@@ -1,0 +1,303 @@
+package com.kh.silsub3.example;
+
+import java.util.Scanner;
+
+public class ForWhile {
+	Scanner sc = new Scanner(System.in);
+	public void printStar1() {
+		System.out.print("정수 입력 : ");
+		int n = sc.nextInt();
+		
+		if (n > 0) {
+			for (int i = 1; i <= n; i++) {
+				for (int j = 1; j <= i; j++) {
+					if (i == j) System.out.print(j);
+					else System.out.print("*");
+				}
+				System.out.println();
+			}
+		}
+		else {
+			System.out.println("양수가 아닙니다.");
+		}
+	}
+	
+	public void printStar2() {
+		System.out.print("정수 입력 : ");
+		int n = sc.nextInt();
+		
+		if (n > 0) {
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j <= i; j++) {
+					System.out.print("*");
+				}
+				System.out.println();
+			}
+		}
+		else {
+			n = Math.abs(n);
+			for (int i = 0; i < n; i++) {
+				for (int j = n; j > i; j--) {
+					System.out.print("*");
+				}
+				System.out.println();
+			}
+		}
+	}
+	public void menuCall() {
+		System.out.println("*** 메뉴를 선택하세요 ***\n");
+		
+		System.out.println("햄버거 ***************");
+		System.out.println("1. 불고기버거	3500원");
+		System.out.println("2. 치킨버거	3200원");
+		System.out.println("추가 ****************");
+		System.out.println("3. 감자튀김	1000원");
+		System.out.println("4. 치즈스틱	400원");
+		System.out.println("5. 샐러드		2000원");
+		System.out.println("음료수 ***************");
+		System.out.println("6. 콜라		700원");
+		System.out.println("7. 에이드		1200원");
+		System.out.println("8. 커피		1000원");
+		System.out.println("********************");
+	}
+	public void selectMenu() {
+		boolean flag = true;
+		int menu, money = 0, cnt = 0, sum = 0;
+		String c_menu;
+		String printInfo = "--------------------------------------\n";
+		while (flag) {
+			this.menuCall();
+			System.out.print("메뉴 선택 : ");
+			menu = sc.nextInt();
+			c_menu = ""; 
+			money = 0;
+			switch(menu) {
+			case 1:
+				c_menu = "불고기버거를 ";
+				money = 3500;
+				break;
+			case 2:
+				c_menu = "치킨버거를 ";
+				money = 3200;
+				break;
+			case 3:
+				c_menu = "감자튀김을 ";
+				money = 1000;
+				break;
+			case 4:
+				c_menu = "치즈스틱을 ";
+				money = 400;
+				break;
+			case 5:
+				c_menu = "샐러드를 ";
+				money = 2000;
+				break;
+			case 6:
+				c_menu = "콜라를 ";
+				money = 700;
+				break;
+			case 7:
+				c_menu = "에이드를 ";
+				money = 1200;
+				break;
+			case 8:
+				c_menu = "커피를 ";
+				money = 1000;
+				break;
+			}
+			System.out.println(c_menu + "선택하셨습니다.");
+			System.out.print("수량은 ? ");
+			cnt = sc.nextInt();
+			sc.nextLine();
+			
+			System.out.println(cnt + "개 주문하셨습니다.");
+			sum += (cnt * money);
+			String tmp = c_menu.substring(0, c_menu.length()-2);
+			printInfo += (tmp + " : " + cnt + "개 - " + (money * cnt));
+			
+			System.out.print("추가 주문하시겠습니까?(y/n) : ");
+			if (sc.nextLine().charAt(0)=='n') {
+				flag = false;
+			}
+			else printInfo += "\n";
+		}
+		System.out.println("* 주문하신 정보는 다음과 같습니다. *");
+		System.out.println(printInfo);
+		System.out.println("--------------------------------------");
+		System.out.println("총 가격 : " + sum + "원");
+	}
+	public void countInputCharacter() {
+		String str;
+		char ch;
+		int count = 0;
+		boolean flag = false;
+		System.out.print("문자열 입력 : ");
+		str = sc.nextLine();
+		
+		for (int i = 0 ; i < str.length(); i++) {
+			/*if ((str.charAt(i) >= 'a' && str.charAt(i) <= 'z') 
+				&& (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z')) {
+				flag = true;
+			}*/
+			if (str.charAt(i) >= 'a' && str.charAt(i) <= 'z') {
+				flag = true;
+			}
+			if (str.charAt(i) >= 'A' && str.charAt(i) <= 'Z') {
+				flag = true;
+			}
+		}
+		if (flag) {
+			System.out.print("문자 입력 : ");
+			ch = sc.nextLine().charAt(0);
+			for (int i = 0; i < str.length(); i++) {
+				if (str.charAt(i) == ch) count++;
+			}
+			System.out.println("포함된 갯수 : " + count);
+		}
+		
+		else System.out.println("영문자가 아닙니다.");
+	}
+	
+	public void silsub2_1() {
+		int num;
+		do {
+			System.out.print("정수 한 개 입력 : ");
+			num = sc.nextInt();
+		} while(!(num >= 1 && num <= 10));
+		
+		if (num % 2 == 0) System.out.println("짝수다.");
+		else System.out.println("홀수다.");
+	}
+	
+	public void silsub2_2() {
+		double height, weight, BMI;
+		System.out.print("키 입력 : ");
+		height=sc.nextDouble();
+		System.out.print("몸무게 입력 : ");
+		weight=sc.nextDouble();
+		BMI = weight / ((height / 100) * (height / 100));
+		
+		System.out.println(BMI);
+		if (BMI >= 30) {
+			System.out.println("비만");
+		}
+		else if (BMI >= 25) {
+			System.out.println("과체중");
+		}
+		else if (BMI >= 20) {
+			System.out.println("정상체중");
+		}
+		else {
+			System.out.println("저체중");
+		}
+	}
+	public void silsub2_3() {
+		int num1, num2, result;
+		char op;
+		System.out.print("첫 번째 숫자 입력 : ");
+		num1 = sc.nextInt();
+		System.out.print("두 번째 숫자 입력 : ");
+		num2 = sc.nextInt();
+		sc.nextLine();
+		
+		System.out.print("연산기호 입력 : ");
+		op = sc.nextLine().charAt(0);
+		
+		int max = num1 >= num2 ? num1 : num2;
+		int min = num1 <= num2 ? num1 : num2;
+		switch(op) {
+		case '+':
+			result = max + min;
+			break;
+		case '-':
+			result = max - min;
+			break;
+		case '*':
+			result = max * min;
+			break;
+		case '/':
+			result = max / min;
+			break;
+		case '%':
+			result = max % min;
+			break;
+		default :
+			System.out.println("입력하신 연산은 없습니다.");
+			System.out.println("프로그램을 종료합니다.");
+			return;
+		}
+		System.out.println(max + " " + op + " " + min + " = " + result);
+	}
+	public void silsub2_4() {
+		System.out.print("과일 입력 : ");
+		String str = sc.nextLine();
+		int value = 0;
+		
+		switch(str) {
+		case "사과":
+			value = 1000;
+			break;
+		case "바나나":
+			value = 3000;
+			break;
+		case "복숭아":
+			value = 2000;
+			break;
+		case "키위":
+			value = 5000;
+			break;
+		}
+		System.out.println(str + "의 가격은 " + value + "원 입니다.");
+	}
+	
+	public void silsub2_5() {
+		int kor, eng, mat, sum = 0;
+		double avg = 0;
+		System.out.print("국어 점수 입력 : ");
+		kor = sc.nextInt();
+		System.out.print("영어 점수 입력 : ");
+		eng = sc.nextInt();
+		System.out.print("수학 점수 입력 : ");
+		mat = sc.nextInt();
+		
+		sum = kor + eng + mat;
+		avg = sum / 3.0;
+		if (avg >= 60 && (kor >= 40 && eng >= 40 && mat >= 40)) {
+			System.out.println("합격입니다.");
+		}
+		else {
+			if (avg < 60) {
+				System.out.println("평균점수 미달로 불합격 입니다.");
+			}
+			else if (kor < 40) System.out.println("국어 과목의 점수 미달로 불합격 입니다.");
+			else if (eng < 40) System.out.println("영어 과목의 점수 미달로 불합격 입니다.");
+			else if (mat < 40) System.out.println("수학 과목의 점수 미달로 불합격 입니다.");
+		}
+	}
+	public void silsub2_6() {
+		int salary, sales;
+		double bonus = 0;
+		System.out.print("월 급여 입력 : ");
+		salary = sc.nextInt();
+		System.out.print("매출액 입력 : ");
+		sales = sc.nextInt();
+		
+		if (sales >= 50000000) {
+			bonus = 0.05;
+		}
+		else if (sales >= 30000000) {
+			bonus = 0.03;
+		}
+		else if (sales >= 10000000) {
+			bonus = 0.01;
+		}
+		
+		System.out.println("====================");
+		System.out.println("매출액 : " + sales);
+		System.out.println("보너스율 : " + (int) (bonus * 100) + "%");
+		System.out.println("월 급여 : " + salary);
+		System.out.println("보너스 금액 : " + (int) (sales * bonus));
+		System.out.println("====================");
+		System.out.println("총 급여 : " + (int) ((sales * bonus) + salary));
+	}
+}
