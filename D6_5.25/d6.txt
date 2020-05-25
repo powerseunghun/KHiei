@@ -1,0 +1,14 @@
+1. IfElseIf
+2. printf format setting
+   format character 
+   - %d = Integer
+   - %f = floot, -%.2f : until the second decimal place
+   - %c = charcter
+   - %s = String
+   - %b = boolean
+3. escape sequence
+   - tap : \t
+   - new line : \n
+   - \ : \\
+   - ' : \'
+   - " : \"
