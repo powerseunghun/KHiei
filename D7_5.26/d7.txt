@@ -3,3 +3,6 @@
 3. do ~ while loop
 4. branch statement 
    - break
+   - continue
+   - jump break label
+5. array in java
