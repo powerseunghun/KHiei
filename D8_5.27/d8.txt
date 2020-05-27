@@ -9,3 +9,5 @@
 2. array's hashcode()
 3. created array is can't change size
 4. sort4. sort4. sort4. sort
+5. two variable change (swap)
+6. solving the prveious day's practical problems

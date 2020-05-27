@@ -1,0 +1,169 @@
+package com.kh.arrayPractice1.sample;
+
+import java.util.Random;
+import java.util.Scanner;
+
+public class ArraySample {
+	public void test1() {
+		int[] arr = new int[10];
+		int sum = 0;
+		Random rand = new Random();
+		System.out.print("랜덤 수 : ");
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (rand.nextInt(100)) + 1;
+			System.out.print(arr[i] + " ");
+			sum += arr[i];
+		}
+		System.out.println("\n합계 : " + sum);
+	}
+
+	public void test2() {
+		int[] arr = new int[10];
+		int max = 0, min = 101;
+		System.out.print("배열 : ");
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (int) (Math.random() * 100) + 1;
+			if (arr[i] > max)
+				max = arr[i];
+			if (arr[i] < min)
+				min = arr[i];
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println("\n가장 큰 수 : " + max);
+		System.out.println("가장 작은 수 : " + min);
+	}
+
+	public void test3() {
+		byte[] arr = new byte[10];
+		int sum = 0;
+		System.out.print("배열 : ");
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (byte) ((int) (Math.random() * 257) - 128);
+			System.out.print(arr[i] + " ");
+			if (Math.abs(arr[i]) % 2 == 0) {
+				sum += arr[i];
+			}
+		}
+		System.out.println("\n짝수의 합 : " + sum);
+	}
+
+	public void test4() {
+		System.out.print("문자열 입력 : ");
+		String str = new Scanner(System.in).nextLine();
+		int sum = 0;
+		
+		for (int i = 0; i < str.length(); i++) {
+			sum += Integer.parseInt(str.substring(i, i+1));
+		}
+		System.out.println("합계 : " + sum);
+	}
+	
+	public void test5() {
+		System.out.print("문자열 입력 : ");
+		String str = new Scanner(System.in).nextLine();
+		int sum = 0;
+		for (int i = 0; i < str.length(); i++) {
+			sum += Integer.parseInt(str.charAt(i)+"");
+		}
+		System.out.println("합계 : " + sum);
+	}
+	
+	public void test2_1() {
+		int[] arr = new int[10];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = (int) (Math.random() * 10) + 1;
+			System.out.print(arr[i] + " ");
+		}
+		System.out.println();
+	}
+	
+	public void test2_2() {
+		String[] fruits = {"딸기", "바나나", "복숭아", "키위", "사과" };
+		System.out.println(fruits[1]);
+	}
+	
+	public void test2_3() {
+		Scanner sc = new Scanner(System.in);
+		System.out.print("문자열 입력 : ");
+		String str = sc.nextLine();
+		System.out.print("검색값 : ");
+		char search = sc.nextLine().charAt(0);
+		
+		int count = 0;
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == search) count++;
+		}
+		System.out.println("입력하신 문자열 " + str + "에서 찾으시는 문자 " 
+		+ search + "은 " + count + "개 입니다.");
+	}
+	
+	public void test2_4() {
+		boolean flag = false;
+		char[] old_num = {
+				'9', '9', '0', '7', '1', '2', '-',
+				'1', '2', '3', '4', '5', '6', '1'
+		};
+		char[] copy_num = new char[old_num.length];
+		System.arraycopy(old_num, 0, copy_num, 0, old_num.length);
+		
+		for (int i = 0 ; i < copy_num.length; i++) {
+			if (copy_num[i] == '-') flag = true;
+			if (flag && copy_num[i] != '-') System.out.print('*');
+			else System.out.print(copy_num[i]);
+		}
+	}
+	
+	public void test2_5() {
+		Scanner sc = new Scanner(System.in);
+		int num = 0, count = 1;
+		do {
+			System.out.print("홀수인 양의 정수 입력 : ");
+			num = sc.nextInt();
+		} while(num % 2 == 0);
+		
+		int[] arr = new int[num];
+		
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = count;
+			if (i < (arr.length / 2)) count++;
+			else count--;
+		}
+		
+		for (int i = 0; i < arr.length; i++) {
+			System.out.print(arr[i] + " ");
+		}
+	}
+	public void test2_6() {
+		int[] lotto = new int[6];
+		int tmp;
+		boolean flag = false;
+		for (int i = 0; i < lotto.length; i++) {
+			flag = false;
+			tmp = (int) (Math.random() * 6) + 1;
+			for (int j = 0; j < lotto.length; j++) {
+				if (tmp == lotto[j]) flag = true;
+			}
+			if(flag) i--;
+			else lotto[i] = tmp;
+		}
+		for (int i = 0; i < lotto.length; i++) {
+			System.out.print(lotto[i] + " ");
+		}
+		System.out.println();
+		
+		for (int i = 0; i < lotto.length - 1; i++) {
+			for (int j = i+1; j < lotto.length; j++) {
+				if (lotto[i] > lotto[j]) {
+					tmp = lotto[i];
+					lotto[i] = lotto[j];
+					lotto[j] = tmp;
+				}
+			}
+		}
+		for (int i = 0; i < lotto.length; i++) {
+			System.out.print(lotto[i] + " ");
+		}
+		System.out.println();
+	}
+}
+
