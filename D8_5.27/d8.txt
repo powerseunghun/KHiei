@@ -1,1 +1,11 @@
 1. array in java2
+   - stack, heap, memory
+   - shallow copy and deep copy
+      - shallow copy : direct substitution
+      - deep copy
+         - 1. for loop
+	 - 2. System.arraycopy()
+	 - 3. clone()
+2. array's hashcode()
+3. created array is can't change size
+4. sort4. sort4. sort4. sort
