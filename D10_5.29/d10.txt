@@ -1,1 +1,9 @@
-1. concept of object
+1. concept of object oriented programming
+   class -> field, method
+   abstration, encapsulation
+   access to object (getter, setter) public method
+
+2. object
+   - encapsulation
+   - inheritance
+   - polymorphism
