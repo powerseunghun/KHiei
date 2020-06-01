@@ -10,5 +10,15 @@
 
 4. UML Diagram
 
-5. Class Definition
+5. Class Declaration
    - field
+   - 
+
+6. method call principle
+
+7. kindsOfVariable
+   - class variable
+   - member variable
+   - local variable
+
+this keyword, setter/getter
