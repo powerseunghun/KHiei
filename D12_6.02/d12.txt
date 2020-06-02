@@ -1,6 +1,18 @@
 1. Object learning again
    - KHiei/Learning_contents/D12
-
+   * static field access
+      - Classname.field
 2. class creation practice 1 ~ 4
 
+3. initialize priority
+   - JVM's implicit initialize 
+   - explicit initialize
+   - initial block
+      - non-static initialize block
+      - static initialize block
+         - static initialize block can't initialize non-static field
+	 - sequence -> static block -> non-static block
+
+4. Parameter in Constructor
+   - Product(String pName, int price, String brand)
 
