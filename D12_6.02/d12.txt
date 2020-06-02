@@ -10,9 +10,26 @@
    - initial block
       - non-static initialize block
       - static initialize block
-         - static initialize block can't initialize non-static field
-	 - sequence -> static block -> non-static block
+         - use non-static block, static block together,
+	 - execute sequence static -> non static => initialize to non-static block's value
+	{
+	 	brand="samsung"
+        }
 
-4. Parameter in Constructor
-   - Product(String pName, int price, String brand)
+	static {
+		brand="lg"
+	}
 
+	brand = samsung
+
+4. constructor
+   - 1. Object creation
+   - 2. Object initialize
+   1: default Constructor(parameter not exist)
+   2: parameter in Constructor(parameter exist)
+
+   same Name's Constructor = error
+   -> use Overloading
+
+5. this() keyword
+   - it means one self
