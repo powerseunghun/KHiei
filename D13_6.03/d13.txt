@@ -1,1 +1,18 @@
-1. 
+1. object's responsibility and role..
+
+2. method = role
+
+3. method's reserved word
+   - static, final, abstract, syncronized, static final(final static)
+   - only method's signature write,. error ->abstract
+
+4. variable arguments(datatype... variable)
+   - if argument, variable argument together
+      - method(String str, int...nums)  -> O   call: method(str, 1, 3, 3) (O)
+      - method(int...nums, String str)  -> X   call: method(1, 3, 3, str) ??? (X)
+
+5. parameter or not, 2
+   return value or not, 2
+   static or non-static 2     total : i
+
+6. overloading condition
