@@ -1,0 +1,9 @@
+1. Object Array
+   - Object in Array, Reference variable store.
+Definition
+ClassName[] VariableName;
+ClassName VariableName[];
+
+allocation
+ClassName[] VariableName = new ClassName[ArraySize];
+ClassName VariableName[] = new ClassName[ArraySize];
