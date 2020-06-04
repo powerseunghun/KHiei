@@ -1,0 +1,42 @@
+* 객체배열
+- 객체를 저장하는 배열로 배열의 자료형을 참조형 자료형으로 지정하여 활용
+
+선언
+클래스명[] 변수명;
+클래스명 변수명[];
+
+할당
+클래스명[] 변수명 = new 클래스명[배열크기];
+클래스명 변수명[] = new 클래스명[배열크기];
+
+복사 생성자 : 깊은 복사
+Person(Person p) {
+	this.variable = p.variable;
+	....
+}
+
+* commit
+프로젝트 우 클릭 -> Team -> Share Project
+commit 후 매뉴얼 따라가면 됨
+
+* clone
+open perspective 에서 git 클릭
+clone a git repository에서 uri 입력
+그 다음에 user\git에 생성된 파일을
+우 클릭 후 import projects
+open perspective에서 다시 java 선택하면
+project에 들어있음.
+
+* 협업
+Repository -> Setting 왼쪽에 Manager access
+invite a collaborator
+통합하는 것
+1명이 한 것 commit, 또 1명이 한 것 commit 이런 식으로 총 6명 다 하고
+최종 통합본을 clone하고 이 것을 가지고 추가적으로 작업
+
+* branch
+우클릭 한 후 team -> switch to -> new branch
+date-name-num;
+
+* resolve conflicts가 안 눌릴 때
+beyond compare 서브 프로그램으로 쓸 수 있음.

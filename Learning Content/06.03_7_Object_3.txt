@@ -1,0 +1,46 @@
+- Object의 책임과 역할
+설계적 관점에서
+객체지향의 사실과 오해 책 강추
+
+- 역할의 부분 : 메소드가 중요
+
+-메소드의 예약어
+static, final, abstract, syncronized, static final(final static)
+
+이렇게 시그니처만 있으면 오류
+abstract키워드를 사용해야함 추상메소드, 추상클래스
+public class Test {
+	public void method();
+}
+
+- 가변인자 
+public void method(int...nums) {	
+}
+method(1)
+method(1, 2, 3)
+만약 단순 인자와 같이 사용한다면 무조건 맨 뒤에 위치해야함
+method(String str, int...nums)라면 method("ASD", 1, 2, 3)가능하지만
+method(int...nums, String str) method(1,2,3, "ASD")호출 불가( 가변인자 몇개 들어갈지 모름)
+
+return -> 다시 나를 불렀던 위치로 돌아간다.
+
+- 메소드의 종류
+매개 변수의 유무 2가지
+리턴값 유무 2가지
+static, non-static 2가지  총 8가지로 분류
+
+- 매개변수와 인자의 차이
+매개변수 : 함수 선언 시 사용될 변수를 지정할 공간.
+인자 : 함수 호출 시 전달되는 값
+
+- 오버로딩 시 매개변수 순서 달라도 가능
+(String s, int a)  != (int a, String s);
+- 반환형만 달라도 오버로딩 안됨
+String test(int a, int b, String str) == int test(int a, int b, String str)
+- 접근제한자가 다르다고 오버로딩 적용 안됨
+public String test(int a, int b, String str) == private String test(int a, int b, String str)
+
+- static method도 static field와 마찬가지로 ClassName.methodName()으로 호출
+
+import static FullClassName(패키지까지) 해주면
+클래스명.method명 하지 않고 메소드명으로만 호출 가능
