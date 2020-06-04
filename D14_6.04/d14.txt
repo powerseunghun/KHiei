@@ -7,3 +7,11 @@ ClassName VariableName[];
 allocation
 ClassName[] VariableName = new ClassName[ArraySize];
 ClassName VariableName[] = new ClassName[ArraySize];
+
+2. Copy Constructor (Deep Copy)
+   - Person(Person p) {
+   	this.variable = p.variable;
+	....
+   }
+
+3. 
