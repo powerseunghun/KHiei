@@ -28,6 +28,7 @@ Association(연관) 관계는 has a 관계를 말함.
 
 3. 모든 클래스는 Object 클래스의 후손 java.lang.Object
    - Object클래스가 제공하는 메소드를 오버라이딩해서 메소드 본래 기능을 변경 가능
+   - to_String, equals, hashcode 대표적인 3가지
 
 Member m = new Member() 하면
 스택에 m주소와 super주소... 힙에 실제 객체
@@ -49,11 +50,26 @@ Member m = new Member() 하면
    마찬가지로 무조건 구현..
 
 클래스와 메소드의 final키워드
+4군데에 붙는다.. 의미
 
+getInformation에서 super.getInformation() 하지 않고 
+this.getInformation()을 하게 되면 재귀호출이 발생 스택 오버플로우 
+this. super. 키워드 생략하면 default는 this.
 
+매개변수 있는 생성자가 하나라도 있으면
+JVM이 기본 생성자 만들어주지 않으므로
+상속 해주는 클래스가 기본 생성자가 명시적으로 없으면
+상속 받는 클래스에서는 super(); 구문에서 에러 발생
 
+attach source 
+external source -> java\jdk_version\src.zip
 
-
+hashcode() 오버라이딩
+주소 값이 같으면 동일 객체, 주소 값은 틀리지만 같은 값이면 동등객체.
+HashMap에서는 키값이 유일해야 함.
+만약 동등객체가 하나는 key값이 1,2,3,4
+다른 하나는 key 값이 5,6,7,8 이라면
+동등객체는 두 값을 같게 반환할 수 있도록
 
 
 

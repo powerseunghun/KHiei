@@ -18,4 +18,6 @@
 
    overriding vs overloading
 
-7. class and method's final keyword...
+7. class and method's final keyword..
+
+8. Object Class Representative 3 methods toString(), equals(), hashcode() overriding
