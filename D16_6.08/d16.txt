@@ -1,1 +1,21 @@
-1. 
+1. Inherit
+   child class = inherit with parents class
+   class reuse, common rule definition
+
+2. java . only support single Inheritance. not multiple inheritance
+
+3. UML association = has a relation
+
+4. All class is children of Object class(java.lang.Object)
+
+5. Annotaion : to java compiler @Annotation
+
+6. overriding's condition
+   - same name
+   - same (count, type, sequence of paremter)
+   - same return type
+   - private method's overriding = impossible
+
+   overriding vs overloading
+
+7. class and method's final keyword...
