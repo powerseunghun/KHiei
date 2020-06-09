@@ -11,10 +11,14 @@
    - if abstract method 0.. abstract class possible
    - but class has a more than one abstract method, must abstract class
    - when inherited abstract class, abstract method must be implemented
+   - constructor writing possible, general method writing possible
 
 4. Interface
    - all interface's method is implicit public, abstract
    - variable implicit public static final
       - so interface variable's try value change, when compile error occur
    - object creation impossible, reference types possible
+   - interface between interface's keyword extends and multiple inherit support
+
    * Provides an interface for collaboration
+   

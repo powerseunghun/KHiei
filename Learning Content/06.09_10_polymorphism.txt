@@ -4,6 +4,9 @@ Shape s = new Circle() <-- upcasing
 ((Circle).s).circleMethod() <-- down casting 형변환 명시
 실제는 Shape 타입이기 때문에 s로 circle 메소드 호출 불가
 
+instanceof 연산자를 사용하여 비교할 땐 if else if로
+위에는 자식 타입부터 나열해야함.
+
 타입 역할..
 상속은 같은 메시지를 수신 가능. 
 
@@ -15,10 +18,17 @@ Shape s = new Circle() <-- upcasing
 abstract 멤버가 0개여도 추상클래스 만들 수 있음
 하지만 1개 이상 abstract 메소드가 있다면 반드시 추상클래스.
 abstract 메소드는 상속 받으면 반드시 구현해야 한다.(오버라이딩 강제화)
+하지만 Product -> SmartPhone -> Galaxy라고 하면
+Galaxy에서는 추상메소드를 완성시킬 필요 없음
+SmartPhone을 어댑터라고 한다.
+
+생성자는 작성할 수 있고 일반 메소드도 작성할 수 있음.
 
 모든 인터페이스의 메소드는 묵시적으로 public 이고 abstract이다.
 인터페이스의 void move() 메소드 오버라이딩 시 public void move() 없이
 public 키워드 생략하면 오류 발생.
+인터페이스 = implements 키워드
+인터페이스 간의 상속은 extends이며 다중 상속을 지원한다.
 
 변수는 묵시적으로 public static final이다
    따라서 인터페이스 값 변경 시도는 컴파일 시 에러를 발생
