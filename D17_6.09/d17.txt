@@ -1,1 +1,20 @@
 1. polymorphism, Implements
+   - polymorphism(many type) one object has a many type
+   - if Circle class inherited by Shape class,
+      Shape s = new Circle(); <-- possible (up casting)
+      ((Circle).s).circleMethod(); <--- possible (down casting)
+
+2. Dynamic Binding
+   - when compile, static binding method.. now Object type based bounding
+
+3. abstract class
+   - if abstract method 0.. abstract class possible
+   - but class has a more than one abstract method, must abstract class
+   - when inherited abstract class, abstract method must be implemented
+
+4. Interface
+   - all interface's method is implicit public, abstract
+   - variable implicit public static final
+      - so interface variable's try value change, when compile error occur
+   - object creation impossible, reference types possible
+   * Provides an interface for collaboration
