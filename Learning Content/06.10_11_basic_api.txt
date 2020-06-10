@@ -1,1 +1,65 @@
-기본 API
+String str = "java"라고 한다면
+힙 영역 어딘가 String pool에 "java" 저장
+String str2 = "java"라고 한다면
+String pool 에서 "java"주소값을 전달 받음. 새로 생성되지 않음
+
+str += "oracle"이라고 하면 
+String pool의 "java"는 수정되지 않고
+"javaoracle"이라는 문자열을 만들고 주소를 재할당 -> immutable(불변) 이라고 한다.
+
+-> StringBuffer와 StringBuilder  mutable (가변)
+기존 문자열에 수정되어 적용하며 기본 16문자 크기로 지정된 버퍼 이용, 크기 증가 가능(자동으로 증가)
+쓰레드 safe 기능을 제공 여부에 따라 StringBuffer(제공) StringBuilder(제공x)
+대신 StringBuffer보다 StringBuilder가 더 빠름(쓰레드 safe 기능 제공x)
+문자열의 빈번한 수정이 있으면 String보다 StringBuffer, StringBuilder
+
+String str="java"
+String str2="java"
+str1 == str2 true -> hashcode() 주소 값 같음
+String str3 = new String("java");
+str1 == str3 false -> new String으로 새 메모리주소 값이므로 다른 주소 
+but 같은 hashcode를 가짐(동등 객체를 동일 객체로 취급하기 위해 오버라이딩 되어있음)
+str1.eqauls(str2), str1.equals(str3) -- > 둘 다 true
+
+StringTokenizer 분리자 기준으로 문자열 분리
+String str = AA|BB|CC;
+String Tokenizer st = new StringTokenizer(str, "|");
+while(st.hasMoreToken()) {
+	System.out.println(st.nextToken());
+}
+hasMoreToken으로 넘어가면 다시 돌아올 수 없기 때문에
+다시 사용하기 위해선 변수 등 어딘가 저장해 두어야 함
+
+Wrapper 클래스
+Object[] arr = new Object[10];
+arr[0] = 1 해도 가능
+Primitive Data Type의 객체화
+오토 박싱
+Integer num = new Integer(3);
+Integer num = 3;
+
+오토 언박싱
+int n = num.intValue();
+int n = num;
+
+String -> Primitive Data Type
+parse000
+byte b = Byte.parseByte("3");
+
+Primitive Data Type -> String
+valueOf...
+String b = Byte.valueOf((byte)1).toString();
+
+객체 사용 시 document에서 생성자를 제일 먼저 봐야함
+
+Date는 deprecated.. Calendar나 GregorianCalendar 사용
+Calendar 클래스는 abstract 클래스 -> 객체 생성 불가
+후손을 이용해서 객체 생성 or getInstance() method 사용
+
+
+Calendar c = Calendar.getInstance();
+System.out.println(c);
+
+java.util.GregorianCalendar[time=1591759176508,areFieldsSet=true,areAllFieldsSet=true,lenient=true,zone=sun.util.calendar.ZoneInfo[id="Asia/Seoul",offset=32400000,dstSavings=0,useDaylight=false,transitions=30,lastRule=null],firstDayOfWeek=1,minimalDaysInFirstWeek=1,ERA=1,YEAR=2020,MONTH=5,WEEK_OF_YEAR=24,WEEK_OF_MONTH=2,DAY_OF_MONTH=10,DAY_OF_YEAR=162,DAY_OF_WEEK=4,DAY_OF_WEEK_IN_MONTH=2,AM_PM=1,HOUR=0,HOUR_OF_DAY=12,MINUTE=19,SECOND=36,MILLISECOND=508,ZONE_OFFSET=32400000,DST_OFFSET=0]
+offset=32400000 = 9시간 +09:00 표시
+
