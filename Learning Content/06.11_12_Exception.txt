@@ -41,3 +41,9 @@ gc = 가비지 콜렉터 호출
 반납해야 하는 자원이 있는 경우 try-with-resource 구문으로 처리
 try() 괄호 안에서 객체 생성 가능하며, 여러 개도 생성 가능
 자동으로 객체를 반납해준다.
+
+오버라이딩 시 throws를 안해주어도 괜찮지만
+같은 예외 형식이거나, 더 구체적인 예외형식이어야 한다.(더 상위 클래스는 안됌)
+IOException을 override 할 때 Exception 은 불가 FileNotFoundException은 가능
+
+예외가 발생한 곳에서는 던져주고 호출 한 곳에서는 처리 try-catch()
