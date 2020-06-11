@@ -1,0 +1,6 @@
+1. Exception
+   - type of error
+      - compile-time error
+      - runtime error
+      - logical error
+      - systme error
