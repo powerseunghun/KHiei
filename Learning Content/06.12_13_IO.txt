@@ -50,9 +50,23 @@ FileWriter
 Serializable 인터페이스를 implements 하여 구현한다.
 단, 객체 직렬화 시 private 필드를 포함한 모든 필드를 바이트로 변환하지만
 transient 키워드를 사용한 필드는 직렬화에서 제외한다.
+implements java.io.Serializable
 
 역직렬화
 직렬화된 객체를 역직렬화 할 때는 직렬화 했을 때와 같은 클래스를 사용한다.
 하지만 클래스의 이름이 같더라도 클래스의 내용이 변경된 경우 역직렬화에 실패한다.
 
 파일 생성 후 프로젝트 클릭 -> F5 새로고침 하면 .txt 파일 package explorer, navigator에 등장
+
+FileOutputStream(".dat", true) 인자에 true가 주어질 경우 append 모드.
+
+
+
+VO가 되기 위한 조건
+1. 모든 필드가 private
+2. 기본 생성자와 모든 필드 초기화 생성자 존재
+3. 모든 필드에 대한 getter/setter 존재
+4. 직렬화 되어있어야 함
+[선택] toString() 메소드 오버라이딩
+
+transient 키워드 -> 직렬화에서 뺌
