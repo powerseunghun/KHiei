@@ -6,6 +6,16 @@ GUI(Graphic User Interface)
 AWT 확장 -> Swing
 
 Frame은 하나를 두고 안에 패널을 교체하는 식으로 화면 전환
+패널은 컴포넌트 이지만 다른 컴포넌트를 포함할 수 있는 컨테이너의 성격을 가지기도 한다.
 
 BorderLayout = JFrame's default layout
 FlowLayout = JPanel's default layout
+
+MouseListener를 상속받는 MouseAdapter 클래스
+내부에서 overriding해야하는 메소드들을 다 완성해놓아서
+오버라이딩 강제성 줄어들었음(필요한 것만 오버라이딩 가능)
+(5가지의 마우스 이벤트 중 원하는 것만 오버라이딩 하면 된다)
+
+container.pack()
+컨포넌트 크기에 컨테이너를 맞춰준다.
+

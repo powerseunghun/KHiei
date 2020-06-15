@@ -14,3 +14,4 @@
 4. layout
    - BorderLayout (JFrame's default layout)
    - FlowLayout (JPanel's default layout)
+   - CardLayout (MouseEvent e.getButton() == 1, left button, 2 = wheel click, 3 = right button)
