@@ -5,3 +5,7 @@ GUI(Graphic User Interface)
 -AWT(Abstract Window Toolkit), Swing
 AWT 확장 -> Swing
 
+Frame은 하나를 두고 안에 패널을 교체하는 식으로 화면 전환
+
+BorderLayout = JFrame's default layout
+FlowLayout = JPanel's default layout
