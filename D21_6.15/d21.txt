@@ -1,0 +1,9 @@
+1. AWT(Abstract Window Toolkit), Swing
+
+2. Container
+   - Component that can contain other component.
+   - can't contain other container, independent
+   Component
+   - GUI object that can be printed, only included in the container.
+   - except.. JPanel(can contain other component)
+
