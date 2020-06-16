@@ -1,0 +1,7 @@
+어댑터(Adapter) 클래스
+- 리스너 인터페이스의 추상 메소드를 모두 구현해야 하는 부담을 줄이기 위해
+제공된 클래스. 리스너의 모든 메소드가 단순 리턴하도록 구현한 클래스이다.
+
+addMouseListener(new MouseListener) 인터페이스 이므로 객체 생성 x
+Mouselistener 클래스를 작성한다.
+

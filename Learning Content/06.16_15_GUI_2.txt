@@ -1,0 +1,2 @@
+Image icon = new ImageIcon(PATH).getImage().getScaledInstance(150, 150, 0);
+이미지 축소하기.
