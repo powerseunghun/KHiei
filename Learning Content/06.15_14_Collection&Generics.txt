@@ -1,7 +1,0 @@
-GUI(Graphic User Interface)
--인터페이스
-두 매체간의 다리 역할
-
--AWT(Abstract Window Toolkit), Swing
-AWT 확장 -> Swing
-
