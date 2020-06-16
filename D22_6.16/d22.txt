@@ -1,1 +1,6 @@
 1. Radiobutton, CheckBox, ImageLabel practice
+
+2. Image icon = new ImageIcon("images/user.png").getImage()
+   icon.getScaledInstance(150, 150, 0)
+   JLabel label = new JLabel(new ImageIcon(icon));
+   - image label creation
