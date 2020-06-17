@@ -43,4 +43,44 @@ list.sort(Comparator)에서 익명클래스를 작성.
 comparator 인터페이스의 compare 메서드 return cob1.getName().compareTo(cob2.getName());
 내림차순은 * -1
 
+Set은 중복 허용하지 않고, 저장 순서 유지가 안된다.
+또 저장된 객체를 하나씩 꺼내는 기능이 없어서
+- toArray() 메소드를 이용해 객체 배열로 변환 후 연속 처리.
+- iterator() 메소드로 목록 만들어 처리 한다
 
+Map은 키와 값을 쌍으로 저장하며 키와 값 둘 다 반드시 객체여야 한다.
+값 객체 저장은 중복을 허용하지만 키는 중복을 허용하지 않는다.
+만약 중복되는 키로 put된다면 최근 값으로 value를 덮어쓴다.
+keySet을 만들어서 키만 set으로 만들고 iterator 메소드로 목록 만들어 연속 처리
+Set set = hmap.keySet();
+Iterator iter = set.iterator();
+while(iter.hasNext()) {
+	String key = (String) iter.next();
+	String value = (String) hmap.get(key);
+			
+	System.out.println(key + " = " + value);
+}
+
+저장된 value 객체들만 values() 메소드로 Collection 으로 생성
+Collection values = hmap.values();
+// 2-1 iterator()로 목록 만들어서 처리
+Iterator valueIter = values.iterator();
+
+// 2-2 배열로 만들어서 처리
+Object[] valueArr = values.toArray();
+
+// 3. Map의 내부 클래스인 EntrySet을 이용
+3-1
+Set entrySet = hmap.entrySet();
+Iterator entryIter = entrySet.iterator();
+while(entryIter.hasNext()) {
+	Map.Entry entry = (Entry) entryIter.next();
+	System.out.println(entry.getKey() + " : " + entry.getValue());
+}
+3-2 Generics
+Iterator<Map.Entry<String, String>> entryIter = entrySet.iterator();
+		
+while(entryIter.hasNext()) {
+	Map.Entry<String, String> entry = entryIter.next();
+	System.out.println(entry.getKey() + " : " + entry.getValue());
+}
