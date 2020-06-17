@@ -1,2 +1,14 @@
 1. data structure
-   - data processing in memory to archirecture
+   - architecturally data processing in memory
+
+2. array's problem, collection's advantage
+
+3. ArrayList sort
+   - ascending = Collections.sort(list)
+   - descending
+      Iterator iter = new LinkedList(list).descendingIterator();
+      while(iter.hasNext()) System.out.println(iter.next());
+      ----> new List.add(iter.next())
+
+4. Generics
+   - data assurance safe
