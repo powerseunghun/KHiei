@@ -1,2 +1,5 @@
 1. project day2
-
+   - ui improve
+   - logout, exit function add, panel change
+   - socket
+   - subpanel classification 
