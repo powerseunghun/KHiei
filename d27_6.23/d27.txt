@@ -1,4 +1,4 @@
-1. project day2
+1. project day2 -complete
    - ui improve
    - logout, exit function add, panel change
    - socket
