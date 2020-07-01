@@ -1,1 +1,20 @@
-1. 
+1. Data & Information diff
+
+2. Oracle Database Outline.. Definition
+   - 1. Operational Data
+   - 2. Shared Data
+   - 3. Integrated Data
+   - 4. Stored Data
+
+3. Database's feature
+   - 1. real time accessibility
+   - 2. continuous change
+   - 3. concurrent sharing
+   - 4. refrence by content
+
+4. DBMS(Database Management System), function
+   - Retrieval, Manipulation, Definition, Control
+
+5. DBMS Benefits
+
+6. Database Practice, developer install
