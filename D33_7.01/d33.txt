@@ -18,3 +18,13 @@
 5. DBMS Benefits
 
 6. Database Practice, developer install
+
+7. sql developer practice -> create, grant, DML query test
+
+8. primary key, foreign key
+
+9. SQL Primary Data Type,, - <- meaning : reverse
+
+10. AS (Alias), DISTINCT, WHERE, ORDER BY
+
+11. Operator, Operator Priority (important AND > OR)
