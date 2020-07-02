@@ -61,3 +61,161 @@ SELECT 절의 컬럼이 테이블에 속하지 않을 때
 
 -- SUBSTR : 컬럼이나 문자열에서 지정한 위치로부터 
 --             지정한 갯수의 문자열을 잘라서 리턴하는 함수이다.
+-- 날짜 데이터에서도 SUBSTR을 사용할 수 있다.
+
+-- 숫자 처리 함수 : ABS, MOD, ROUND, FLOOR, TRUNC, CEIL
+-- ABS(숫자 | 숫자로 된 컬럼명) : 절대값 구하는 함수
+
+-- MOD(숫자 | 숫자로 된 컬럼명, 숫자 | 숫자로 된 컬럼명) 
+-- : 두 수를 나누어서 나머지를 구하는 함수
+-- 처음 인자는 나누어지는 수, 두 번째 인자는 나눌 수
+
+-- ROUND(숫자 | 숫자로 된 컬럼명, [위치])
+--: 반올림해서 리턴하는 함수 .이 0번째 위치
+
+-- FLOOR(숫자 | 숫자로 된 컬럼명) : 내림처리 하는 함수
+
+-- TRUNC(숫자 | 숫자로 된 컬럼명, [위치]) : 내림처리(절삭) 함수
+
+-- CEIL(숫자 | 숫자로 된 컬럼명) : 올림처리 함수
+
+-- 날짜 처리 함수 : SYSDATE, MONTHS_BETWEEN, AND_MONTHS, 
+--                 NEXT_DAY, LAST_DAY, EXTRACT
+-- SYSDATE : 시스템에 저장되어 있는 날짜를 반환하는 함수
+
+-- MONTHS_BETWEEN(날짜, 날짜)
+-- : 두 날짜의 개월 수 차이를 숫자로 리턴하는 함수
+
+-- ADD_MONTHS(날짜, 숫자)
+-- : 날짜에 숫자만큼 개월 수를 더한 날짜를 리턴
+
+-- EMPLOYEE 테이블에서 사원의 이름, 입사일, 입사 후 6개월이 되는 날짜 조회
+SELECT EMP_NAME, HIRE_DATE, ADD_MONTHS(HIRE_DATE, 6)
+FROM EMPLOYEE;
+
+-- EMPLOYEE 테이블에서 근무년수가 20년 이상인 직원 조회
+SELECT *
+FROM EMPLOYEE 
+WHERE MONTHS_BETWEEN(SYSDATE, HIRE_DATE) >= 240;
+
+SELECT *
+FROM EMPLOYEE 
+WHERE ADD_MONTHS(HIRE_DATE, 240) <= SYSDATE;
+
+-- NEXT_DAY(기준날짜, 요일)
+-- : 기준 날짜에서 구하려는 요일에 가장 가까운 날짜 리턴
+
+SELECT SYSDATE, NEXT_DAY(SYSDATE, '금요일') FROM DUAL;
+SELECT SYSDATE, NEXT_DAY(SYSDATE, 6) FROM DUAL;
+SELECT SYSDATE, NEXT_DAY(SYSDATE, '금') FROM DUAL;
+SELECT SYSDATE, NEXT_DAY(SYSDATE, 'FRIDAY') FROM DUAL;
+
+-- 세션 변경
+ALTER SESSION SET NLS_LANGUAGE = KOREAN;
+ALTER SESSION SET NLS_LANGUAGE = AMERICAN;
+
+-- EXTRACT : 년, 월, 일 정보를 추출하여 리턴하는 함수
+-- EXTRACT(YEAR FROM 날짜) : 년도만 추출
+-- EXTRACT(MONTH FROM 날짜) : 월만 추출
+-- EXTRACT(DAY FROM 날짜) : 날짜만 추출
+
+-- EMPLOYEE 테이블에서 사원이름, 입사년, 입사월, 입사일 조회
+SELECT
+       EMP_NAME 사원이름
+     , EXTRACT(YEAR FROM HIRE_DATE) 입사년
+     , EXTRACT(MONTH FROM HIRE_DATE) 입사월
+     , EXTRACT(DAY FROM HIRE_DATE) 입사일
+FROM EMPLOYEE
+--WHERE 사원이름 = '김해술'
+-- ORDER BY EMP_NAME ASC;
+-- ORDER BY EMP_NAME DESC;
+-- ORDER BY 사원이름;
+-- ORDER BY 1;
+--ORDER BY 입사년 ASC, 사원이름 ASC;;
+동작 순서는 FROM, WHERE 이기 때문에 사원이름을 WHERE절에 쓸 수 없음
+ORDER BY는 그 후에 동작하므로 사원이름 사용 가능
+ORDER BY 조건 여러 개 사용 가능.
+
+-- EMPLOYEE 테이블에서 직원들의 사원명과 근무 년수 조회
+-- 단, MONTHS_BETWEEN 사용
+SELECT *FROM EMPLOYEE;
+
+SELECT 
+       EMP_NAME
+     , HIRE_DATE
+     , CEIL(MONTHS_BETWEEN(SYSDATE, HIRE_DATE) / 12) 근무년수
+FROM EMPLOYEE;
+
+SELECT EMP_NAME, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM HIRE_DATE) 근무년수
+FROM EMPLOYEE;
+
+-- 데이터 포맷 변경
+ALTER SESSION SET NSL_DATE_FORMAT = 'RR/MM/DD';
+
+-- 형변환 함수
+-- TO_CHAR(날짜, [포맷]) : 날짜형 데이터를 문자열로 변경
+-- TO_CHAR(숫자, [포맷]) : 숫자형 데이터를 문자열로 변경
+SELECT TO_CHAR(1234) FROM DUAL;
+SELECT TO_CHAR(1234, '99999') FROM DUAL; -- 모자라면 모자라는 그대로
+SELECT TO_CHAR(1234, '00000') FROM DUAL; -- 무조건 5자리를 다. 모자라는 데는 0으로
+
+-- 직원 테이블에서 사원명, 급여 조회
+-- 급여는 '\9,000,000' 형식으로 출력
+SELECT EMP_NAME, TO_CHAR(SALARY, 'L99,999,999') AS 급여
+FROM EMPLOYEE;       -- 9는 채워지는게 아니니깐 여유롭게 적어주자
+
+-- 날짜 데이터에 포맷 적용시 TO_CHAR 함수 사용
+SELECT TO_CHAR(SYSDATE, 'PM HH24:MI:SS') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'AM HH:MI:SS') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'MON DY, YYYY') FROM DUAL;
+SELECT TO_CHAR(SYSDATE, 'YYYY-fmMM-DD DAY') FROM DUAL; -- fm은 0제거
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD DAY') FROM DUAL; -- DAY는 DY의 풀네임 DAY : 목요일, DY : 목
+SELECT TO_CHAR(SYSDATE, 'YEAR, Q') || '분기' FROM DUAL; -- Q는 분기를 의미 YEAR는 영어로 TEWENTY TWENTY
+
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY년 MM월 DD일') 입사일
+FROM EMPLOYEE; -- 년 월 일 한글 지원 안됨
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY"년" MM"월" DD"일"') 입사일
+FROM EMPLOYEE;  -- 따옴표를 추가해서 텍스트로 처리
+
+-- 직원 테이블에서 이름, 입사일 조회
+-- 입사일에 포맷 적용함
+-- '2018년 6월 15일 (수)' 형식으로 출력 처리 하세요
+SELECT* FROM EMPLOYEE;
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"년" fmMM"월" DD"일" ') || TO_CHAR(HIRE_DATE, '"("DY")"') 입사일
+FROM EMPLOYEE;
+
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"년" fmMM"월" DD"일" (DY)') 입사일 FROM EMPLOYEE;
+
+-- TO_DATE : 문자형 데이터 혹은 숫자형 데이터를 날짜로 변환하여 리턴
+SELECT TO_DATE('20100101', 'RRRRMMDD') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('20100101', 'RRRRDDMM'), 'RRRR, MON') FROM DUAL;
+
+SELECT TO_DATE('041030 143000', 'RRMMDD HH24MISS') FROM DUAL;
+SELECT TO_CHAR(TO_DATE('041030 143000', 'RRMMDD HH24MISS'), 'DD-MON-RR HH:MI:SS PM')
+FROM DUAL;
+
+-- 직원 테이블에서 2000년도 이후에 입사한 사원의
+-- 사번, 이름, 입사일 조회
+SELECT EMP_ID, EMP_NAME, HIRE_DATE
+FROM EMPLOYEE
+--WHERE HIRE_DATE >= TO_DATE(20000101, 'RRRRMMDD')
+--WHERE HIRE_DATE >= 20000101;
+WHERE HIRE_DATE >= '20000101';
+-- 숫자는 날짜로 자동 형변환이 되지 않는다,
+-- 문자열은 날짜로 자동 형변환 된다.
+
+-- 자동 형변환
+SELECT '123' + '456' FROM DUAL;
+SELECT '123' + '456A' FROM DUAL; -- 형변환 되지 않음(꼭 숫자로 되어있는 문자열만)
+
+-- EMPLOYEE 테이블에서 사번이 홀수인 직원의 정보를 조회
+SELECT *
+FROM EMPLOYEE
+WHERE MOD(TO_NUMBER(EMP_ID), 2) = 1;
+--WHERE MOD(EMP_ID, 2) = 1; 
+
+-- 콤마 명시해주면 TO_NUMBER 가능
+SELECT 
+       TO_NUMBER('1,000,000', '99,999,999')
+     + TO_NUMBER('500,000', '999,999')
+FROM DUAL;
