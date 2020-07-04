@@ -1,70 +1,70 @@
--- DAY 2 ¼ö¾÷³»¿ë
+-- DAY 2 ìˆ˜ì—…ë‚´ìš©
 
--- ÇÔ¼ö (FUNCTION): ÄÃ·³ °ªÀ» ÀÏ°Ï¼­ °è»êÇÑ °á°ú¸¦ ¸®ÅÏÇÔ
--- ´ÜÀÏÇà (SINGLE ROW) : ÄÃ·³¿¡ ±â·ÏµÈ N°³ÀÇ °ªÀ» ÀÐ¾î¼­ N°³ÀÇ °á°ú¸¦ ¸®ÅÏ
--- ±×·ì(GROUP) ÇÔ¼ö : ÄÃ·³¿¡ ±â·ÏµÈ N°³ÀÇ °ªÀ» ÀÐ¾î¼­ ÇÑ °³ÀÇ °á°ú¸¦ ¸®ÅÏ
+-- í•¨ìˆ˜ (FUNCTION): ì»¬ëŸ¼ ê°’ì„ ì¼ê²…ì„œ ê³„ì‚°í•œ ê²°ê³¼ë¥¼ ë¦¬í„´í•¨
+-- ë‹¨ì¼í–‰ (SINGLE ROW) : ì»¬ëŸ¼ì— ê¸°ë¡ëœ Nê°œì˜ ê°’ì„ ì½ì–´ì„œ Nê°œì˜ ê²°ê³¼ë¥¼ ë¦¬í„´
+-- ê·¸ë£¹(GROUP) í•¨ìˆ˜ : ì»¬ëŸ¼ì— ê¸°ë¡ëœ Nê°œì˜ ê°’ì„ ì½ì–´ì„œ í•œ ê°œì˜ ê²°ê³¼ë¥¼ ë¦¬í„´
 
--- SELECT Àý¿¡ ´ÜÀÏÇà ÇÔ¼ö¿Í ±×·ì ÇÔ¼ö¸¦ ÇÔ°Ô »ç¿ëÇÏÁö ¸øÇÑ´Ù.
--- : °á°ú ÇàÀÇ °¹¼ö°¡ ´Ù¸£±â ¶§¹®
+-- SELECT ì ˆì— ë‹¨ì¼í–‰ í•¨ìˆ˜ì™€ ê·¸ë£¹ í•¨ìˆ˜ë¥¼ í•¨ê²Œ ì‚¬ìš©í•˜ì§€ ëª»í•œë‹¤.
+-- : ê²°ê³¼ í–‰ì˜ ê°¯ìˆ˜ê°€ ë‹¤ë¥´ê¸° ë•Œë¬¸
 
--- ÇÔ¼ö¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Â À§Ä¡
--- : SELECT Àý, WHERE Àý, GROUP BY Àý, HAVING Àý, ORDER BY Àý
+-- í•¨ìˆ˜ë¥¼ ì‚¬ìš©í•  ìˆ˜ ìžˆëŠ” ìœ„ì¹˜
+-- : SELECT ì ˆ, WHERE ì ˆ, GROUP BY ì ˆ, HAVING ì ˆ, ORDER BY ì ˆ
 
--- ±×·ì ÇÔ¼ö : SUM, AVG, MAX, MIN, COUNT
--- SUM(¼ýÀÚ | ¼ýÀÚ°¡ ±â·ÏµÈ ÄÃ·³¸í) : ÇÕ°è¸¦ ±¸ÇÏ¿© ¸®ÅÏ
+-- ê·¸ë£¹ í•¨ìˆ˜ : SUM, AVG, MAX, MIN, COUNT
+-- SUM(ìˆ«ìž | ìˆ«ìžê°€ ê¸°ë¡ëœ ì»¬ëŸ¼ëª…) : í•©ê³„ë¥¼ êµ¬í•˜ì—¬ ë¦¬í„´
 SELECT SUM(SALARY)
 FROM EMPLOYEE;
 
--- AVG(¼ýÀÚ°¡ ±â·ÏµÈ ÄÃ·³¸í) : Æò±ÕÀ» ±¸ÇÏ¿© ¸®ÅÏ
+-- AVG(ìˆ«ìžê°€ ê¸°ë¡ëœ ì»¬ëŸ¼ëª…) : í‰ê· ì„ êµ¬í•˜ì—¬ ë¦¬í„´
 SELECT AVG(SALARY)
 FROM EMPLOYEE;
 
--- MIN(ÄÃ·³¸í) : ÄÃ·³¿¡¼­ °¡Àå ÀÛÀº °ª ¸®ÅÏ
--- Ãë±ÞÇÏ´Â ÀÚ·áÇüÀº ANY TIMEÀÓ
+-- MIN(ì»¬ëŸ¼ëª…) : ì»¬ëŸ¼ì—ì„œ ê°€ìž¥ ìž‘ì€ ê°’ ë¦¬í„´
+-- ì·¨ê¸‰í•˜ëŠ” ìžë£Œí˜•ì€ ANY TIMEìž„
 SELECT MIN(EMAIL), MIN(HIRE_DATE), MIN(SALARY)
 FROM EMPLOYEE;
 
--- MAX(ÄÃ·³¸í) : ÄÃ·³¿¡¼­ °¡Àå Å« °ª ¸®ÅÏ
--- Ãë±ÞÇÏ´Â ÀÚ·áÇüÀº ANY TYPEÀÓ
+-- MAX(ì»¬ëŸ¼ëª…) : ì»¬ëŸ¼ì—ì„œ ê°€ìž¥ í° ê°’ ë¦¬í„´
+-- ì·¨ê¸‰í•˜ëŠ” ìžë£Œí˜•ì€ ANY TYPEìž„
 SELECT MAX(EMAIL), MAX(HIRE_DATE), MAX(SALARY)
 FROM EMPLOYEE;
 
--- COUNT(* | ÄÃ·³¸í) : ÇàÀÇ °¹¼ö¸¦ Çì¾Æ·Á¼­ ¸®ÅÏ
--- COUNT([DISTINCT] ÄÃ·³¸í) : Áßº¹À» Á¦°ÅÇÑ Çà °¹¼ö ¸®ÅÏ
--- COUNT(ÄÃ·³¸í) : NULLÀ» Á¦¿ÜÇÑ ½ÇÁ¦ °ªÀÌ ±â·ÏµÈ Çà °¹¼ö ¸®ÅÏ
+-- COUNT(* | ì»¬ëŸ¼ëª…) : í–‰ì˜ ê°¯ìˆ˜ë¥¼ í—¤ì•„ë ¤ì„œ ë¦¬í„´
+-- COUNT([DISTINCT] ì»¬ëŸ¼ëª…) : ì¤‘ë³µì„ ì œê±°í•œ í–‰ ê°¯ìˆ˜ ë¦¬í„´
+-- COUNT(ì»¬ëŸ¼ëª…) : NULLì„ ì œì™¸í•œ ì‹¤ì œ ê°’ì´ ê¸°ë¡ëœ í–‰ ê°¯ìˆ˜ ë¦¬í„´
 SELECT COUNT(*), COUNT(DEPT_CODE), COUNT(DISTINCT DEPT_CODE)
 FROM EMPLOYEE;
 
-SELECT 
+SELECT
        AVG(BONUS)
      , AVG(DISTINCT BONUS)
      , AVG(NVL(BONUS, 0))
 FROM EMPLOYEE;
 
--- ´ÜÀÏÇà ÇÔ¼ö
--- ¹®ÀÚ °ü·Ã ÇÔ¼ö
+-- ë‹¨ì¼í–‰ í•¨ìˆ˜
+-- ë¬¸ìž ê´€ë ¨ í•¨ìˆ˜
 -- : LENGTH, LENGTHB, SUBSTR, UPPER, LOWER,, INSTR, ...
-SELECT LENGTH('¿À¶óÅ¬'), LENGTHB('¿À¶óÅ¬')
+SELECT LENGTH('ì˜¤ë¼í´'), LENGTHB('ì˜¤ë¼í´')
 FROM DUAL;
 
--- INSTR('¹®ÀÚ¿­' | ÄÃ·³¸í, '¹®ÀÚ', 'Ã£À» À§Ä¡ÀÇ ½ÃÀÛ°ª', [ºóµµ])
+-- INSTR('ë¬¸ìžì—´' | ì»¬ëŸ¼ëª…, 'ë¬¸ìž', 'ì°¾ì„ ìœ„ì¹˜ì˜ ì‹œìž‘ê°’', [ë¹ˆë„])
 SELECT INSTR('AABAACAABBAA', 'B') FROM DUAL;
 SELECT INSTR('AABAACAABBAA', 'B', 1) FROM DUAL;
-SELECT INSTR('AABAACAABBAA', 'B', -1) FROM DUAL;  --  -1 ¿ª¹æÇâ Å½»ö (µÚ¿¡¼­ Ã¹ ¹øÂ°)
+SELECT INSTR('AABAACAABBAA', 'B', -1) FROM DUAL;  --  -1 ì—­ë°©í–¥ íƒìƒ‰ (ë’¤ì—ì„œ ì²« ë²ˆì§¸)
 SELECT INSTR('AABAACAABBAA', 'B', 1, 2) FROM DUAL;
 SELECT INSTR('AABAACAABBAA', 'B', -1, 2) FROM DUAL;
 
-SELECT EMAIL, INSTR(EMAIL, '@', -1) À§Ä¡
+SELECT EMAIL, INSTR(EMAIL, '@', -1) ìœ„ì¹˜
 FROM EMPLOYEE;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿ø¸í, ÀÌ¸ÞÀÏ, @ÀÌÈÄ¸¦ Á¦¿ÜÇÑ ¾ÆÀÌµð Á¶È¸
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ëª…, ì´ë©”ì¼, @ì´í›„ë¥¼ ì œì™¸í•œ ì•„ì´ë”” ì¡°íšŒ
 SELECT
        EMP_NAME
      , EMAIL
      , SUBSTR(EMAIL, 1, INSTR(EMAIL, '@') -1)
 FROM EMPLOYEE;
 
--- LPAD / RPAD : ÁÖ¾îÁø ÄÃ·³ ¹®ÀÚ¿­¿¡ ÀÓÀÇÀÇ ¹®ÀÚ¿­À» µ¡ºÙ¿© ±æÀÌ NÀÇ ¹®ÀÚ¿­À» ¹ÝÈ¯
+-- LPAD / RPAD : ì£¼ì–´ì§„ ì»¬ëŸ¼ ë¬¸ìžì—´ì— ìž„ì˜ì˜ ë¬¸ìžì—´ì„ ë§ë¶™ì—¬ ê¸¸ì´ Nì˜ ë¬¸ìžì—´ì„ ë°˜í™˜
 SELECT LPAD(EMAIL, 20, '#')
 FROM EMPLOYEE;
 
@@ -77,14 +77,14 @@ FROM EMPLOYEE;
 SELECT RPAD(EMAIL, 10)
 FROM EMPLOYEE;
 
--- LTRIM/RTRIM : ÁÖ¾îÁø ÄÃ·³ÀÌ³ª ¹®ÀÚ¿­ ¿ÞÂÊ/¿À¸¥ÂÊ¿¡¼­
---               ÁöÁ¤ÇÑ ¹®ÀÚ È¤Àº ¹®ÀÚ¿­À» Á¦°ÅÇÑ ³ª¸ÓÁö¸¦ ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö
+-- LTRIM/RTRIM : ì£¼ì–´ì§„ ì»¬ëŸ¼ì´ë‚˜ ë¬¸ìžì—´ ì™¼ìª½/ì˜¤ë¥¸ìª½ì—ì„œ
+--               ì§€ì •í•œ ë¬¸ìž í˜¹ì€ ë¬¸ìžì—´ì„ ì œê±°í•œ ë‚˜ë¨¸ì§€ë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 SELECT LTRIM('   KH') FROM DUAL;
 SELECT LTRIM('   KH', ' ') FROM DUAL;
 SELECT LTRIM('000123456', '0') FROM DUAL;
 SELECT LTRIM('123123KH', '123') FROM DUAL;
-SELECT LTRIM('123123KH123', '123') FROM DUAL;  -- Á¦°ÅÇÒ °Ô ¾øÀ¸¸é ¹Ù·Î ¹ÝÈ¯.
-SELECT LTRIM('ACABACCKH', 'ABC') FROM DUAL;    -- ±¸ºÐÀÚ´Â ¼ø¼­ »ó°ü¾øÀÌ ÆÐÅÏÀÓ
+SELECT LTRIM('123123KH123', '123') FROM DUAL;  -- ì œê±°í•  ê²Œ ì—†ìœ¼ë©´ ë°”ë¡œ ë°˜í™˜.
+SELECT LTRIM('ACABACCKH', 'ABC') FROM DUAL;    -- êµ¬ë¶„ìžëŠ” ìˆœì„œ ìƒê´€ì—†ì´ íŒ¨í„´ìž„
 SELECT LTRIM('5782KH', '0123456789') FROM DUAL;
 
 SELECT RTRIM('KH   ') FROM DUAL;
@@ -94,102 +94,102 @@ SELECT RTRIM('KH123123', '123') FROM DUAL;
 SELECT RTRIM('KHACABACC', 'ABC') FROM DUAL;
 SELECT RTRIM('KH5782', '0123456789') FROM DUAL;
 
--- TRIM : ÁÖ¾îÁø ÄÃ·³ÀÌ³ª ¹®ÀÚ¿­ÀÇ ¾Õ/µÚ¿¡ ÁöÁ¤ÇÑ ¹®ÀÚ¸¦ Á¦°Å
+-- TRIM : ì£¼ì–´ì§„ ì»¬ëŸ¼ì´ë‚˜ ë¬¸ìžì—´ì˜ ì•ž/ë’¤ì— ì§€ì •í•œ ë¬¸ìžë¥¼ ì œê±°
 SELECT TRIM('   KH   ') FROM DUAL;
 SELECT TRIM('Z' FROM 'ZZZKHZZZ') FROM DUAL;
 SELECT TRIM(LEADING 'Z' FROM 'ZZZ123456ZZZ') FROM DUAL;
 SELECT TRIM(TRAILING 'Z' FROM 'ZZZ123456ZZZ') FROM DUAL;
 SELECT TRIM(BOTH 'Z' FROM 'ZZZ123456ZZZ') FROM DUAL;
 
--- SUBSTR : ÄÃ·³ÀÌ³ª ¹®ÀÚ¿­¿¡¼­ ÁöÁ¤ÇÑ À§Ä¡·ÎºÎÅÍ 
---          ÁöÁ¤ÇÑ °¹¼öÀÇ ¹®ÀÚ¿­À» Àß¶ó¼­ ¸®ÅÏÇÏ´Â ÇÔ¼öÀÌ´Ù.
+-- SUBSTR : ì»¬ëŸ¼ì´ë‚˜ ë¬¸ìžì—´ì—ì„œ ì§€ì •í•œ ìœ„ì¹˜ë¡œë¶€í„°
+--          ì§€ì •í•œ ê°¯ìˆ˜ì˜ ë¬¸ìžì—´ì„ ìž˜ë¼ì„œ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜ì´ë‹¤.
 SELECT SUBSTR('SHOWMETHEMONEY', 5, 2) FROM DUAL;
 SELECT SUBSTR('SHOWMETHEMONEY', 5) FROM DUAL;
 SELECT SUBSTR('SHOWMETHEMONEY', -8, 3) FROM DUAL;
-SELECT SUBSTR('¼î¿ì ¹Ì ´õ ¸Ó´Ï', 2, 5) FROM DUAL;
+SELECT SUBSTR('ì‡¼ìš° ë¯¸ ë” ë¨¸ë‹ˆ', 2, 5) FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿øÀÌ¸§, ÁÖ¹Î¹øÈ£ ¼ºº°ÀÚ¸®
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ì´ë¦„, ì£¼ë¯¼ë²ˆí˜¸ ì„±ë³„ìžë¦¬
 SELECT *FROM EMPLOYEE;
 SELECT INSTR(EMP_NO, '-') FROM EMPLOYEE;
 
-SELECT 
+SELECT
        EMP_NAME
      , SUBSTR(EMP_NO ,INSTR(EMP_NO, '-') + 1, 1)
 FROM EMPLOYEE;
 
 -- LOWER / UPPER / INITCAP
--- : LOWER(¹®ÀÚ¿­ | ÄÃ·³) : ¼Ò¹®ÀÚ·Î º¯°æÇØÁÖ´Â ÇÔ¼ö
-SELECT LOWER('Welcome To My World') 
+-- : LOWER(ë¬¸ìžì—´ | ì»¬ëŸ¼) : ì†Œë¬¸ìžë¡œ ë³€ê²½í•´ì£¼ëŠ” í•¨ìˆ˜
+SELECT LOWER('Welcome To My World')
 FROM DUAL;
 
--- : UPPER(¹®ÀÚ¿­ | ÄÃ·³) : ´ë¹®ÀÚ·Î º¯°æÇØÁÖ´Â ÇÔ¼ö
-SELECT UPPER('Welcome To My World') 
+-- : UPPER(ë¬¸ìžì—´ | ì»¬ëŸ¼) : ëŒ€ë¬¸ìžë¡œ ë³€ê²½í•´ì£¼ëŠ” í•¨ìˆ˜
+SELECT UPPER('Welcome To My World')
 FROM DUAL;
 
--- : INITCAP(¹®ÀÚ¿­ | ÄÃ·³) : ¾Õ±ÛÀÚ¸¸ ´ë¹®ÀÚ·Î º¯°æÇØÁÖ´Â ÇÔ¼ö
-SELECT INITCAP('welcome to my world') 
+-- : INITCAP(ë¬¸ìžì—´ | ì»¬ëŸ¼) : ì•žê¸€ìžë§Œ ëŒ€ë¬¸ìžë¡œ ë³€ê²½í•´ì£¼ëŠ” í•¨ìˆ˜
+SELECT INITCAP('welcome to my world')
 FROM DUAL;
 
--- CONCAT : ¹®ÀÚ¿­ È¤Àº ÄÃ·³ µÎ °³¸¦ ÀÔ·Â¹Þ¾Æ ÇÏ³ª·Î ÇÕÄ£ ÈÄ ¸®ÅÏ
-SELECT CONCAT('°¡³ª´Ù¶ó', 'ABCD')
+-- CONCAT : ë¬¸ìžì—´ í˜¹ì€ ì»¬ëŸ¼ ë‘ ê°œë¥¼ ìž…ë ¥ë°›ì•„ í•˜ë‚˜ë¡œ í•©ì¹œ í›„ ë¦¬í„´
+SELECT CONCAT('ê°€ë‚˜ë‹¤ë¼', 'ABCD')
 FROM DUAL;
 
-SELECT ('°¡³ª´Ù¶ó' || 'ABCD') 
+SELECT ('ê°€ë‚˜ë‹¤ë¼' || 'ABCD')
 FROM DUAL;
 
--- REPLACE : ÄÃ·³ È¤Àº ¹®ÀÚ¿­À» ÀÔ·Â¹Þ¾Æ
---           º¯°æÇÏ°íÀÚ ÇÏ´Â ¹®ÀÚ¿­À»
---           º¯°æÇÏ·Á°í ÇÏ´Â ¹®ÀÚ¿­À» ¹Ù²Û ÈÄ ¸®ÅÏ
-SELECT REPLACE('¼­¿ï½Ã °­³²±¸ ¿ª»ïµ¿', '¿ª»ïµ¿', '»ï¼ºµ¿')
+-- REPLACE : ì»¬ëŸ¼ í˜¹ì€ ë¬¸ìžì—´ì„ ìž…ë ¥ë°›ì•„
+--           ë³€ê²½í•˜ê³ ìž í•˜ëŠ” ë¬¸ìžì—´ì„
+--           ë³€ê²½í•˜ë ¤ê³  í•˜ëŠ” ë¬¸ìžì—´ì„ ë°”ê¾¼ í›„ ë¦¬í„´
+SELECT REPLACE('ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™', 'ì—­ì‚¼ë™', 'ì‚¼ì„±ë™')
 FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ Á÷¿øµéÀÇ ÁÖ¹Î¹øÈ£¸¦ Á¶È¸ÇÏ¿© 
--- »ç¿ø¸í, »ý³â, »ý¿ù, »ýÀÏÀ» °¢°¢ ºÐ¸®ÇÏ¿© Á¶È¸
--- ´Ü ÄÃ·³ º°ÄªÀº »ç¿ø¸í, »ý³â, »ý¿ù, »ýÀÏ·Î ÇÑ´Ù.
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì§ì›ë“¤ì˜ ì£¼ë¯¼ë²ˆí˜¸ë¥¼ ì¡°íšŒí•˜ì—¬
+-- ì‚¬ì›ëª…, ìƒë…„, ìƒì›”, ìƒì¼ì„ ê°ê° ë¶„ë¦¬í•˜ì—¬ ì¡°íšŒ
+-- ë‹¨ ì»¬ëŸ¼ ë³„ì¹­ì€ ì‚¬ì›ëª…, ìƒë…„, ìƒì›”, ìƒì¼ë¡œ í•œë‹¤.
 SELECT
-       EMP_NAME »ç¿ø¸í
-       , SUBSTR(EMP_NO, 1, 2) »ý³â
-       , SUBSTR(EMP_NO, 3, 2) »ý¿ù
-       , SUBSTR(EMP_NO, 5, 2) »ýÀÏ
+       EMP_NAME ì‚¬ì›ëª…
+       , SUBSTR(EMP_NO, 1, 2) ìƒë…„
+       , SUBSTR(EMP_NO, 3, 2) ìƒì›”
+       , SUBSTR(EMP_NO, 5, 2) ìƒì¼
 FROM EMPLOYEE;
 
--- ¿©Á÷¿øµéÀÇ ¸ðµç ÄÃ·³ Á¤º¸ Á¶È¸
+-- ì—¬ì§ì›ë“¤ì˜ ëª¨ë“  ì»¬ëŸ¼ ì •ë³´ ì¡°íšŒ
 SELECT *FROM EMPLOYEE;
 SELECT *FROM EMPLOYEE
 WHERE SUBSTR(EMP_NO, 8, 1) = 2;
 
--- ³¯Â¥ µ¥ÀÌÅÍ¿¡¼­µµ SUBSTRÀ» »ç¿ëÇÒ ¼ö ÀÖ´Ù.
--- Á÷¿øµéÀÇ ÀÔ»çÀÏ¿¡¼­ ÀÔ»ç³âµµ, ÀÔ»ç¿ù, ÀÔ»ç³¯Â¥¸¦ ºÐ¸® Á¶È¸
+-- ë‚ ì§œ ë°ì´í„°ì—ì„œë„ SUBSTRì„ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤.
+-- ì§ì›ë“¤ì˜ ìž…ì‚¬ì¼ì—ì„œ ìž…ì‚¬ë…„ë„, ìž…ì‚¬ì›”, ìž…ì‚¬ë‚ ì§œë¥¼ ë¶„ë¦¬ ì¡°íšŒ
 SELECT
        HIRE_DATE
-     , SUBSTR(HIRE_DATE, 1, 2) ÀÔ»ç³âµµ
-     , SUBSTR(HIRE_DATE, 4, 2) ÀÔ»ç¿ù
-     , SUBSTR(HIRE_DATE, 7, 2) ÀÔ»ç³¯Â¥
+     , SUBSTR(HIRE_DATE, 1, 2) ìž…ì‚¬ë…„ë„
+     , SUBSTR(HIRE_DATE, 4, 2) ìž…ì‚¬ì›”
+     , SUBSTR(HIRE_DATE, 7, 2) ìž…ì‚¬ë‚ ì§œ
 FROM EMPLOYEE;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿ø¸í, ÁÖ¹Î¹øÈ£ Á¶È¸
--- ´Ü, ÁÖ¹Î¹øÈ£´Â »ý³â¿ùÀÏ¸¸ º¸ÀÌ°Ô ÇÏ°í '-' ÀÌ¤ÓÈÄÀÇ °ªÀº '*'·Î ¹Ù²ã¼­ Ãâ·Â
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ëª…, ì£¼ë¯¼ë²ˆí˜¸ ì¡°íšŒ
+-- ë‹¨, ì£¼ë¯¼ë²ˆí˜¸ëŠ” ìƒë…„ì›”ì¼ë§Œ ë³´ì´ê²Œ í•˜ê³  '-' ì´ã…£í›„ì˜ ê°’ì€ '*'ë¡œ ë°”ê¿”ì„œ ì¶œë ¥
 SELECT *FROM EMPLOYEE;
-SELECT EMP_NAME, CONCAT(SUBSTR(EMP_NO, 1, 7), '*******') ÁÖ¹Î¹øÈ£
+SELECT EMP_NAME, CONCAT(SUBSTR(EMP_NO, 1, 7), '*******') ì£¼ë¯¼ë²ˆí˜¸
 FROM EMPLOYEE;
 
-SELECT EMP_NAME, SUBSTR(EMP_NO, 1, 7) || '*******' ÁÖ¹Î¹øÈ£
+SELECT EMP_NAME, SUBSTR(EMP_NO, 1, 7) || '*******' ì£¼ë¯¼ë²ˆí˜¸
 FROM EMPLOYEE;
 
-SELECT EMP_NAME, RPAD(SUBSTR(EMP_NO, 1, 7), 14, '*') ÁÖ¹Î¹øÈ£
+SELECT EMP_NAME, RPAD(SUBSTR(EMP_NO, 1, 7), 14, '*') ì£¼ë¯¼ë²ˆí˜¸
 FROM EMPLOYEE;
 
--- ¼ýÀÚ Ã³¸® ÇÔ¼ö : ABS, MOD, ROUND, FLOOR, TRUNC, CEIL
--- ABS(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í) : Àý´ë°ª ±¸ÇÏ´Â ÇÔ¼ö
+-- ìˆ«ìž ì²˜ë¦¬ í•¨ìˆ˜ : ABS, MOD, ROUND, FLOOR, TRUNC, CEIL
+-- ABS(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…) : ì ˆëŒ€ê°’ êµ¬í•˜ëŠ” í•¨ìˆ˜
 SELECT ABS(-10), ABS(10) FROM DUAL;
 
--- MOD(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í, ¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í) 
--- : µÎ ¼ö¸¦ ³ª´©¾î¼­ ³ª¸ÓÁö¸¦ ±¸ÇÏ´Â ÇÔ¼ö
--- Ã³À½ ÀÎÀÚ´Â ³ª´©¾îÁö´Â ¼ö, µÎ ¹øÂ° ÀÎÀÚ´Â ³ª´­ ¼ö
+-- MOD(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…, ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…)
+-- : ë‘ ìˆ˜ë¥¼ ë‚˜ëˆ„ì–´ì„œ ë‚˜ë¨¸ì§€ë¥¼ êµ¬í•˜ëŠ” í•¨ìˆ˜
+-- ì²˜ìŒ ì¸ìžëŠ” ë‚˜ëˆ„ì–´ì§€ëŠ” ìˆ˜, ë‘ ë²ˆì§¸ ì¸ìžëŠ” ë‚˜ëˆŒ ìˆ˜
 SELECT MOD(10, 5), MOD(10, 3) FROM DUAL;
 
--- ROUND(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í, [À§Ä¡])
---: ¹Ý¿Ã¸²ÇØ¼­ ¸®ÅÏÇÏ´Â ÇÔ¼ö .ÀÌ 0¹øÂ° À§Ä¡
+-- ROUND(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…, [ìœ„ì¹˜])
+--: ë°˜ì˜¬ë¦¼í•´ì„œ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜ .ì´ 0ë²ˆì§¸ ìœ„ì¹˜
 SELECT ROUND(123.456) FROM DUAL;
 SELECT ROUND(123.456, 0) FROM DUAL;
 SELECT ROUND(123.456, 1) FROM DUAL;
@@ -197,17 +197,17 @@ SELECT ROUND(123.456, 2) FROM DUAL;
 SELECT ROUND(123.456, -2) FROM DUAL;
 SELECT ROUND(123.456, -1) FROM DUAL;
 
--- FLOOR(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í) : ³»¸²Ã³¸® ÇÏ´Â ÇÔ¼ö
+-- FLOOR(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…) : ë‚´ë¦¼ì²˜ë¦¬ í•˜ëŠ” í•¨ìˆ˜
 SELECT FLOOR(123.456) FROM DUAL;
 SELECT FLOOR(123.678) FROM DUAL;
 
--- TRUNC(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í, [À§Ä¡]) : ³»¸²Ã³¸®(Àý»è) ÇÔ¼ö
+-- TRUNC(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…, [ìœ„ì¹˜]) : ë‚´ë¦¼ì²˜ë¦¬(ì ˆì‚­) í•¨ìˆ˜
 SELECT TRUNC(123.678) FROM DUAL;
 SELECT TRUNC(123.456, 1) FROM DUAL;
 SELECT TRUNC(123.456, 2) FROM DUAL;
 SELECT TRUNC(123.456, -1) FROM DUAL;
 
--- CEIL(¼ýÀÚ | ¼ýÀÚ·Î µÈ ÄÃ·³¸í) : ¿Ã¸²Ã³¸® ÇÔ¼ö
+-- CEIL(ìˆ«ìž | ìˆ«ìžë¡œ ëœ ì»¬ëŸ¼ëª…) : ì˜¬ë¦¼ì²˜ë¦¬ í•¨ìˆ˜
 SELECT CEIL(123.456) FROM DUAL;
 
 SELECT
@@ -217,140 +217,140 @@ SELECT
      , CEIL(123.456)
 FROM DUAL;
 
--- ³¯Â¥ Ã³¸® ÇÔ¼ö : SYSDATE, MONTHS_BETWEEN, AND_MONTHS, 
+-- ë‚ ì§œ ì²˜ë¦¬ í•¨ìˆ˜ : SYSDATE, MONTHS_BETWEEN, AND_MONTHS,
 --                 NEXT_DAY, LAST_DAY, EXTRACT
--- SYSDATE : ½Ã½ºÅÛ¿¡ ÀúÀåµÇ¾î ÀÖ´Â ³¯Â¥¸¦ ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö
+-- SYSDATE : ì‹œìŠ¤í…œì— ì €ìž¥ë˜ì–´ ìžˆëŠ” ë‚ ì§œë¥¼ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 SELECT SYSDATE FROM DUAL;
 
--- MONTHS_BETWEEN(³¯Â¥, ³¯Â¥)
--- : µÎ ³¯Â¥ÀÇ °³¿ù ¼ö Â÷ÀÌ¸¦ ¼ýÀÚ·Î ¸®ÅÏÇÏ´Â ÇÔ¼ö
-SELECT EMP_NAME, HIRE_DATE, CEIL(MONTHS_BETWEEN(SYSDATE, HIRE_DATE)) -- ±Ù¹« °³¿ù ¼ö
+-- MONTHS_BETWEEN(ë‚ ì§œ, ë‚ ì§œ)
+-- : ë‘ ë‚ ì§œì˜ ê°œì›” ìˆ˜ ì°¨ì´ë¥¼ ìˆ«ìžë¡œ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜
+SELECT EMP_NAME, HIRE_DATE, CEIL(MONTHS_BETWEEN(SYSDATE, HIRE_DATE)) -- ê·¼ë¬´ ê°œì›” ìˆ˜
 FROM EMPLOYEE;
 
--- ADD_MONTHS(³¯Â¥, ¼ýÀÚ)
--- : ³¯Â¥¿¡ ¼ýÀÚ¸¸Å­ °³¿ù ¼ö¸¦ ´õÇÑ ³¯Â¥¸¦ ¸®ÅÏ
+-- ADD_MONTHS(ë‚ ì§œ, ìˆ«ìž)
+-- : ë‚ ì§œì— ìˆ«ìžë§Œí¼ ê°œì›” ìˆ˜ë¥¼ ë”í•œ ë‚ ì§œë¥¼ ë¦¬í„´
 SELECT ADD_MONTHS(SYSDATE, 5) FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿øÀÇ ÀÌ¸§, ÀÔ»çÀÏ, ÀÔ»ç ÈÄ 6°³¿ùÀÌ µÇ´Â ³¯Â¥ Á¶È¸
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ì˜ ì´ë¦„, ìž…ì‚¬ì¼, ìž…ì‚¬ í›„ 6ê°œì›”ì´ ë˜ëŠ” ë‚ ì§œ ì¡°íšŒ
 SELECT EMP_NAME, HIRE_DATE, ADD_MONTHS(HIRE_DATE, 6)
 FROM EMPLOYEE;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ ±Ù¹«³â¼ö°¡ 20³â ÀÌ»óÀÎ Á÷¿ø Á¶È¸
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ê·¼ë¬´ë…„ìˆ˜ê°€ 20ë…„ ì´ìƒì¸ ì§ì› ì¡°íšŒ
 SELECT *
-FROM EMPLOYEE 
+FROM EMPLOYEE
 WHERE MONTHS_BETWEEN(SYSDATE, HIRE_DATE) >= 240;
 
 SELECT *
-FROM EMPLOYEE 
+FROM EMPLOYEE
 WHERE ADD_MONTHS(HIRE_DATE, 240) <= SYSDATE;
 
--- NEXT_DAY(±âÁØ³¯Â¥, ¿äÀÏ)
--- : ±âÁØ ³¯Â¥¿¡¼­ ±¸ÇÏ·Á´Â ¿äÀÏ¿¡ °¡Àå °¡±î¿î ³¯Â¥ ¸®ÅÏ
-SELECT SYSDATE, NEXT_DAY(SYSDATE, '±Ý¿äÀÏ') FROM DUAL;
+-- NEXT_DAY(ê¸°ì¤€ë‚ ì§œ, ìš”ì¼)
+-- : ê¸°ì¤€ ë‚ ì§œì—ì„œ êµ¬í•˜ë ¤ëŠ” ìš”ì¼ì— ê°€ìž¥ ê°€ê¹Œìš´ ë‚ ì§œ ë¦¬í„´
+SELECT SYSDATE, NEXT_DAY(SYSDATE, 'ê¸ˆìš”ì¼') FROM DUAL;
 SELECT SYSDATE, NEXT_DAY(SYSDATE, 6) FROM DUAL;
-SELECT SYSDATE, NEXT_DAY(SYSDATE, '±Ý') FROM DUAL;
+SELECT SYSDATE, NEXT_DAY(SYSDATE, 'ê¸ˆ') FROM DUAL;
 SELECT SYSDATE, NEXT_DAY(SYSDATE, 'FRIDAY') FROM DUAL;
 
 ALTER SESSION SET NLS_LANGUAGE = KOREAN;
 ALTER SESSION SET NLS_LANGUAGE = AMERICAN;
 
--- LAST_DAY(³¯Â¥) : ÇØ´ç ¿ùÀÇ ¸¶Áö¸· ³¯Â¥¸¦ ±¸ÇÏ¿© ¸®ÅÏ
+-- LAST_DAY(ë‚ ì§œ) : í•´ë‹¹ ì›”ì˜ ë§ˆì§€ë§‰ ë‚ ì§œë¥¼ êµ¬í•˜ì—¬ ë¦¬í„´
 SELECT SYSDATE, LAST_DAY(SYSDATE) FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿ø¸í, ÀÔ»çÀÏ, ÀÔ»çÇÑ ¿ùÀÇ ±Ù¹«ÀÏ¼ö¸¦ Á¶È¸ÇÏ¼¼¿ä
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ëª…, ìž…ì‚¬ì¼, ìž…ì‚¬í•œ ì›”ì˜ ê·¼ë¬´ì¼ìˆ˜ë¥¼ ì¡°íšŒí•˜ì„¸ìš”
 SELECT EMP_NAME, HIRE_DATE,
        LAST_DAY(HIRE_DATE) - HIRE_DATE + 1
 FROM EMPLOYEE;
 
--- EXTRACT : ³â, ¿ù, ÀÏ Á¤º¸¸¦ ÃßÃâÇÏ¿© ¸®ÅÏÇÏ´Â ÇÔ¼ö
--- EXTRACT(YEAR FROM ³¯Â¥) : ³âµµ¸¸ ÃßÃâ
--- EXTRACT(MONTH FROM ³¯Â¥) : ¿ù¸¸ ÃßÃâ
--- EXTRACT(DAY FROM ³¯Â¥) : ³¯Â¥¸¸ ÃßÃâ
+-- EXTRACT : ë…„, ì›”, ì¼ ì •ë³´ë¥¼ ì¶”ì¶œí•˜ì—¬ ë¦¬í„´í•˜ëŠ” í•¨ìˆ˜
+-- EXTRACT(YEAR FROM ë‚ ì§œ) : ë…„ë„ë§Œ ì¶”ì¶œ
+-- EXTRACT(MONTH FROM ë‚ ì§œ) : ì›”ë§Œ ì¶”ì¶œ
+-- EXTRACT(DAY FROM ë‚ ì§œ) : ë‚ ì§œë§Œ ì¶”ì¶œ
 SELECT
-       EXTRACT(YEAR FROM SYSDATE) ³âµµ
-     , EXTRACT(MONTH FROM SYSDATE) ¿ù
-     , EXTRACT(DAY FROM SYSDATE) ³¯Â¥
+       EXTRACT(YEAR FROM SYSDATE) ë…„ë„
+     , EXTRACT(MONTH FROM SYSDATE) ì›”
+     , EXTRACT(DAY FROM SYSDATE) ë‚ ì§œ
 FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¿øÀÌ¸§, ÀÔ»ç³â, ÀÔ»ç¿ù, ÀÔ»çÀÏ Á¶È¸
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ì›ì´ë¦„, ìž…ì‚¬ë…„, ìž…ì‚¬ì›”, ìž…ì‚¬ì¼ ì¡°íšŒ
 SELECT
-       EMP_NAME »ç¿øÀÌ¸§
-     , EXTRACT(YEAR FROM HIRE_DATE) ÀÔ»ç³â
-     , EXTRACT(MONTH FROM HIRE_DATE) ÀÔ»ç¿ù
-     , EXTRACT(DAY FROM HIRE_DATE) ÀÔ»çÀÏ
+       EMP_NAME ì‚¬ì›ì´ë¦„
+     , EXTRACT(YEAR FROM HIRE_DATE) ìž…ì‚¬ë…„
+     , EXTRACT(MONTH FROM HIRE_DATE) ìž…ì‚¬ì›”
+     , EXTRACT(DAY FROM HIRE_DATE) ìž…ì‚¬ì¼
 FROM EMPLOYEE
---WHERE »ç¿øÀÌ¸§ = '±èÇØ¼ú'
+--WHERE ì‚¬ì›ì´ë¦„ = 'ê¹€í•´ìˆ '
 -- ORDER BY EMP_NAME ASC;
 -- ORDER BY EMP_NAME DESC;
--- ORDER BY »ç¿øÀÌ¸§;
+-- ORDER BY ì‚¬ì›ì´ë¦„;
 -- ORDER BY 1;
---ORDER BY ÀÔ»ç³â ASC, »ç¿øÀÌ¸§ ASC;
-ORDER BY ÀÔ»ç³â ASC, »ç¿øÀÌ¸§ DESC;
+--ORDER BY ìž…ì‚¬ë…„ ASC, ì‚¬ì›ì´ë¦„ ASC;
+ORDER BY ìž…ì‚¬ë…„ ASC, ì‚¬ì›ì´ë¦„ DESC;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ Á÷¿øµéÀÇ »ç¿ø¸í°ú ±Ù¹« ³â¼ö Á¶È¸
--- ´Ü, MONTHS_BETWEEN »ç¿ë
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì§ì›ë“¤ì˜ ì‚¬ì›ëª…ê³¼ ê·¼ë¬´ ë…„ìˆ˜ ì¡°íšŒ
+-- ë‹¨, MONTHS_BETWEEN ì‚¬ìš©
 SELECT *FROM EMPLOYEE;
 
-SELECT 
+SELECT
        EMP_NAME
      , HIRE_DATE
-     , CEIL(MONTHS_BETWEEN(SYSDATE, HIRE_DATE) / 12) ±Ù¹«³â¼ö
+     , CEIL(MONTHS_BETWEEN(SYSDATE, HIRE_DATE) / 12) ê·¼ë¬´ë…„ìˆ˜
 FROM EMPLOYEE;
 
-SELECT EMP_NAME, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM HIRE_DATE) ±Ù¹«³â¼ö
+SELECT EMP_NAME, EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM HIRE_DATE) ê·¼ë¬´ë…„ìˆ˜
 FROM EMPLOYEE;
 
 ALTER SESSION SET NLS_DATE_FORMAT = 'RR/MM/DD';
 
--- Çüº¯È¯ ÇÔ¼ö
+-- í˜•ë³€í™˜ í•¨ìˆ˜
 SELECT *
 FROM EMPLOYEE
 WHERE EMP_ID = 200;
 
--- Çüº¯È¯ ÇÔ¼ö
--- TO_CHAR(³¯Â¥, [Æ÷¸Ë]) : ³¯Â¥Çü µ¥ÀÌÅÍ¸¦ ¹®ÀÚ¿­·Î º¯°æ
--- TO_CHAR(¼ýÀÚ, [Æ÷¸Ë]) : ¼ýÀÚÇü µ¥ÀÌÅÍ¸¦ ¹®ÀÚ¿­·Î º¯°æ
+-- í˜•ë³€í™˜ í•¨ìˆ˜
+-- TO_CHAR(ë‚ ì§œ, [í¬ë§·]) : ë‚ ì§œí˜• ë°ì´í„°ë¥¼ ë¬¸ìžì—´ë¡œ ë³€ê²½
+-- TO_CHAR(ìˆ«ìž, [í¬ë§·]) : ìˆ«ìží˜• ë°ì´í„°ë¥¼ ë¬¸ìžì—´ë¡œ ë³€ê²½
 SELECT TO_CHAR(1234) FROM DUAL;
-SELECT TO_CHAR(1234, '99999') FROM DUAL; -- ¸ðÀÚ¶ó¸é ¸ðÀÚ¶ó´Â ´ë·Î ³ÀµÒ
-SELECT TO_CHAR(1234, '00000') FROM DUAL; -- ¸ðÀÚ¶ó¸é ¸ðÀÚ¶ó´Â °÷Àº 0À¸·Î Ã¤¿ò
-SELECT TO_CHAR(1234, '999') FROM DUAL; -- Æ÷¸ËÆÃ ºÒ°¡(ÀÚ¸´¼ö ¾È¸ÂÀ½)
-SELECT TO_CHAR(1234, '000') FROM DUAL; -- Æ÷¸ËÆÃ ºÒ°¡(ÀÚ¸´¼ö ¾È¸ÂÀ½)
-SELECT TO_CHAR(1234, 'L99999') FROM DUAL; -- È­Æó±âÈ£(¿øÈ­)
-SELECT TO_CHAR(1234, '$99999') FROM DUAL; -- È­Æó±âÈ£(´Þ·¯)
-SELECT TO_CHAR(1234, 'L99,999') FROM DUAL; -- È­Æó±âÈ£(¿øÈ­) Ãµ¿ø ´ÜÀ§ ÄÞ¸¶
-SELECT TO_CHAR(1234, '$99,999') FROM DUAL; -- È­Æó±âÈ£(´Þ·¯) Ãµ¿ø ´ÜÀ§ ÄÞ¸¶
+SELECT TO_CHAR(1234, '99999') FROM DUAL; -- ëª¨ìžë¼ë©´ ëª¨ìžë¼ëŠ” ëŒ€ë¡œ ëƒ…ë‘ 
+SELECT TO_CHAR(1234, '00000') FROM DUAL; -- ëª¨ìžë¼ë©´ ëª¨ìžë¼ëŠ” ê³³ì€ 0ìœ¼ë¡œ ì±„ì›€
+SELECT TO_CHAR(1234, '999') FROM DUAL; -- í¬ë§·íŒ… ë¶ˆê°€(ìžë¦¿ìˆ˜ ì•ˆë§žìŒ)
+SELECT TO_CHAR(1234, '000') FROM DUAL; -- í¬ë§·íŒ… ë¶ˆê°€(ìžë¦¿ìˆ˜ ì•ˆë§žìŒ)
+SELECT TO_CHAR(1234, 'L99999') FROM DUAL; -- í™”íê¸°í˜¸(ì›í™”)
+SELECT TO_CHAR(1234, '$99999') FROM DUAL; -- í™”íê¸°í˜¸(ë‹¬ëŸ¬)
+SELECT TO_CHAR(1234, 'L99,999') FROM DUAL; -- í™”íê¸°í˜¸(ì›í™”) ì²œì› ë‹¨ìœ„ ì½¤ë§ˆ
+SELECT TO_CHAR(1234, '$99,999') FROM DUAL; -- í™”íê¸°í˜¸(ë‹¬ëŸ¬) ì²œì› ë‹¨ìœ„ ì½¤ë§ˆ
 
--- Á÷¿ø Å×ÀÌºí¿¡¼­ »ç¿ø¸í, ±Þ¿© Á¶È¸
--- ±Þ¿©´Â '\9,000,000' Çü½ÄÀ¸·Î Ãâ·Â
+-- ì§ì› í…Œì´ë¸”ì—ì„œ ì‚¬ì›ëª…, ê¸‰ì—¬ ì¡°íšŒ
+-- ê¸‰ì—¬ëŠ” '\9,000,000' í˜•ì‹ìœ¼ë¡œ ì¶œë ¥
 SELECT *FROM employee;
-SELECT EMP_NAME, TO_CHAR(SALARY, 'L99,999,999') AS ±Þ¿©
+SELECT EMP_NAME, TO_CHAR(SALARY, 'L99,999,999') AS ê¸‰ì—¬
 FROM EMPLOYEE;
 
--- ³¯Â¥ µ¥ÀÌÅÍ¿¡ Æ÷¸Ë Àû¿ë½Ã TO_CHAR ÇÔ¼ö »ç¿ë
+-- ë‚ ì§œ ë°ì´í„°ì— í¬ë§· ì ìš©ì‹œ TO_CHAR í•¨ìˆ˜ ì‚¬ìš©
 SELECT TO_CHAR(SYSDATE, 'PM HH24:MI:SS') FROM DUAL;
 SELECT TO_CHAR(SYSDATE, 'AM HH:MI:SS') FROM DUAL;
 SELECT TO_CHAR(SYSDATE, 'MON DY, YYYY') FROM DUAL;
-SELECT TO_CHAR(SYSDATE, 'YYYY-fmMM-DD DAY') FROM DUAL; -- fmÀº 0Á¦°Å
-SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD DAY') FROM DUAL; -- DAY´Â DYÀÇ Ç®³×ÀÓ DAY : ¸ñ¿äÀÏ, DY : ¸ñ
-SELECT TO_CHAR(SYSDATE, 'YEAR, Q') || 'ºÐ±â' FROM DUAL; -- Q´Â ºÐ±â¸¦ ÀÇ¹Ì YEAR´Â ¿µ¾î·Î TEWENTY TWENTY
+SELECT TO_CHAR(SYSDATE, 'YYYY-fmMM-DD DAY') FROM DUAL; -- fmì€ 0ì œê±°
+SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD DAY') FROM DUAL; -- DAYëŠ” DYì˜ í’€ë„¤ìž„ DAY : ëª©ìš”ì¼, DY : ëª©
+SELECT TO_CHAR(SYSDATE, 'YEAR, Q') || 'ë¶„ê¸°' FROM DUAL; -- QëŠ” ë¶„ê¸°ë¥¼ ì˜ë¯¸ YEARëŠ” ì˜ì–´ë¡œ TEWENTY TWENTY
 
-SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY-MM-DD') ÀÔ»çÀÏ
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY-MM-DD') ìž…ì‚¬ì¼
 FROM EMPLOYEE;
 
--- ÇÑ±Û Áö¿ø ¾ÈµÊ(³â, ¿ù, ÀÏ)
-SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY³â MM¿ù DDÀÏ') ÀÔ»çÀÏ
+-- í•œê¸€ ì§€ì› ì•ˆë¨(ë…„, ì›”, ì¼)
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYYë…„ MMì›” DDì¼') ìž…ì‚¬ì¼
 FROM EMPLOYEE;
--- µû¿ÈÇ¥ Ãß°¡ÇØ¼­ ÅØ½ºÆ®·Î Ã³¸®
-SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY"³â" MM"¿ù" DD"ÀÏ"') ÀÔ»çÀÏ
+-- ë”°ì˜´í‘œ ì¶”ê°€í•´ì„œ í…ìŠ¤íŠ¸ë¡œ ì²˜ë¦¬
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'YYYY"ë…„" MM"ì›”" DD"ì¼"') ìž…ì‚¬ì¼
 FROM EMPLOYEE;
 
 SELECT
        EMP_NAME
      , HIRE_DATE
-     , TO_CHAR(HIRE_DATE, 'YYYY/MM/DD HH24:MI:SS') »ó¼¼ÀÔ»çÀÏ
+     , TO_CHAR(HIRE_DATE, 'YYYY/MM/DD HH24:MI:SS') ìƒì„¸ìž…ì‚¬ì¼
 FROM EMPLOYEE;
 
--- ¿À´Ã ³¯Â¥¿¡ ´ëÇØ ³âµµ 4ÀÚ¸®, ³âµµ 2ÀÚ¸®, ³âµµ ÀÌ¸§À¸·Î Ãâ·Â
+-- ì˜¤ëŠ˜ ë‚ ì§œì— ëŒ€í•´ ë…„ë„ 4ìžë¦¬, ë…„ë„ 2ìžë¦¬, ë…„ë„ ì´ë¦„ìœ¼ë¡œ ì¶œë ¥
 SELECT
        TO_CHAR(SYSDATE, 'YYYY')
      , TO_CHAR(SYSDATE, 'YY')
@@ -359,17 +359,17 @@ SELECT
      , TO_CHAR(SYSDATE, 'YEAR')
 FROM DUAL;
 
--- RR°ú YYÀÇ Â÷ÀÌ
--- ³âµµ ¹Ù²Ü ¶§(TO_DATE »ç¿ë½Ã) Y¸¦ Àû¿ëÇÏ¸é
--- ÇöÀç ¼¼±â(2000³â) Àû¿ë
--- RÀº 50³â ÀÌ»óÀÌ¸é ÀÌÀü ¼¼±â(1900³â),
--- 50³â ¹Ì¸¸ÀÌ¸é ÇöÀç ¼¼±â(2000³â) Àû¿ë
+-- RRê³¼ YYì˜ ì°¨ì´
+-- ë…„ë„ ë°”ê¿€ ë•Œ(TO_DATE ì‚¬ìš©ì‹œ) Yë¥¼ ì ìš©í•˜ë©´
+-- í˜„ìž¬ ì„¸ê¸°(2000ë…„) ì ìš©
+-- Rì€ 50ë…„ ì´ìƒì´ë©´ ì´ì „ ì„¸ê¸°(1900ë…„),
+-- 50ë…„ ë¯¸ë§Œì´ë©´ í˜„ìž¬ ì„¸ê¸°(2000ë…„) ì ìš©
 SELECT TO_CHAR(TO_DATE('980630', 'YYMMDD'), 'YYYY-MM-DD')
 FROM DUAL;
 SELECT TO_CHAR(TO_DATE('980630', 'RRMMDD'), 'YYYY-MM-DD')
 FROM DUAL;
 
--- ¿À´Ã ³¯Â¥¿¡¼­ ¿ù¸¸ Ãâ·Â
+-- ì˜¤ëŠ˜ ë‚ ì§œì—ì„œ ì›”ë§Œ ì¶œë ¥
 SELECT
        TO_CHAR(SYSDATE, 'MM')
      , TO_CHAR(SYSDATE, 'MONTH')
@@ -377,33 +377,33 @@ SELECT
      , TO_CHAR(SYSDATE, 'RM')
 FROM DUAL;
 
--- ¿À´Ã ³¯Â¥¿¡¼­ ÀÏ¸¸ Ãâ·Â(DDD/DD/D)
--- DDD : 1³â Áß¿¡ ¸î ÀÏ Â° ÀÎÁö
--- DD : ´Þ ±âÁØ ¸î ÀÏ Â° ÀÎÁö
--- D : ±× ÁÖ¿¡¼­ ¸î ÀÏ Â°ÀÎÁö
+-- ì˜¤ëŠ˜ ë‚ ì§œì—ì„œ ì¼ë§Œ ì¶œë ¥(DDD/DD/D)
+-- DDD : 1ë…„ ì¤‘ì— ëª‡ ì¼ ì§¸ ì¸ì§€
+-- DD : ë‹¬ ê¸°ì¤€ ëª‡ ì¼ ì§¸ ì¸ì§€
+-- D : ê·¸ ì£¼ì—ì„œ ëª‡ ì¼ ì§¸ì¸ì§€
 SELECT
-       TO_CHAR(SYSDATE, '"1³â ±âÁØ " DDD "ÀÏ Â°"')
-     , TO_CHAR(SYSDATE, '"´Þ ±âÁØ " DD "ÀÏ Â°"')
-     , TO_CHAR(SYSDATE, '"ÁÖ ±âÁØ " D "ÀÏ Â°"')
+       TO_CHAR(SYSDATE, '"1ë…„ ê¸°ì¤€ " DDD "ì¼ ì§¸"')
+     , TO_CHAR(SYSDATE, '"ë‹¬ ê¸°ì¤€ " DD "ì¼ ì§¸"')
+     , TO_CHAR(SYSDATE, '"ì£¼ ê¸°ì¤€ " D "ì¼ ì§¸"')
 FROM DUAL;
 
--- ¿À´Ã ³¯Â¥¿¡¼­ ºÐ±â¿Í ¿äÀÏ Ãâ·Â Ã³¸®
+-- ì˜¤ëŠ˜ ë‚ ì§œì—ì„œ ë¶„ê¸°ì™€ ìš”ì¼ ì¶œë ¥ ì²˜ë¦¬
 SELECT
-       TO_CHAR(SYSDATE, 'Q"ºÐ±â"')
+       TO_CHAR(SYSDATE, 'Q"ë¶„ê¸°"')
      , TO_CHAR(SYSDATE, 'DAY')
      , TO_CHAR(SYSDATE, 'DY')
 FROM DUAL;
 
--- Á÷¿ø Å×ÀÌºí¿¡¼­ ÀÌ¸§, ÀÔ»çÀÏ Á¶È¸
--- ÀÔ»çÀÏ¿¡ Æ÷¸Ë Àû¿ëÇÔ
--- '2018³â 6¿ù 15ÀÏ (¼ö)' Çü½ÄÀ¸·Î Ãâ·Â Ã³¸® ÇÏ¼¼¿ä
+-- ì§ì› í…Œì´ë¸”ì—ì„œ ì´ë¦„, ìž…ì‚¬ì¼ ì¡°íšŒ
+-- ìž…ì‚¬ì¼ì— í¬ë§· ì ìš©í•¨
+-- '2018ë…„ 6ì›” 15ì¼ (ìˆ˜)' í˜•ì‹ìœ¼ë¡œ ì¶œë ¥ ì²˜ë¦¬ í•˜ì„¸ìš”
 SELECT* FROM EMPLOYEE;
-SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"³â" fmMM"¿ù" DD"ÀÏ" ') || TO_CHAR(HIRE_DATE, '"("DY")"') ÀÔ»çÀÏ
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"ë…„" fmMM"ì›”" DD"ì¼" ') || TO_CHAR(HIRE_DATE, '"("DY")"') ìž…ì‚¬ì¼
 FROM EMPLOYEE;
 
-SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"³â" fmMM"¿ù" DD"ÀÏ" (DY)') ÀÔ»çÀÏ FROM EMPLOYEE;
+SELECT EMP_NAME, TO_CHAR(HIRE_DATE, 'RRRR"ë…„" fmMM"ì›”" DD"ì¼" (DY)') ìž…ì‚¬ì¼ FROM EMPLOYEE;
 
--- TO_DATE : ¹®ÀÚÇü µ¥ÀÌÅÍ È¤Àº ¼ýÀÚÇü µ¥ÀÌÅÍ¸¦ ³¯Â¥·Î º¯È¯ÇÏ¿© ¸®ÅÏ
+-- TO_DATE : ë¬¸ìží˜• ë°ì´í„° í˜¹ì€ ìˆ«ìží˜• ë°ì´í„°ë¥¼ ë‚ ì§œë¡œ ë³€í™˜í•˜ì—¬ ë¦¬í„´
 SELECT TO_DATE('20100101', 'RRRRMMDD') FROM DUAL;
 SELECT TO_CHAR(TO_DATE('20100101', 'RRRRDDMM'), 'RRRR, MON') FROM DUAL;
 
@@ -411,40 +411,40 @@ SELECT TO_DATE('041030 143000', 'RRMMDD HH24MISS') FROM DUAL;
 SELECT TO_CHAR(TO_DATE('041030 143000', 'RRMMDD HH24MISS'), 'DD-MON-RR HH:MI:SS PM')
 FROM DUAL;
 
--- Á÷¿ø Å×ÀÌºí¿¡¼­ 2000³âµµ ÀÌÈÄ¿¡ ÀÔ»çÇÑ »ç¿øÀÇ
--- »ç¹ø, ÀÌ¸§, ÀÔ»çÀÏ Á¶È¸
+-- ì§ì› í…Œì´ë¸”ì—ì„œ 2000ë…„ë„ ì´í›„ì— ìž…ì‚¬í•œ ì‚¬ì›ì˜
+-- ì‚¬ë²ˆ, ì´ë¦„, ìž…ì‚¬ì¼ ì¡°íšŒ
 SELECT EMP_ID, EMP_NAME, HIRE_DATE
 FROM EMPLOYEE
 --WHERE HIRE_DATE >= TO_DATE(20000101, 'RRRRMMDD')
 --WHERE HIRE_DATE >= 20000101;
 WHERE HIRE_DATE >= '20000101';
 
--- TO_NUMBER : ¹®ÀÚ µ¥ÀÌÅÍ¸¦ ¼ýÀÚ·Î ¹Ù²Ü ¶§ »ç¿ë
+-- TO_NUMBER : ë¬¸ìž ë°ì´í„°ë¥¼ ìˆ«ìžë¡œ ë°”ê¿€ ë•Œ ì‚¬ìš©
 SELECT TO_NUMBER('123456789') FROM DUAL;
 
--- ÀÚµ¿ Çüº¯È¯
+-- ìžë™ í˜•ë³€í™˜
 SELECT '123' + '456' FROM DUAL;
--- ¼ýÀÚ·Î µÈ ¹®ÀÚ¿­¸¸ °¡´ÉÇÏ´Ù.
+-- ìˆ«ìžë¡œ ëœ ë¬¸ìžì—´ë§Œ ê°€ëŠ¥í•˜ë‹¤.
 SELECT '123' + '456A' FROM DUAL;
 
--- EMPLOYEE Å×ÀÌºí¿¡¼­ »ç¹øÀÌ È¦¼öÀÎ Á÷¿øÀÇ Á¤º¸¸¦ Á¶È¸
+-- EMPLOYEE í…Œì´ë¸”ì—ì„œ ì‚¬ë²ˆì´ í™€ìˆ˜ì¸ ì§ì›ì˜ ì •ë³´ë¥¼ ì¡°íšŒ
 SELECT *
 FROM EMPLOYEE
 WHERE MOD(TO_NUMBER(EMP_ID), 2) = 1;
---WHERE MOD(EMP_ID, 2) = 1; 
+--WHERE MOD(EMP_ID, 2) = 1;
 
 SELECT '1,000,000' + '5000,000' FROM DUAL;
 
--- ÄÞ¸¶ ¸í½ÃÇØÁÖ¸é TO_NUMBER °¡´É
-SELECT 
+-- ì½¤ë§ˆ ëª…ì‹œí•´ì£¼ë©´ TO_NUMBER ê°€ëŠ¥
+SELECT
        TO_NUMBER('1,000,000', '99,999,999')
      + TO_NUMBER('500,000', '999,999')
 FROM DUAL;
 
--- °úÁ¦
--- ÀÚ¹Ù ¿öÅ©ºÏ 01
--- : Á¦Ãâ ÆÄÀÏ ¸í : JAVA_WORKSHOP01_È«±æµ¿.zip
--- ¿À¶óÅ¬ ¿öÅ©ºÏ
--- : basic select ÀüÃ¼
--- : select - ÇÔ¼ö 1 ~ 9¹ø
--- : Á¦Ãâ ÆÄÀÏ ¸í : DAY2_HOMEWORK_HONGGILDONG.sql
+-- ê³¼ì œ
+-- ìžë°” ì›Œí¬ë¶ 01
+-- : ì œì¶œ íŒŒì¼ ëª… : JAVA_WORKSHOP01_í™ê¸¸ë™.zip
+-- ì˜¤ë¼í´ ì›Œí¬ë¶
+-- : basic select ì „ì²´
+-- : select - í•¨ìˆ˜ 1 ~ 9ë²ˆ
+-- : ì œì¶œ íŒŒì¼ ëª… : DAY2_HOMEWORK_HONGGILDONG.sql
