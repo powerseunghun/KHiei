@@ -1,0 +1,56 @@
+-- 상[호연]관 서브쿼리
+-- 일반적으로는 서브쿼리가 만든 결과값을 메인쿼리가 비교연산
+-- 메인쿼리가 사용하는 테이블의 값을 서브쿼리가 이용해서 결과를 만듦
+-- 메인쿼리의 테이블 값이 변경되면, 서브쿼리의 결과값도 바뀌게 됨
+
+-- 관리자 사번이 EMPLOYEE 테이블에 존재하는 직원에 대한 조회
+SELECT
+       EMP_ID
+     , EMP_NAME
+     , DEPT_CODE
+     , MANAGER_ID
+  FROM EMPLOYEE E
+ WHERE EXISTS (SELECT EMP_ID
+                 FROM EMPLOYEE M
+                WHERE E.MANAGER_ID = M.EMP_ID);
+
+-- 동일한 직급의 급여 평균보다 급여를 많이 받고 있는 직원의
+-- 사번, 직급코드, 급여를 조회하세요
+
+-- 스칼라 서브쿼리 : 단일행 서브쿼리 + 상관 쿼리
+-- SELECT 절, WHERE 절, ORDER BY 절 사용 가능
+-- WHERE 절에서 스칼라 서브쿼리 사용
+SELECT 
+       EMP_NAME
+     , JOB_CODE
+     , SALARY
+  FROM EMPLOYEE E
+ WHERE SALARY > (SELECT TRUNC(AVG(SALARY), -5)
+                   FROM EMPLOYEE M
+                  WHERE E.JOB_CODE = M.JOB_CODE
+                );
+
+-- SELECT 절에서 스칼라 서브쿼리 이용
+-- 모든 사원의 사번, 이름, 관리자 사번, 관리자명을 조회하시오
+SELECT
+       EMP_ID
+     , EMP_NAME
+     , MANAGER_ID
+     , NVL((SELECT EMP_NAME
+              FROM EMPLOYEE M
+             WHERE E.MANAGER_ID = M.EMP_ID), '없음')
+  FROM EMPLOYEE E
+ ORDER BY 1;
+
+-- ORDER BY 절에서 스칼라 서브쿼리 이용
+-- 모든 직원의 사번, 이름, 소속부서 조회
+-- 단 부서명 내림차순 정렬
+-- 조인을 줄여줄 수 있다.
+SELECT
+       EMP_ID
+     , EMP_NAME
+     , DEPT_CODE
+  FROM EMPLOYEE
+ ORDER BY (SELECT DEPT_TITLE
+             FROM DEPARTMENT
+            WHERE DEPT_CODE = DEPT_ID) DESC NULLS LAST;
