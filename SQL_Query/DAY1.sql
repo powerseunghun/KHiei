@@ -27,13 +27,13 @@ select /*작성자::호출함수정보*/
      , emp_name     /* 사원명 */
      , dept_code    /* 부서코드 */
      , job_code     /* 급여 */
-  from employee 
+  from employee
  where salary >= 300000;
 
 -- 컬럼에 별칭 짓기
 -- AS + 별칭을 기술하여 별칭을 지을 수 있다.
 
-SELECT 
+SELECT
        EMP_NAME AS 사원명
      , SALARY 급여
      , (SALARY + (SALARY * NVL(BONUS, 0))) * 12 연봉
@@ -64,7 +64,7 @@ FROM EMPLOYEE;
 
 -- 부서코드가 D6이고 급여를 200만원보다 많이 받는 직원의
 -- 이름, 부서코드, 급여 조회
-SELECT 
+SELECT
        EMP_NAME
      , DEPT_CODE
      , SALARY
@@ -74,7 +74,7 @@ SELECT
 
 -- 보너스가 NULL인 직원의
 -- 사번, 이름, 급여, 보너스 조회
-SELECT 
+SELECT
        EMP_ID
      , EMP_NAME
      , SALARY
@@ -103,28 +103,28 @@ WHERE DEPT_CODE <> 'D9';
 
 -- EMPLOYEE 테이블에서 급여를 350만원 이상 550만원 이하를 받는 직원의
 -- 사번, 이름, 급여, 부서코드, 직급코드를 조회하세요.
-SELECT 
+SELECT
        EMP_ID
      , EMP_NAME
      , SALARY
      , DEPT_CODE
-     , JOB_CODE 
-  FROM EMPLOYEE 
- WHERE SALARY >= 3500000 
+     , JOB_CODE
+  FROM EMPLOYEE
+ WHERE SALARY >= 3500000
    AND SALARY <= 5500000;
-   
+
 -- BETWEEN AND 사용
 -- 컬럼명 BETWWEEN 하한값 AND 상한값
 -- : 하한값 이상 상한값 이하의 값
-SELECT 
+SELECT
        EMP_ID
      , EMP_NAME
      , SALARY
      , DEPT_CODE
-     , JOB_CODE 
-  FROM EMPLOYEE 
+     , JOB_CODE
+  FROM EMPLOYEE
  WHERE /*NOT*/ SALARY BETWEEN 3500000 AND 5500000;
- 
+
 -- LIKE 연산자
 -- 컬럼명 LIKE '문자패턴'
 -- 문자패턴 : '글자%' (글자로 시작하는 값),
@@ -133,38 +133,38 @@ SELECT
 
 -- EMPLOYEE 테이블에서 성이 김씨인 직원의
 -- 사번, 이름, 입사일 조회
- SELECT 
+ SELECT
        EMP_ID
      , EMP_NAME
-     , HIRE_DATE 
-  FROM EMPLOYEE 
- WHERE EMP_NAME 
+     , HIRE_DATE
+  FROM EMPLOYEE
+ WHERE EMP_NAME
   /*NOT*/
   LIKE '김%';
-  
+
 -- EMPLOYEE 테이블에서 '하'가 이름에 포함된 직원의
 -- 이름, 주민번호, 부서코드 조회
 select *from employee;
-SELECT 
+SELECT
        EMP_NAME
      , EMP_NO
-     , DEPT_CODE 
-  FROM EMPLOYEE 
- WHERE EMP_NAME 
+     , DEPT_CODE
+  FROM EMPLOYEE
+ WHERE EMP_NAME
   LIKE '%하%';
-  
+
 -- EMPLOYEE 테이블에서 국번이 9로 시작하는 직원의
 -- 사번, 이름, 전화번호를 조회하세요
 -- 와일드카드 : _(글자 한 자리), %(0개 이상의 글자)
 select *from employee;
-SELECT 
+SELECT
        EMP_ID
      , EMP_NAME
-     , PHONE 
-  FROM EMPLOYEE 
- WHERE PHONE 
+     , PHONE
+  FROM EMPLOYEE
+ WHERE PHONE
   LIKE '___9%';
-  
+
 -- EMPLOYEE 테이블에서 전화번호 국번이 4자리이면서
 -- 9로 시작하는 직원의 사번, 이름, 전화번호 조회
 SELECT EMP_ID, EMP_NAME, PHONE FROM EMPLOYEE WHERE PHONE LIKE '___9_______';
@@ -175,13 +175,13 @@ select *from employee;
 SELECT EMP_ID, EMP_NAME, EMAIL FROM EMPLOYEE WHERE EMAIL LIKE '___#_%' ESCAPE '#';
 
 -- 이씨 성이 아닌 직원의 사번, 이름, 이메일주소 조회
-SELECT 
+SELECT
        EMP_ID
      , EMP_NAME
-     , EMAIL 
-  FROM EMPLOYEE 
+     , EMAIL
+  FROM EMPLOYEE
  WHERE NOT EMP_NAME LIKE '이%';
- 
+
 -- IN 연산자 : 비교하려는 값 목록에 일치하는 값이 있는지 확인
 SELECT *FROM EMPLOYEE WHERE EMP_NAME IN ('선동일', '송종기');
 

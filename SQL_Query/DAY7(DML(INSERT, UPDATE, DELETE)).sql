@@ -333,4 +333,5 @@ INSERT VALUES (EMP_M02.EMP_ID, EMP_M02.EMP_NAME,
 
 SELECT *FROM EMP_M01 WHERE JOB_CODE = 'J7' OR EMP_ID = 999;
 
--- book workshp
+-- book workshop
+1, 2, 9, 10, 11, 13, 14, 16, 18 Á¦¿Ü
