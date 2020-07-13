@@ -342,6 +342,57 @@ COMMIT;
 
 SELECT *FROM EMPLOYEE WHERE EMP_ID = 205;
 
+SELECT * FROM V_RESULT_EMP WHERE EMP_ID = 205;
+
+ROLLBACK;
+
+-- 뷰의 컬럼에 별칭을 부여할 수 있다.
+CREATE OR REPLACE VIEW V_EMPLOYEE(사번, 이름, 부서, 지역)
+AS SELECT EMP_ID, EMP_NAME, DEPT_TITLE, NATIONAL_NAME
+FROM EMPLOYEE
+LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+LEFT JOIN LOCATION ON (LOCATION_ID = LOCAL_CODE)
+LEFT JOIN NATIONAL USING(NATIONAL_CODE);
+
+SELECT * FROM V_EMPLOYEE;
+
+-- 뷰 서브쿼리 안에 연산의 결과도 포함할 수 있다.
+CREATE OR REPLACE VIEW V_EMP_JOB(사번, 이름, 직급, 성별, 근무년수)
+AS SELECT EMP_ID, EMP_NAME, JOB_NAME,
+          DECODE(SUBSTR(EMP_NO, 8, 1), 1, '남', '여'),
+          EXTRACT(YEAR FROM SYSDATE) - EXTRACT(YEAR FROM HIRE_DATE)
+          FROM EMPLOYEE
+          JOIN JOB USING(JOB_CODE);
+
+SELECt *FROM V_EMP_JOB;
+
+CREATE OR REPLACE VIEW V_JOB
+AS SELECT JOB_CODE, JOB_NAME
+FROM JOB;
+
+SELECT *FROM V_JOB;
+SELECT *FROM JOB;
+
+INSERT INTO V_JOB VALUES('J8', '인턴');
+
+SELECT *FROM V_JOB; -- 여기도 있고
+
+SELECT *FROM JOB; -- 여기도 있음
+-- 서로 영향을 마침
+
+UPDATE V_JOB
+SET JOB_NAME = '알바'
+WHERE JOB_CODE = 'J8';
+
+SELECT * FROM V_JOB;
+SELECT * FROM JOB;
+
+DELETE FROM V_JOB
+WHERE JOB_CODE = 'J8';
+
+SELECT *FROM V_JOB;
+SELECT *FROM JOB;
+
 -- DML 명령어로 조작이 불가능한 경우
 -- 1. 뷰 정의에 포함되지 않은 컬럼을 조작하는 경우
 -- 2. 뷰에 포함되지 않은 컬럼중에,
@@ -476,3 +527,15 @@ CREATE SYNONYM EMP FOR EMPLOYEE;
 
 SELECT *FROM EMP;
 SELECT *FROM EMPLOYEE;
+
+-- 동의어의 구분
+-- 1. 비공개 동의어
+-- 객체에 대한 접근 권한을 부여받은 사용자가 정의한 동의어
+-- 2. 공개 동의어
+-- 모든 권한을 주는 사용자 (DBA)가 정한 동의어
+-- 모든 사용자가 사용할 수 있음 (PUBLIC)
+-- 예) DUAL
+
+-- 시스템 계정에서 public으로 생성됨 조회 가능
+SELECT *FROM DEPT;
+
