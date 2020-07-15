@@ -1,0 +1,551 @@
+-- DAY 9 수업내용
+
+-- PL/SQL (PROCEDURE LANGUAGE EXTENSION TO SQL)
+-- 오라클 자체에 내장된 절차적 언어
+-- SQL의 단점을 보완하여 SQL문장 내에서
+-- 변수 정의, 조건 처리, 반복 처리, 예외처리 등을 지원한다.
+
+-- PL/SQL 구조
+-- 선언부, 실행부, 예외처리부로 구성되어 있음
+-- 선언부 : DECLARE로 시작, 변수나 상수를 선언하는 부분
+-- 실행부 : BEGIN으로 시작, 제어문, 반복문, 함수의 정의 등 로직 작성
+-- 예외처리부 : EXCEPTION으로 시작, 예외처리 내용 작성
+
+-- DBMS_OUTPUT 패키지의 PUT_LINE 실행
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('HELLO WORLD');
+END;
+/
+
+-- default : 콘솔 출력 결과물을 보여주지 않음
+SET SERVEROUTPUT ON;
+
+-- 변수의 선언과 초기화, 변수값 출력
+DECLARE
+  EMP_ID NUMBER;
+  EMP_NAME VARCHAR2(30);
+BEGIN
+  EMP_ID := 888;
+  EMP_NAME := '김진호';
+  
+  DBMS_OUTPUT.PUT_LINE('EMP_ID : '  || EMP_ID);
+END;
+/
+
+-- 다른 테이블의 컬럼명을 참조해서 만든다..레퍼런스 변수
+-- 레퍼런스 변수의 선언과 초기화, 변수값 출력
+
+-- WHERE절의 AMPERSAND의미 -> 대화상자가 나옴
+DECLARE
+  EMP_ID EMPLOYEE.EMP_ID%TYPE;
+  EMP_NAME EMPLOYEE.EMP_NAME%TYPE;
+BEGIN
+  SELECT EMP_ID, EMP_NAME
+  INTO EMP_ID, EMP_NAME
+  FROM EMPLOYEE
+  WHERE EMP_ID = '&EMP_ID';
+  
+  DBMS_OUTPUT.PUT_LINE('EMP_ID : ' || EMP_ID);
+  DBMS_OUTPUT.PUT_LINE('EMP_NAME : ' || EMP_NAME);
+END;
+/
+
+-- 레퍼런스 변수로 EMP_ID, EMP_NAME, DEPT_CODE, JOB_CODE, SALARY를 선언하고
+-- EMPLOYEE 테이블에서 사번, 이름, 직급코드, 부서코드, 급여를 조회하여
+-- 선언한 레퍼런스 변수에 담아 출력하세요
+-- 단, 입력받은 이름과 일치하는 조건의 직원을 조회하세요.
+
+DECLARE
+  EMP_ID EMPLOYEE.EMP_ID%TYPE;
+  EMP_NAME EMPLOYEE.EMP_NAME%TYPE;
+  DEPT_CODE EMPLOYEE.DEPT_CODE%TYPE;
+  JOB_CODE EMPLOYEE.JOB_CODE%TYPE;
+  SALARY EMPLOYEE.SALARY%TYPE;
+BEGIN
+  SELECT EMP_ID, EMP_NAME, DEPT_CODE, JOB_CODE, SALARY
+    INTO EMP_ID, EMP_NAME, DEPT_CODE, JOB_CODE, SALARY
+    FROM EMPLOYEE
+   WHERE EMP_NAME = '&EMP_NAME';
+   
+  DBMS_OUTPUT.PUT_LINE('EMP_ID : ' || EMP_ID);
+  DBMS_OUTPUT.PUT_LINE('EMP_NAME : ' || EMP_NAME);
+  DBMS_OUTPUT.PUT_LINE('DEPT_CODE : ' || DEPT_CODE);
+  DBMS_OUTPUT.PUT_LINE('JOB_CODE : ' || JOB_CODE);
+  DBMS_OUTPUT.PUT_LINE('SALARY : ' || SALARY);
+  
+END;
+/
+-- %ROWTYPE
+-- : 테이블의 한 행의 모든 컬럼과 자료형을 참조하는 경우 사용
+DECLARE
+  E EMPLOYEE%ROWTYPE;
+BEGIN
+  SELECT * INTO E
+  FROM EMPLOYEE
+  WHERE EMP_ID = '&EMP_ID';
+  
+  DBMS_OUTPUT.PUT_LINE('EMP_ID : ' || E.EMP_ID);
+  DBMS_OUTPUT.PUT_LINE('EMP_NAME : ' || E.EMP_NAME);
+  DBMS_OUTPUT.PUT_LINE('EMP_NO : ' || E.EMP_NO);
+  DBMS_OUTPUT.PUT_LINE('SALARY : ' || E.SALARY);
+  
+END;
+/
+
+-- 연봉을 구하는 PL/SQL 블럭 작성
+DECLARE
+  VEMP EMPLOYEE%ROWTYPE;
+  YSALARY NUMBER;
+BEGIN
+  SELECT * INTO VEMP
+  FROM EMPLOYEE
+  WHERE EMP_NAME = '&사원명';
+  
+  IF (VEMP.BONUS IS NULL) THEN YSALARY := VEMP.SALARY * 12;
+  ELSIF (VEMP.BONUS IS NOT NULL) THEN YSALARY := (VEMP.SALARY + (VEMP.SALARY * VEMP.BONUS));
+  END IF;
+  
+  DBMS_OUTPUT.PUT_LINE(VEMP.EMP_ID || '    ' || VEMP.EMP_NAME || '    '
+                       || TO_CHAR(YSALARY, 'L999,999,999'));
+END;
+/
+
+-- 점수를 입력받아 SCORE 변수에 저장하고
+-- 90점 이상은 'A', 80점 이상은 'B', 70점 이상은 'C', 60점 이상은 'D', 60점 미만은 'F'로 조건 처리하여
+-- GRADE 변수에 저장하여
+-- '당신의 점수는 90점 이고, 학점은 A학점 입니다.' 형태로 출력하세요.
+
+DECLARE
+  SCORE NUMBER;
+  GRADE CHAR(3);
+BEGIN
+  SCORE := &SCORE;
+  IF (SCORE >=90 ) THEN GRADE := 'A';
+  ELSIF (SCORE >= 80) THEN GRADE := 'B';
+  ELSIF (SCORE >= 70) THEN GRADE := 'C';
+  ELSIF (SCORE >= 60) THEN GRADE := 'D';
+  ELSE GRADE := 'F';
+  END IF;
+  
+  DBMS_OUTPUT.PUT_LINE('당신의 점수는 ' || SCORE || '점 이고, 학점은 ' || GRADE || '학점 입니다.');
+END;
+/
+
+DECLARE
+  VEMPNO EMPLOYEE.EMP_ID%TYPE;
+  VENAME EMPLOYEE.EMP_NAME%TYPE;
+  VDEPTNO EMPLOYEE.DEPT_CODE%TYPE;
+  VDNAME VARCHAR2(20) := NULL;
+BEGIN
+  SELECT EMP_ID, EMP_NAME, DEPT_CODE
+  INTO VEMPNO, VENAME, VDEPTNO
+  FROM EMPLOYEE
+  WHERE EMP_ID = '&사번';
+  
+  VDNAME := CASE VDEPTNO
+              WHEN 'D1' THEN '인사관리부'
+              WHEN 'D2' THEN '회계관리부'
+              WHEN 'D3' THEN '마케팅부'
+              WHEN 'D4' THEN '국내영업부'
+              WHEN 'D5' THEN '해외영업1부'
+              WHEN 'D6' THEN '해외영업2부'
+              WHEN 'D7' THEN '해외영업3부'
+              WHEN 'D8' THEN '기술지원부'
+              WHEN 'D9' THEN '총무부'
+            END;
+  DBMS_OUTPUT.PUT_LINE('사번        이름       akao  부서명');
+  DBMS_OUTPUT.PUT_LINE('-----------------------------');
+  DBMS_OUTPUT.PUT_LINE(VEMPNO || '        ' || VENAME || '       ' || VDNAME);
+END;
+/
+
+DECLARE
+  N NUMBER := 1;
+BEGIN
+  LOOP
+    DBMS_OUTPUT.PUT_LINE(N);
+    N := N + 1;
+    IF N > 5 THEN EXIT;
+    END IF;
+  END LOOP;
+END;
+/
+
+CREATE TABLE TEST1 (
+  BUNHO NUMBER(3),
+  NALJJA DATE
+);
+
+BEGIN
+  FOR I IN 1..10 LOOP
+    INSERT INTO TEST1 VALUES(I, SYSDATE);
+  END LOOP;
+END;
+/
+SELECT * FROM TEST1;
+
+-- 구구단 짝수단 출력하기
+DECLARE
+  RESULT NUMBER;
+BEGIN
+  FOR DAN IN 2..9 LOOP
+    IF MOD(DAN, 2) = 0
+      THEN
+      FOR SU IN 1..9 LOOP
+        RESULT := DAN * SU;
+        DBMS_OUTPUT.PUT_LINE(DAN || ' * ' || SU || ' = ' || RESULT);
+      END LOOP;
+    END IF;
+    DBMS_OUTPUT.PUT_LINE(' ');
+  END LOOP;
+END;
+/
+-- LOOP VER.
+DECLARE
+  I NUMBER := 2;
+  J NUMBER := 1;
+BEGIN
+  LOOP
+    J := 1;
+    LOOP
+      DBMS_OUTPUT.PUT_LINE(I || ' * ' || J || ' = ' || I * J);
+      J := J + 1;
+      IF J > 9 THEN EXIT;
+      END IF;
+    END LOOP;
+    I := I + 2;
+    
+    IF I > 9 THEN EXIT;
+    END IF;
+  END LOOP;
+END;
+/
+
+-- WHILE LOOP
+DECLARE
+  I NUMBER := 1;
+BEGIN
+  WHILE I <= 10 LOOP
+    DBMS_OUTPUT.PUT_LINE(I);
+    I := I + 1;
+  END LOOP;
+END;
+/
+
+-- WHILE LOOP를 이용한 구구단 짝수단 출력
+DECLARE
+  DAN NUMBER := 1;
+  SU NUMBER := 1;
+BEGIN
+  WHILE DAN < 10 LOOP
+    IF MOD(DAN, 2) = 0 THEN
+      SU := 1;
+      WHILE SU < 10 LOOP
+        DBMS_OUTPUT.PUT_LINE(DAN || ' * ' || SU || ' = ' || (DAN * SU));
+        SU := SU + 1;
+      END LOOP;
+      DBMS_OUTPUT.PUT_LINE('');
+    END IF;
+    DAN := DAN + 1;
+  END LOOP;
+END;
+/
+
+-- 테이블 타입의 변수 선언 및 값 대입 출력
+-- BINARY_INTEGER로만 INDEX 사용 가능
+
+-- TYPE을 생성..
+
+-- I가 1인 이유는 테이블 인덱스는 1부터 시작
+DECLARE
+  TYPE EMP_ID_TABLE_TYPE IS TABLE OF EMPLOYEE.EMP_ID%TYPE INDEX BY BINARY_INTEGER;
+  TYPE EMP_NAME_TABLE_TYPE IS TABLE OF EMPLOYEE.EMP_NAME%TYPE INDEX BY BINARY_INTEGER;
+  
+  EMP_ID_TABLE EMP_ID_TABLE_TYPE;
+  EMP_NAME_TABLE EMP_NAME_TABLE_TYPE;
+  
+  I BINARY_INTEGER := 0;
+BEGIN
+  I := 1;
+  
+  FOR K IN (SELECT EMP_ID, EMP_NAME FROM EMPLOYEE) LOOP
+    EMP_ID_TABLE(I) := K.EMP_ID;
+    EMP_NAME_TABLE(I) := K.EMP_NAME;
+    
+    I := I + 1;
+  END LOOP;
+  
+  FOR J IN 1..I-1 LOOP
+    DBMS_OUTPUT.PUT_LINE('EMP_ID : ' || EMP_ID_TABLE(J) || ', EMP_NAME : ' || EMP_NAME_TABLE(J));
+  END LOOP;
+
+END;
+/
+
+-- 레코드 타입의 변수 선언 및 값 대입 출력 look like 구조체
+DECLARE
+  TYPE EMP_RECORD_TYPE IS RECORD(
+    EMP_ID EMPLOYEE.EMP_ID%TYPE,
+    EMP_NAME EMPLOYEE.EMP_NAME%TYPE,
+    DEPT_TITLE DEPARTMENT.DEPT_TITLE%TYPE,
+    JOB_NAME JOB.JOB_NAME%TYPE
+  );
+  
+  EMP_RECORD EMP_RECORD_TYPE;
+  
+BEGIN
+
+  SELECT EMP_ID, EMP_NAME, DEPT_TITLE, JOB_NAME
+  INTO EMP_RECORD
+  FROM EMPLOYEE
+  LEFT JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID)
+  LEFT JOIN JOB USING(JOB_CODE)
+  WHERE EMP_NAME = '&EMP_NAME';
+  
+  DBMS_OUTPUT.PUT_LINE('사번 : ' || EMP_RECORD.EMP_ID);
+  DBMS_OUTPUT.PUT_LINE('이름 : ' || EMP_RECORD.EMP_NAME);
+  DBMS_OUTPUT.PUT_LINE('부서 : ' || EMP_RECORD.DEPT_TITLE);
+  DBMS_OUTPUT.PUT_LINE('직급 : ' || EMP_RECORD.JOB_NAME);
+END;
+/
+
+-- 예외처리
+BEGIN
+  UPDATE EMPLOYEE
+  SET EMP_ID = '&사번'
+  WHERE EMP_ID = 200;
+EXCEPTION
+  WHEN DUP_VAL_ON_INDEX
+  THEN DBMS_OUTPUT.PUT_LINE('이미 존재하는 사번입니다.');
+END;
+/
+
+-- 정의 되지 않은 예외 처리
+DECLARE
+  DUP_EMPNO EXCEPTION;
+  PRAGMA EXCEPTION_INIT(DUP_EMPNO, -00001);
+BEGIN
+  UPDATE EMPLOYEE
+  SET EMP_ID = '&사번'
+  WHERE EMP_ID = 200;
+
+EXCEPTION
+  WHEN DUP_EMPNO 
+  THEN DBMS_OUTPUT.PUT_LINE('이미 존재하는 사번이라니깐');
+END;
+/
+
+-- 프로시져(PROCEDURE)
+-- : 복잡한 SQL문 + PL/SQL문을 저장하는 객체이다.
+--   필요할 때 마다 복잡한 구문을 다시 입력할 필요 없이
+--   생성해둔 객체를 호출을 해서 간단히 실행시키기 위한 목적으로 사용된다.
+
+CREATE TABLE EMP_DUP
+AS SELECT *FROM EMPLOYEE;
+SELECT *FROM EMP_DUP;
+
+CREATE OR REPLACE PROCEDURE DEL_ALL_EMP
+IS 
+BEGIN
+  DELETE FROM EMP_DUP;
+  COMMIT;
+END;
+/
+
+EXECUTE DEL_ALL_EMP;
+EXEC DEL_ALL_EMP;
+
+SELECT *FROM EMP_DUP;
+ROLLBACK;
+
+-- 매개변수 있는 프로시져
+CREATE OR REPLACE PROCEDURE DEL_EMP_ID(V_EMP_ID EMPLOYEE.EMP_ID%TYPE)
+IS
+BEGIN
+  DELETE FROM EMPLOYEE
+  WHERE EMP_ID = V_EMP_ID;
+END;
+/
+
+EXEC DEL_EMP_ID('&EMP_ID');
+
+ROLLBACK;
+SELECT *FROM EMPLOYEE;
+
+-- IN/OUT 매개변수 있는 프로시져
+CREATE OR REPLACE PROCEDURE SELECT_EMP_ID (
+  V_EMP_ID IN EMPLOYEE.EMP_ID%TYPE,
+  V_EMP_NAME OUT EMPLOYEE.EMP_NAME%TYPE,
+  V_EMP_SALARY OUT EMPLOYEE.SALARY%TYPE,
+  V_EMP_BONUS OUT EMPLOYEE.BONUS%TYPE
+)
+IS
+BEGIN
+  SELECT EMP_NAME, SALARY, NVL(BONUS, 0) 
+  INTO V_EMP_NAME, V_EMP_SALARY, V_EMP_BONUS
+  FROM EMPLOYEE
+  WHERE EMP_ID = V_EMP_ID;
+END;
+/
+
+VARIABLE VAR_EMP_NAME VARCHAR2(30);
+VARIABLE VAR_SALARY NUMBER;
+VARIABLE VAR_BONUS NUMBER;
+
+-- : <-- 바인드 변수 표시(OUT)
+EXEC SELECT_EMP_ID(205, :VAR_EMP_NAME, :VAR_SALARY, :VAR_BONUS);
+
+PRINT VAR_EMP_NAME;
+PRINT VAR_SALARY;
+PRINT VAR_BONUS;
+
+-- PRINT 실행하지 않고 프로시져 실행시마다 자동으로 출력
+SET AUTOPRINT ON;
+
+-- FUNCTION
+-- : 프로시져와 사용 용도가 거의 비슷하다.
+--   실행결과를 되돌려 받을 수 있다. (OUT 매개변수가 아니라 RETURN)
+CREATE OR REPLACE FUNCTION BONUS_CALC(V_EMP EMPLOYEE.EMP_ID%TYPE) RETURN NUMBER
+IS
+  V_SAL EMPLOYEE.SALARY%TYPE;
+  V_BONUS EMPLOYEE.BONUS%TYPE;
+  CALC_SAL NUMBER;
+BEGIN
+  SELECT SALARY, NVL(BONUS, 0)
+  INTO V_SAL, V_BONUS
+  FROM EMPLOYEE
+  WHERE EMP_ID = V_EMP;
+  
+  CALC_SAL := (V_SAL + (V_SAL * V_BONUS)) * 12;
+
+  RETURN CALC_SAL;
+END;
+/
+
+VARIABLE VAR_CALC NUMBER;
+
+-- 함수 실행
+EXEC :VAR_CALC := BONUS_CALC('&EMP_ID');
+
+
+-- 함수로 사용 가능
+SELECT EMP_ID, EMP_NAME, BONUS_CALC(EMP_ID)
+FROM EMPLOYEE
+WHERE BONUS_CALC(EMP_ID) > 30000000;
+
+-- CURSOR
+-- : 처리 결과가 여러 개의 행으로 구해지는 SELECT 문을 처리하기 위해
+--   SELECT 결과를 저장해 놓은 객체이다.
+--  CURSOR~ OPEN~ FETCH~ CLOSE 단계로 진행된다.
+
+-- CURSOR의 상태
+-- %NOTFOUND : 커서 영역의 자료가 모두 인출(FETCH)되어 다음 영역이 존재하지 않으면 TRUE
+-- %FOUND : 커서 영역에 자료가 아직 남아있으면 TRUE
+-- %ISOPEN : 커서가 OPEN된 상태이면 TRUE
+
+CREATE OR REPLACE PROCEDURE CURSOR_DEPT
+IS
+  V_DEPT DEPARTMENT%ROWTYPE;
+  CURSOR C1
+  IS
+  SELECT * FROM DEPARTMENT;
+BEGIN
+  OPEN C1;
+  
+  LOOP
+    FETCH C1 INTO V_DEPT.DEPT_ID, V_DEPT.DEPT_TITLE, V_DEPT.LOCATION_ID;
+    --IF C1%NOTFOUND = TRUE THEN EXIT;
+    --END IF;
+    EXIT WHEN C1%NOTFOUND;
+    
+    DBMS_OUTPUT.PUT_LINE('부서코드 : ' || V_DEPT.DEPT_ID 
+                         || ', 부서명 : ' || V_DEPT.DEPT_TITLE
+                         || ', 지역 : ' || V_DEPT.LOCATION_ID);
+  END LOOP;
+  CLOSE C1;
+END;
+/
+EXEC CURSOR_DEPT;
+
+-- FOR IN LOOP를 이용하면
+-- 반복시에 자동으로 CURSOR OPEN하고,
+-- 인출(FETCH)도 자동으로 한다.
+-- LOOP 종료할 때 자동으로 CLOSE 한다.
+
+CREATE OR REPLACE PROCEDURE CURSOR_DEPT2
+IS
+  V_DEPT DEPARTMENT%ROWTYPE;
+  CURSOR C1
+  IS
+  SELECT * FROM DEPARTMENT;
+BEGIN
+  FOR V_DEPT IN C1 LOOP
+    DBMS_OUTPUT.PUT_LINE('부서코드 : ' || V_DEPT.DEPT_ID
+                         || ', 부서명 : ' || V_DEPT.DEPT_TITLE
+                         || ', 지역 : ' || V_DEPT.LOCATION_ID);
+  END LOOP;
+END;
+/
+EXEC CURSOR_DEPT2;
+
+-- I가 1인 이유는 테이블 인덱스는 1부터 시작 <-- 이 주석과 같다..?
+-- IN 부분의 서브쿼리가 CURSOR 자체
+CREATE OR REPLACE PROCEDURE CURSOR_DEPT3
+IS
+  V_DEPT DEPARTMENT%ROWTYPE;
+BEGIN
+  FOR V_DEPT IN (SELECT * FROM DEPARTMENT) LOOP
+    DBMS_OUTPUT.PUT_LINE('부서코드 : ' || V_DEPT.DEPT_ID
+                         || ', 부서명 : ' || V_DEPT.DEPT_TITLE
+                         || ', 지역 : ' || V_DEPT.LOCATION_ID);
+  END LOOP;
+END;
+/
+EXECUTE CURSOR_DEPT3;
+
+-- PACKAGE
+-- : 프로시져와 함수를 효율적으로 관리하기 위해 묶는 단위
+--   패키지명.함수명() <- 이런 형태로 호출함
+--   EX) DBMS_OUTPUT.PUT_LINE();
+
+CREATE OR REPLACE PACKAGE KH_PACK
+IS
+  PROCEDURE CURSOR_DEPT3;
+  FUNCTION BONUS_CALC(V_EMPID EMPLOYEE.EMP_ID%TYPE) RETURN NUMBER;
+END;
+/
+
+-- 실행 안 됨 패키지 바디를 만들어야함
+-- 그래서 이미 생성되어 있는 함수로는 안 됨
+EXEC KH_PACK.CURSOR_DEPT3;
+
+DROP PACKAGE KH_PACK;
+
+CREATE OR REPLACE PACKAGE KH_PACK
+IS
+  PROCEDURE SHOW_EMP;
+END;
+/
+CREATE OR REPLACE PACKAGE BODY KH_PACK
+IS
+  PROCEDURE SHOW_EMP
+  IS
+    V_EMP EMPLOYEE%ROWTYPE;
+    CURSOR C1
+    IS
+    SELECT EMP_ID, EMP_NAME, EMP_NO FROM EMPLOYEE;
+  BEGIN
+    FOR V_EMP IN C1 LOOP
+      DBMS_OUTPUT.PUT_LINE('사번 : ' || V_EMP.EMP_ID || ', 이름 : ' || V_EMP.EMP_NAME 
+                           || ', 주민등록번호 : ' || V_EMP.EMP_NO);
+    END LOOP;
+  END;
+END;
+/
+EXEC KH_PACK.SHOW_EMP;
+
+
+
+
+
+
