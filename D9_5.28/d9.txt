@@ -1,7 +1,0 @@
-1. shallow copy and deep copy 2
-2. how to operation clone method
-3. two demension array
-4. variable arrays in java
-5. parameter, arguments in main mathod
-6. demensional arrays in java
-

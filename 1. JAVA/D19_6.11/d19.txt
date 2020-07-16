@@ -1,0 +1,27 @@
+1. Exception
+   - type of error
+      - compile-time error
+      - runtime error
+      - logical error   overflow
+      - systme error
+
+2. Checked Exception and Unchecked Exception
+   - Unchecked Exception 
+      - ArithmeticException
+      - NullPointerException
+      - NegativeArraySizeException
+      - ArrayIndexOutOfBoundException
+      - ClassCastException
+
+3. Exception processing
+   - throws (throws error called oneself) avoid responsibility
+   - try~catch (direct process)
+
+4. must execute block = finally {}
+   - ex) resource return(close)
+
+5. multi catch block = more detail class up write,, less specific class write down.
+
+6. must return resource write in try() --> try-with-resource
+   - try(BufferedReader br = new BufferedReader(new InputstreamReader(System.in))   
+   - try-with-resource --> auto return

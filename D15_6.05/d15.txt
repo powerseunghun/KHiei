@@ -1,2 +1,0 @@
-1. exam test 
-   - ch2 variable ~ ch8 Object Array

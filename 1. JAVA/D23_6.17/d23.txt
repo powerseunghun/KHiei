@@ -1,0 +1,44 @@
+1. data structure
+   - architecturally data processing in memory
+
+2. array's problem, collection's advantage
+
+3. ArrayList sort
+   - ascending = Collections.sort(list)
+   - descending
+      Iterator iter = new LinkedList(list).descendingIterator();
+      while(iter.hasNext()) System.out.println(iter.next());
+      ----> new List.add(iter.next())
+
+4. Generics
+   - data assurance safe
+
+5. Set -> not allow duplication, can't get stored object one by one
+   - use toArray() method .. set to Object array
+      object[] arr = set.toArray()
+   - use iterator() method
+
+6. Map -> not allow key value duplication, if duplication key value. overlap recently value
+   - use keySet() method  -> make keyset and use iterator method .. list
+      Set set = hmap.keySet();
+      Iterator iter = set.iterator();
+      while(iter.hasNext())
+         String key = (String) iter.next();
+	 String value = (String) hmap.get(key);
+   - value Object -> use values() method .. to Collection 
+      Collection values = hmap.values();
+      - use iterator()
+         Iterator valueIter = values.iterator(); and print
+      - use toArray()
+         Object[] valueArr = values.toArray(); and print
+   - use Map's inner class entrySet()
+      Set entrySet = hmap.entrySet();
+      Iterator entryIter = entrySet.iterator();       // Iterator<Map.Entry<String, String>> entrySet
+      while(entryIter.hasNext()) {
+         Map.Entry entry = (Entry) entryIter.next();  // Map.Entry<String, String> entry = entryIter.next();
+	 System.out.println(entry.getKey() + " : " + entry.getValue());
+      }
+
+7. Properties File.
+
+8. Generics.

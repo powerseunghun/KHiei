@@ -1,0 +1,35 @@
+1. Object learning again
+   - KHiei/Learning_contents/D12
+   * static field access
+      - Classname.field
+2. class creation practice 1 ~ 4
+
+3. initialize priority
+   - JVM's implicit initialize 
+   - explicit initialize
+   - initial block
+      - non-static initialize block
+      - static initialize block
+         - use non-static block, static block together,
+	 - execute sequence static -> non static => initialize to non-static block's value
+	{
+	 	brand="samsung"
+        }
+
+	static {
+		brand="lg"
+	}
+
+	brand = samsung
+
+4. constructor
+   - 1. Object creation
+   - 2. Object initialize
+   1: default Constructor(parameter not exist)
+   2: parameter in Constructor(parameter exist)
+
+   same Name's Constructor = error
+   -> use Overloading
+
+5. this() keyword
+   - it means one self
