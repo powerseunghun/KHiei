@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>폼 관련 태그</title>
+</head>
+<body>
+    <h1>폼 관련 태그</h1>
+    <p>
+        form 태그는 html에서 사용자가 입력할 수 있는 양식을 제공하는 태그이다.<br>
+        form 태그 내의 input 태그 들을 통해 사용자가 입력한 정보를 서버로 넘기는 역할을 한다.<br/>
+        * action 속성 : 폼의 입력된 값들을 전송받을 서버 클래스명을 입력한다.<br/>
+        * method 속성 : get / post 방식으로 전송 방식을 지정한다.
+
+        <form action="" method="POST">
+            <label>검색할 내용 : </label>
+            <input type="text" size="20" name="search">&nbsp;
+            <input type="submit" value="검색">
+        </form>
+        <p>
+            submit 버튼을 눌렀을 때 action에 지정한 경로로
+            method에 지정한 방식으로 input 태그에 입력한 값(value)을
+            name 속성의 속성값을 이용하여 key=value 형태로 전송한다.
+        </p>
+
+        <hr>
+
+        <form>
+            <fieldset>
+                <legend>필드셋의 제목을 입력하는 부분이다.</legend>
+                <label>입력 1: </label><input type="text"><br/>
+                <label>입력 2: </label><input type="text"><br/>
+                <label>입력 3: </label><input type="text"><br/>
+            </fieldset>
+            <fieldset>
+                <legend>필드셋의 제목을 입력하는 부분이다.</legend>
+                <label>입력 1: </label><input type="text"><br/>
+                <label>입력 2: </label><input type="text"><br/>
+                <label>입력 3: </label><input type="text"><br/>
+            </fieldset>
+        </form>
+
+        <h2>text와 관련된 input태그</h2>
+        <form>
+            <h2>type="text"</h2>
+            <p>한 줄 짜리 텍스트를 입력할 수 있는 텍스트 상자이다.</p>
+            <label>아이디 : </label>
+            <!--autofocus="autofocus" 전송 시 자동 포커스-->
+            <input type="text" name="userId" placeholder="아이디를 입력하세요."
+            maxlength="15" autofocus>
+            <br/>
+            <h3>type="password"</h3>
+            <p>비밀번호를 입력할 수 있는 텍스트 상자이다.</p>
+            <label>비밀번호 : </label>
+            <input type="password" name="userPwd" placeholder="비밀번호를 입력하세요."
+            maxlength="15">
+
+            <br>
+            <h3>type="search", type="url", type="email", type="tel"</h3>
+            <p>
+                겉모습은 텍스트필드와 비슷하지만 각각의 정보에 맞게
+                분화된 기능을 제공하는 텍스트 상자이다.                
+            </p>
+
+            <label>검색 : </label>
+            <input type="search" name="serachText id="serachText"
+            placeholder="검색할 내용을 입력하세요.">
+            <br/>
+
+            <label>홈페이지 : </label>
+            <input type="url" name="homepage" placeholder="홈페이지 주소를 입력하세요">
+            <br/>
+
+            <label>이메일 : </label>
+            <input type="email" name="email" placeholder="이메일 주소를 입력하세요.">
+            <br/>
+
+            <!-- 
+                tel은 text와 똑같지만.. 내부적으로 tel에 입력된 것들만 기억 
+                (text는 text기억)
+            -->
+            <label>전화번호 : </label>
+            <input type="tel" name="phone" placeholder="전화번호를 입력하세요">
+            <br/>
+
+
+            <input type="submit" value="전송"> &nbsp;
+            <input type="reset" value="취소"> &nbsp;
+            
+        </form>
+        <h2>숫자와 관련된 input 태그</h2>
+        <form>
+            <h3>type="number"</h3>
+            <label>수량 : </label>
+            <input type="number" name="amount" min="0" value="0" max="100" step="5">
+            <br/>
+            <h3>type="range"</h3>
+            <label>점수 : </label>
+            <input type="range" name="point" min="0" max="100" value="50" step="10">
+
+            <input type="submit" value="전송">&nbsp;
+            <input type="reset" value="취소">
+        </form>
+
+        <h2>날짜/시간과 관련된 input 태그</h2>
+        <form>
+            <h3>type="date", type="month", type="week", type="time", type="datetime-local"</h3>
+            <label>date : </label><input type="date">
+            <label>month : </label><input type="month">
+            <label>week : </label><input type="week">
+            <label>time : </label><input type="time">
+            <label>datetime-local : </label><input type="datetime-local">
+            <br/>
+            <input type="submit" value="전송">
+            <input type="reset" value="취소">
+        </form>
+
+        <h2>라디오 버튼과 체크박스 태그</h2>
+        <form>
+            <h3>type="radio"</h3>
+            <label>성별 : </label>
+            <input type="radio" id="male" name="gender" value="M" checked><label for="male">남자</label>
+            <input type="radio" id="female" name="gender" value="F"><label for="female">여자</label>
+            <br>
+            <input type="submit" value="전송">&nbsp;
+            <input type="reset" value="취소">
+
+            <br>
+
+            <label>취미 : </label>
+            <input type="checkbox" id="baseball" value="baseball" name="hobby" checked>
+            <label for="baseball">야구</label>&nbsp;
+            <input type="checkbox" id="basketball" value="basketball" name="hobby">
+            <label for="baseball">농구</label>&nbsp;
+            <input type="checkbox" id="football" value="football" name="hobby">
+            <label for="baseball">축구</label>&nbsp;
+
+        </form>
+
+        <h2>그 밖에 input 태그</h2>
+        <form>
+            <h3>type="color"</h3>
+            <input type="color">
+            <label type="color" name="color"></label>
+            <br>
+            <h3>type="file"</h3>
+            <label>파일선택 : </label>
+            <input type="file" name="uploadFile">
+            <br/>
+            <h3>type="hidden"</h3>
+            <input type="hidden" name="hiddenValue" value="1"> 
+            <br/>
+
+            <!-- 
+                input type 버튼으로 만든 버튼은 전송 안되지만
+                button 태그로 만들면 전송 가능
+            -->
+            <input type="submit" value="전송">&nbsp;
+            <input type="Reset" value="취소">&nbsp;
+            <input type="button" value="버튼" >
+            <p>button 태그를 이용해서도 버튼을 만들 수 있다.</p>
+            <button type="submit">전송</button>
+            <button type="reset">취소</button>
+            <button>버튼</button>
+
+        </form>
+        <h2>select 태그 option</h2>
+        <form>
+            <select name="national">
+                <option value="ko">한국</option>
+                <option value="ch">중국</option>
+                <option value="jp">일본</option>
+                <option value="etc">기타</option>
+            </select>
+            <br>
+
+            <!-- size = 한 번에 보여줄 리스트들 -->
+            <!-- multiple -> 여러 개 선택 가능 옵션, ctrl-->
+            <select name="national2" size="2" multiple>
+                <option value="ko">한국</option>
+                <option value="ch">중국</option>
+                <option value="jp">일본</option>
+                <option value="etc">기타</option>
+            </select>
+        </form>
+
+        <h2>textarea</h2>
+        <form>
+            <!--
+                <textarea>
+                    KHACADEMY 이렇게 들여쓰기 되면 '        KHACADEMY' 공백 조심
+                </textarea>
+            -->
+            <textarea name="content" cols="30" rows="5" style="resize:none;">KHacademy</textarea>
+
+            <br/>
+            <input type="submit" value="전송"> &nbsp;
+            <input type="reset" value="취소">
+        </form>
+    </p>
+</body>
+</html>

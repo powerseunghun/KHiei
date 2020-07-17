@@ -1,0 +1,27 @@
+1. hyperlink related tag
+ - a
+
+2. form related tag
+ - form, fieldset, legend, input tag, input tag, input tag's attribute
+
+3. CSS selector1
+ - all selector (* {setting} )
+ - id selector (#id {setting})
+ - tag selector (tag {setting])
+ - class selector (.classname {setting})
+
+4. CSS selector2
+ - attribute selector (select[attribute=value] {setting})
+ - descendant selector (selector descendant selector {setting})
+ - son selector (selector > son selector {setting})
+ - sibling selector 
+    - select immediately behind element : (selector a + selector b {setting})
+    - select all behind element : (selector a ~ selector b {setting})
+ - hover & active selector
+    - user click tag : selector:active {setting}
+    - tag on user's mouse : selector:hover {setting}
+ - status selector  --> depending on input form's status
+    - select input tag(checked) : input[type='checkbox']:checked
+    - focus on input tag : input:focus {setting}
+    - enable input tag : input:enable {setting} / if option in select tag -> option:enable{setting}
+    - disable input tag : input:disable {setting} if option in select tag -> option:disable{setting}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 선택자</title>
+    <style>
+        div[name=name2] {
+            background: orangered
+        }
+        /* name으로 시작하는 */
+        div[name^=name] {
+            background: blue;
+        }
+
+        /* class로 끝나는 */
+        div[class$=class] {
+            color:white;
+        }
+
+        /* div 를 포함하는*/
+        div[class*=div] {
+            font-size: 2em;
+        }
+        
+        #test1>h4 {
+            background:orangered;
+        }
+
+        #test1 h4{ 
+            font-size:2em;
+        }
+
+        /* #test1 > ul > li > h4 */
+        #test1 li > h4 {
+            background: darkblue;
+        }
+
+        #div-test1 {
+            background:red;
+        }
+
+        #div-test2 + div {
+            background: yellow;
+        }
+
+        #div-test1 ~ div {
+            background:orangered;
+            color:red;
+        }
+        
+        #active-test, #hover-test {
+            width:300px;
+            height:300px;
+            background:orange; 
+        }
+        
+        #active-test:active {
+            background:yellow;
+            color:black;
+        }
+
+        #hover-test:hover {
+            cursor:pointer;
+            background:cyan;
+            color:black;
+        }
+
+        input[type='checkbox']:checked {
+            width:200px;
+            height:200px;
+        }
+        
+        #userId:focus, #password:focus {
+            background:red;
+        }
+
+        option:disabled {
+            background:red;
+        }
+
+        option:enabled {
+            background:yellow;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h2>속성 선택자</h2>
+    <p>기본 선택자 뒤에 []를 사용하여 속성과 속성값을 사용한다.</p>
+    <pre>선택자[속성=속성값] {속성:속성값;}의 형식으로 사용한다.</pre>
+    <div name="name1" class="div-class">div 1</div>
+    <div name="name2" class="div-class">div 2</div>
+    <div name="name3" class="div-class">div 3</div>
+    <div name="name4" class="class-div">div 4</div>
+
+    <h2>후손선택자와 자손선택자</h2>
+    <p>자손 선택자 : 바로 아래의 요소, 후손 선택자 : 하위 요소 전부</p>
+    <pre>
+        자손 선택자 : 선택자>자손선택자 {설정내용}의 형식으로 사용
+        후손 선택자 : 선택자 후손선택자 {설정내용}의 형식으로 사용
+    </pre>
+    <div id="test1">
+        <h4>자손입니다.</h4>
+        <h4>나도 자손입니다.</h4>
+        <ul id="testul">리스트
+            <li>나는 ul의 자손이면서 동시에 div의 후손입니다.</li>
+            <li><h4>나는 ul의 자손이면서 동시에 div의 후손입니다.</h4></li>
+        </ul>
+    </div>
+
+    <h2>동위 선택자</h2>
+    <p>동위 관계에서 뒤에 위치한 태그를 선택할 때 사용한다.</p>
+    <pre>
+        바로 뒤에 있는 요소를 선택 시 : 선택자a + 선택자b {설정내용}
+        뒤에 있는 모든 요소 선택 : 선택자a ~ 선택자b {설정내용}
+    </pre>
+    <div id="div-test1">div test1</div>
+    <div id="div-test2">div test2</div>
+    <div id="div-test3">div test3</div>
+    <div id="div-test4">div test4</div>
+    <div id="div-test5">div test5</div>
+    <hr>
+
+    <h2>반응선택자</h2>
+    <p>사용자의 움직임에 따라 달라지는 선택자</p>
+    <pre>
+        사용자가 클릭한 태그 : 선택자:active {설정내용}; 
+        사용자의 마우스가 올라가 있는 태그 : 선택자:hover {설정내용};으로 사용된다.
+    </pre>
+    <div id="active-test">active 테스트</div>
+    <div id="hover-test">hover 테스트</div>
+
+    <h2>상태선택자</h2>
+    <p>입력양식의 상태에 따라 선택되는 선택자</p>
+    <pre>체크 상태의 input 태그 선택 : input:checked </pre>
+    <input type="checkbox" name="fruits" value="사과" id="apple"><label for="apple">사과</label>
+    <input type="checkbox" name="fruits" value="바나나" id="banana"><label for="banana"">바나나</label>
+    <input type="checkbox" name="fruits" value="복숭아" id="peach"><label for="peach">복숭아</label>
+
+    <br>
+
+    <pre>초점이 맞추어진 input태그 선택</pre>
+    <label>아이디 : </label>
+    <input type="text" id="userId" placeholder="아이디를 입력하세요."><br/>
+    <label>비밀번호 : </label>
+    <input type="password" id="password" placeholder="비밀번호를 입력하세요."><br>
+
+    <pre>
+        사용 가능한 input태그 : input태그:enable {설정내용}
+        사용 불가능한 input태그 : input태그:disabled {설정내용}
+    </pre>
+    <h3>당신의 연령대는?</h3>
+    <select>
+        <option disabled>10</option>
+        <option value="">20</option>
+        <option value="">30</option>
+        <option value="">40</option>
+        <option value="">50</option>
+        <option disabled>60</option>
+    </select>
+</body>
+</html>
