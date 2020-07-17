@@ -1,0 +1,19 @@
+1. character related tag
+ - header, p, pre, em, mark, q, i, small, sub, sup, abbr, code
+
+2. list related tag
+ - ul, ol(type='a', 'A', 'i', 'I'..), dl
+
+3. character related tag problem
+
+4. table related tag
+ - table, tr, th, thead, tbody, tfoot, caption, figure,(figcaption), colspan, rowspan
+
+5. area related tag
+ - div, span, iframe
+
+6. image related tag
+ - img, (src, alt..)
+
+7. media related tag
+ - audio, video..
