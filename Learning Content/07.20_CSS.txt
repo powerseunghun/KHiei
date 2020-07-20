@@ -1,1 +1,7 @@
-1. 
+1. css selector 3
+
+2. bootstrap, semantic ui outline, simple example
+
+3. font related style
+
+4. text style
