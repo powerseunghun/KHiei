@@ -1,7 +1,21 @@
 1. css selector 3
+ - first-child, last-child, nth-child(), nth-last-child()
+ - first-of-type, last-of-type, nth-of-type(), nth-last-of-type()
 
 2. bootstrap, semantic ui outline, simple example
 
-3. font related style
+3. selector priority 
+ - tag selector < class selector < id selector < inline style < !important
 
-4. text style
+4. font related style
+ - font-family, web-font(http://fonts.google.com), font-size
+ - font-weight, font-variant, font-style
+ - font : selector {font: font-style font-variant font-weight font-size/line-height font-family}
+ 
+5. text style
+ - color
+   - name, 16, rgb, rgba, hsl, hsla
+ - text-decoration(use anchor tag at delete underline)
+   - selector{text-decoration: none | underline | overline | line-through}
+ - text-shadow
+   - selector{text-shadow : none | width_dist, height_dist, spread degree, color}
