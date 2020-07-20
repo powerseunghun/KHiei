@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 선택자</title>
+    <style>
+        #test1 *:first-child { 
+            background: red;
+            color: white;
+        }
+
+        #test1 *:last-child {
+            background: orange;
+            color: white;
+        }
+
+        /* parameter = 2/ 2n - 1/ ... */
+        #test1 *:nth-child(2) {
+            background: yellowgreen;
+            color: white;
+        }
+
+        #test1 *:nth-last-child(2) {
+            background: skyblue;
+            color: red;
+        }
+        
+        /* 태그들 중 첫번 째(p태그와 pre태그 선택) */
+        #test2 *:first-of-type {
+            background: orange;
+            color: white;
+        }
+
+        #test2 *:last-of-type {
+            background: yellow;
+            color: red;
+        }
+        
+        #test2 *:nth-of-type(2n) {
+            background: yellowgreen;
+            color: white;
+        }
+        
+        #test2 *:nth-last-of-type(3) {
+            background: skyblue;
+            color: white;
+        }
+
+        #test3 p::first-letter {
+            font-Size:2em;
+        }
+
+        /* 드래그 할 때 */
+        #test3 p::selection {
+            background: red;
+            color: white;
+        }
+        
+        #test4 p:not(:nth-child(2n)) {
+            background: orange;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h2>일반 구조 선택자</h2>
+    <p>특정한 위치에 있는 태그 선택(위치로 구분)</p>
+    <div id="test1">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+
+    <h2>형태 구조 선택자(태그 별로 구분)</h2>
+    <p>특정한 위치에 있는 태그 선택(태그 별로 구분)</p>
+
+    <div id="test2">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+        <pre>테스트6</pre>
+    </div>
+    <hr>
+
+    <h2>문자 선택자</h2>
+    <p>태그 내부에서 특정 조건의 문자를 선택하는 선택자</p>
+    <div id="test3">
+        <p>
+            가는 투명하되 실현에 동산에는 모래뿐일 얼마나 보배를 이상의 맺어, 뿐이다. 그들은 힘차게 낙원을 쓸쓸한 인간에 청춘 봄바람을 너의 모래뿐일 때문이다. 새 오아이스도 희망의 싸인 뛰노는 품고 그들은 듣는다. 넣는 석가는 위하여 듣기만 설레는 봄바람이다. 목숨이 용기가 같이 미묘한 얼마나 것이다. 없으면 끓는 가슴이 그들에게 곧 그들의 지혜는 구하지 있다. 이상 새 하여도 피가 것이 간에 것이다. 풀밭에 사랑의 이것이야말로 있으랴? 산야에 귀는 실로 있을 뿐이다. 싶이 기관과 들어 있으랴?
+        </p>
+    </div>
+    <hr>
+
+    <h2>부정선택자</h2>
+    <p>지금까지 선택자에 대해 반대로 적용하는 선택자</p>
+    <div id="test4">
+        <p>테스트1</p>
+        <p>테스트2</p>
+        <p>테스트3</p>
+        <p>테스트4</p>
+        <p>테스트5</p>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>선택자 우선순위</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background: orangered;
+        }
+
+        #test1 {
+            background: yellow;
+        }
+
+        .test1 {
+            background: yellowgreen;
+        }
+
+        /* width, height는 적용되어 있음. */
+        div {
+            background: hotpink !important;
+        }
+
+        /* bootstrap --> class selector */
+        button {
+            background: yellow;
+        }
+        #test2 {
+            background: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>선택자 우선순위</h1>
+    <p>태그선택자 < 클래스선택자 < 아이디선택자 < 인라인스타일 < !important</p>
+
+    <div id="test1" class="test1" style="background: red;">우선순위 테스트</div>
+    <button id="test2" type="button" class="btn btn-warning">버튼</button>
+</body>
+</html>
