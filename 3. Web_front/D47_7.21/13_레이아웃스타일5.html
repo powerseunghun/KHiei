@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .vis-test {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+
+        .view-test1 {
+            background: red;
+        }
+
+        .view-test2 {
+            background: yellow;
+            /* visibility: hidden은 영역 차지 display: none은 영역 차지 X */
+            /* visibility: hidden; */
+            display: none;
+        }
+
+        .view-test3 {
+            background: green;
+        }
+    </style>
+</head>
+<body>
+    <h3>visibility</h3>
+    <p>페이지에 특정 요소를 보이거나 보여지지 않게 하는 속성</p>
+    <div class="vis-test view-test1"></div>
+    <div class="vis-test view-test2"></div>
+    <div class="vis-test view-test3"></div>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>테두리 스타일</title>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            border-width: 3px;
+        }
+        .border-test1 {
+            border-style: none;
+        }
+        .border-test2 {
+            border-style: hidden;
+            box-shadow: 5px 5px 3px 2px gray;
+        }
+        .border-test3 {
+            border-style:dotted;
+        }
+
+        .border-test4 {
+            border-style:dashed;
+            border-top-color: blue;
+            /* border-left-color: red;
+            border-left-color: purple;
+            border-bottom-color: green; */
+        }
+
+        .border-test5 {
+            border-style:double;
+            border-color: blue;
+        }
+
+        .border-test6 {
+            border-style: groove;
+            border-top-left-radius: 50px;
+        }
+
+        .border-test7 {
+            border-style: inset;
+            border-bottom-right-radius: 50px;
+        }
+
+        .border-test8 {
+            border-style: outset;
+            border-bottom-right-radius: 50px;
+            border-bottom-left-radius: 50px;
+        }
+
+        .border-test9 {
+            border-style:ridge;
+            box-shadow: 5px 5px 3px 2px gray;
+        }
+
+        .border-test10 {
+            border-style :solid;
+            border-radius: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>테두리 스타일</h1>
+    <h3>border-style:none</h3>
+    <div class="border-test1"></div>
+
+    <!-- box-shadow : 영역을 나타내는 곳에 그림자 표시 -->
+    <!-- box-shadow: 수평거리, 수직거리, 흐릿함 정도, 확산 정도 -->
+    <h3>border-style:hidden & box-shadow : 5px 5px 3px 2px gray</h3>
+    <div class="border-test2"></div>
+
+    <h3>border-style:dotted</h3>
+    <div class="border-test3"></div>
+
+    <h3>border-style:dashed & border-top-color:blue</h3>
+    <div class="border-test4"></div>
+
+    <h3>border-style:double & border-color:blue</h3>
+    <div class="border-test5"></div>
+
+    <!-- 50 50에 해당하는 위치 부터 둥글 게 만들겠다.  -->
+    <h3>border-style:groove & border-top-left-radius:50px</h3>
+    <div class="border-test6"></div>
+
+    <h3>border-style:inset & border-bottom-right-radius: 50px</h3>
+    <div class="border-test7"></div>
+
+    <h3>border-style: outset & border-bottom-right-radius: 50px 
+        & border-top-left-radius: 50px</h3>
+    <div class="border-test8"></div>
+
+    <h3>border-style:ridge & box-shadow: 5px 5px 3px 2px gray</h3>
+    <div class="border-test9"></div>
+
+    <h3>border-style: solid & border-radius: 50px</h3>
+    <div class="border-test10"></div>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이아웃 스타일</title>
+    <style>
+        .size-test {
+            border: 2px solid red;
+        }
+
+        #test1 {
+            width: 800px;
+            height: 200px;
+        }
+
+        #test2 {
+            width: 50%;
+            height: 200px;
+        }
+
+        .block {
+            width:150px;
+            height: 150px;
+            border: 1px solid black;
+            color: white;
+        }
+
+        .area1 {background:red;}
+        .area2 {background:orange;}
+        .area3 {background:yellowgreen;}
+        .area4 {background:green;}
+        .area5 {background:blue;}
+
+        .block-test1 {display: inline;}
+        .block-test2 {display: inline-block;}
+        .block-test3 {display: block;}
+    </style>
+</head>
+<body>
+    <h1>레이아웃 스타일</h1>
+    <h3>width와 height</h3>
+    <p>내용이 차지하고 있는 영역의 크기를 조절할 수 있는 속성</p>
+    <h4>고정크기</h4>
+    <div id="test1" class="size-test"></div>
+    <h4>가변크기</h4>
+    <div id="test2" class="size-test"></div>
+    <hr>
+
+    <h3>화면 배치 방식 변경</h3>
+    <p>박스요소와 인라인요소의 속성을 변경하여 배치 방식을 변경할 수 있다.</p>
+    <h4>블럭요소를 인라인요소로 변경</h4>
+    <pre><b>display:inline 테스트</b></pre>
+    <div class="block block-test1 area1">첫 번째 영역</div>
+    <div class="block block-test2 area2">두 번째 영역</div>
+    <div class="block block-test3 area3">세 번째 영역</div>
+    <div class="block block-test4 area4">네 번째 영역</div>
+    <div class="block block-test5 area5">다섯 번째 영역</div>
+
+    <!-- div.block.blocktest -->
+    <!-- 블럭 요소를 인라인 요소로 -->
+    <pre><b>display:inline-block 테스트</b></pre>
+    <div class="block block-test2 area1">첫 번째 영역</div>
+    <div class="block block-test2 area2">두 번째 영역</div>
+    <div class="block block-test2 area3">세 번째 영역</div>
+    <div class="block block-test2 area4">네 번째 영역</div>
+    <div class="block block-test2 area5">다섯 번째 영역</div>
+
+    <!-- 인라인 요소를 블럭으로 -->
+    <pre><b>display:block 테스트</b></pre>
+    <span class="block block-test3 area1">첫 번째 영역</span>
+    <span class="block block-test3 area2">두 번째 영역</span>
+    <span class="block block-test3 area3">세 번째 영역</span>
+    <span class="block block-test3 area4">네 번째 영역</span>
+    <span class="block block-test3 area5">다섯 번째 영역</span>
+</body>
+</html>

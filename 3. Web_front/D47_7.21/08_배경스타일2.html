@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배경스타일2</title>
+    <style>
+        .linear-gradient {
+            width: 300px;
+            height: 300px;
+            border: 1px solid black;
+        }
+
+        #gradient1 {
+            /* to bottom | top | left | right */
+            /* parameter2 -> parameter3 */
+            /* 웹 표준 구문 */
+            background: linear-gradient(to bottom, blue, white);
+            /* 크롬 전용 (to가 아니라 시작위치 지정)*/
+            background: -webkit-linear-gradient(top, blue, white)
+            /* 모질라 전용 */
+            /* background: -moz-linear-gradient(top, blue, white); */
+            /* ie 전용 */
+            /* background: -ms-linear-gradient(top, blue, white); */
+            /* 오페라 전용 */
+            /* background: -o-linear-gradient(top, blue, white); */
+        }
+
+        #gradient2 {
+            /* 45도 방향으로. 오른쪽 위 방향으로 blue to white */
+            background: linear-gradient(45deg, blue, white);
+            background: -webkit-linear-gradient(45deg, blue, white);
+        }
+
+        #gradient3 {
+            background: linear-gradient(to right, blue, white 50%, red);
+            background: -webkit-linear-gradient(left, blue, white 50%, red);
+        }
+
+        #gradient4 {
+            background: linear-gradient(red, orange 15%, yellow 30%, 
+                                        green 45%, blue 60%, navy 75%, 
+                                        purple 90%);
+        }
+
+        #gradient5 {
+            background: repeating-linear-gradient(blue, red 30%);
+        }
+
+        /* 시작 지점과 끝 지점의 위치를 딱딱딱 지정 */
+        #gradient6 {
+            background: repeating-linear-gradient(red, red 5%,
+                                                  orange 5%, orange 10%,
+                                                  yellow 10%, yellow 15%,
+                                                  green 15%, green 20%,
+                                                  blue 20%, blue 25%,
+                                                  navy 25%, navy 30%,
+                                                  purple 30%, purple 35%);
+        }
+        
+        .circle-gradient {
+            width: 500px;
+            height: 300px;
+            border: 1px solid black;
+        }
+        
+        #gradient7 {
+            background: radial-gradient(white, blue, red);
+        }
+
+        #gradient8 {
+            background: repeating-radial-gradient(white, blue, red 10%);
+        }
+
+        #gradient9 {
+            background: repeating-radial-gradient(white, white 10%,
+                                                  blue 10%, blue 20%,
+                                                  red 20%, red 30%);
+        }
+    </style>
+</head>
+<body>
+    <h1>그라데이션</h1>
+
+    <h2>선형그라데이션</h2>
+    <p>색상이 수직, 수평, 대각선 방향으로 일정하게 변하는 것</p>
+    <h4>색상만 지정</h4>
+    <div id="gradient1" class="linear-gradient"></div>
+
+    <h4>방향을 지정</h4>
+    <div id="gradient2" class="linear-gradient"></div>
+
+    <h4>중간색 지정</h4>
+    <div id="gradient3" class="linear-gradient"></div>
+
+    <h4>중간색 여러 개 지정</h4>
+    <div id="gradient4" class="linear-gradient"></div>
+
+    <h4>그라데이션 반복</h4>
+    <div id="gradient5" class="linear-gradient"></div>
+
+    <h4>그라데이션 반복(색 구분 명확하게)</h4>
+    <div id="gradient6" class="linear-gradient"></div>
+
+    <hr>
+
+    <h3>원형 그라데이션</h3>
+    <p>색상이 원이나 타원의 중심부터 동심원을 그리면서 바깥 방향으로 색상이 변경되는 것</p>
+
+    <h4>색상만 지정</h4>
+    <div id="gradient7" class="circle-gradient"></div>
+
+    <h4>원형그라데이션 반복</h4>
+    <div id="gradient8" class="circle-gradient"></div>
+
+    <h4>원형 그라데이션 반복(색 구분 명확하게)</h4>
+    <div id="gradient9" class="circle-gradient"></div>
+</body>
+</html>
