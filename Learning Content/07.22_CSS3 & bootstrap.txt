@@ -1,0 +1,20 @@
+1. transform: (....)  (two dimension)
+ - translateX, translateY, translate
+ - scaleX, scaleY, scale
+ - rotate
+ - skewX, skewY, skew
+
+2. transform: (...) (three dimension)
+ - transform: translate3d(10px, 0px, 100px);
+   --> transform: perspective(300px) translate3d(10px, 0px, 100px)
+
+3. transition
+ - transition-delay
+ - transition-duration
+ - transition-property
+
+4. animation
+
+5. Tomcat install, setting, bootstrap download
+
+6. how to use bootstrap / example
