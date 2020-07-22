@@ -1,1 +1,36 @@
-1. 
+1. background style1
+ - background-clip, background-image, background-repeat
+ - background-position, background-attachment, background-color
+ - selector { ... : ....}
+
+2. background style2
+ - linear-gradient(web standard, chrome, mozila, ie, opera)
+   - background : repeating-linear-gradient, radial gradient
+
+3. layout style1
+ - display : inline | inline-block | block
+
+4. layout style2
+ - border-style: none | hidden | dotted
+ - border-style : hidden & box shadow
+ - border-style : dashed & border-top-color : {color}
+ - border-style : double & border-color : {color}
+ - border-style : groove & border-top-left-radius: ..px
+ - border-style : inset & border-bottom-right-radius ..px
+ - border-style : outset & border-bottom-right-radius : //px
+ - border-style : ridge & box-shadow : 5px 5px 3px 2px {color}
+ - border-style : solid & border-radius : 50px
+
+5. layout style3
+ - padding, margin
+ - padding-top, margin-top, padding-left, margin-left.....
+
+6. layout style4
+ - component in center... margin-left : auto; margin-right : auto
+ - same -> margin: 0 auto;
+
+7. layout style5
+ - visibility : hidden;
+ - display : none;
+
+8. display layout practice
