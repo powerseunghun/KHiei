@@ -1,0 +1,12 @@
+1. bootstrap addition.. grid basic
+ - layout setting each device .. use multi class (div class="col-lg-6 col-xs-12)
+ - col-lg-6   ->   this column is 6size in lg(laptop)
+ - hidden-xs -> hidden ...
+ - ref -> https://www.w3schools.com/bootstrap/bootstrap_grid_basic.asp
+
+2. javascript outline
+
+3. javascript theory & practice
+ - 
+
+4.
