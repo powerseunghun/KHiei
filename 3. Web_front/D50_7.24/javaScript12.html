@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.area {
+		border: 1px solid red;
+		height: 200px;
+	}
+</style>
+</head>
+<body>
+	<h1>자바와 다른 연산자와 기본 문법</h1>
+	<h3>===연산자와 !==연산자</h3>
+	<p>값과 자료형 둘 다 일치하는지 일치하지 않는지 확인할 때 사용한다.</p>
+	<button onclick="testOp();">확인하기</button>
+	<div id="area1" class="area"></div>
+	<script type="text/javascript">
+		function testOp() {
+			var area1 = document.getElementById("area1");
+			
+			var check1 = 1;
+			var check2 = "1";
+			
+			/* == 자료형이 다르더라도 값만 같으면 true */
+			area1.innerHTML += "check1 == 1 : " + (check1 == 1) + "<br>"; 
+			area1.innerHTML += "check1 == '1' : " + (check1 == "1") + "<br>";
+			area1.innerHTML += "check2 == 1 : " + (check2 == 1) + "<br>";
+			area1.innerHTML += "check2 == '1' : " + (check2 == '1') + "<br>"; 
+			
+			area1.innerHTML += "check1 === 1 : " + (check1 === 1) + "<br>";
+			area1.innerHTML += "check1 === '1' : " + (check1 === '1') + "<br>";
+			area1.innerHTML += "check2 === 1 : " + (check2 === 1) + "<br>";
+			area1.innerHTML += "check2 === '1' : " + (check2 === '1') + "<br>";
+		}
+	</script>
+	
+	<h3>연산자를 이용한 짧은 조건문 테스트</h3>
+	<button onclick="checkLogic();">확인하기</button>
+	<script type="text/javascript">
+		function checkLogic() {
+			var input = Number(window.prompt("숫자를 입력하세요."));
+			
+			input % 2 == 0 || alert("홀수입니다.");
+			input % 2 == 0 && alert("짝수입니다.");
+		}
+	</script>
+	
+	<h3>switch문 테스트</h3>
+	<button onclick="switchTest();">실행확인</button>
+	<script type="text/javascript">
+		function switchTest() {
+			var today = new Date();
+			var hour = today.getHours();
+			
+			console.log(hour);
+			
+			/* 범위 연산이 가능한 스위치문(true) */
+			switch(true) {
+			case hour < 12 : alert("오전입니다."); break;
+			case hour >= 12 : alert("오후입니다."); break;
+			default: alert("기본값입니다."); break;
+			}
+		}
+	</script>
+</body>
+</html>

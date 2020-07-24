@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	// 전역변수 선언 (전역변수는 var키워드 없어도 됨) -> window.str (나중에 객체에서)
+	str = "전역변수";
+	
+	// 함수 외부에 선언한 변수는 var를 붙여도 전역변수이다.
+	var str2 = "var전역변수";
+	
+	// window 객체가 로드될 때(시작하자 마자)
+	window.onload = function() {
+		// 지역변수
+		// 지역변수 선언 시 var를 붙여야 한다.
+		var str = "지역변수";
+		console.log(str);
+		
+		// 전역변수에 접근하기 위해서 window. 혹은 this.을 붙여야 한다. this -> window 
+		console.log(this.str);
+		console.log(window.str);
+		
+		// 작성 위치는 지역변수 이지만 var생략되어 있어 자동으로 window.(전역변수);
+		str3 = "난 뭘까요?";
+		// 만약 var str = ""; str = "".. 사용하다 var 없어지면 전역변수 됨 주의
+	}
+</script>
+<style type="text/css">
+	.area {
+		border: 1px solid black;
+		height: 150px;
+	}
+</style>
+</head>
+<body>
+	<h1>변수와 자료형</h1>
+	<h3>변수 선언</h3>
+	<p>함수 내부에서 var 변수명; 으로 선언하면 지역변수가 된다.<br/>
+	함수 내부에서 변수명; 으로 선언하거나, 함수 밖에서 변수명; 혹은 var 변수명;으로 선언하면 전역변수가 된다.<br/>
+	지역변수와 전역변수가 같은 이름인 경우 함수 내부에서 변수명을 호출하면 지역변수가 우선권을 가지기 때문에 <br/>
+	전역변수 사용 시 window.변수명 혹은 this.변수명 으로 표현하여 지역변수와 구분한다.<br/>
+	전역변수는 해당 window내에서 어디에서든 사용할 수 있으며, 지역변수는 해당 함수에서만 사용 가능하다.</p>
+	
+	<hr>
+	
+	<h3>자료형</h3>
+	<p>자바스크립트에서 자료형별로 변수 타입이 지정되지 않고 리터럴에 의해 자료형이 결정된다.</p>
+	<button onclick="testType();">자료형 테스트</button>
+	<br/><br/>
+	<div id="area1" class="area"></div>
+	<script type="text/javascript">
+		function testType() {
+			// 문자열 변수  "" 안에 " 불가.. ''안에 " 가능 '"'
+			var name = "김진호";
+			
+			console.log(name);
+			console.log(typeof(name));
+			
+			// 숫자 변수
+			var age = 20;
+			console.log(age);
+			console.log(typeof(age));
+			
+			// 논리 변수
+			var check = true;
+			console.log(check);
+			console.log(typeof(check));
+			
+			// 배열 변수 (데이터 타입 제한 없음, look like ArrayList)
+			var hobby = ["축구", "농구", "야구"];
+			
+			console.log(hobby);
+			console.log(typeof(hobby));
+			
+			// 객체 변수
+			var user = {
+					name: "김진호",
+					age: 20,
+					id: "user01"
+			};
+			console.log(user);
+			console.log(typeof(user));
+			
+			// 함수 변수
+			// 함수도 자료형이다. 그 의미는 함수를 매개변수로 사용할 수도
+			// 함수를 반환할 수도 있다는 의미
+			// 추가적으로 자바스크립트의 함수는 일반 함수, 메소드는 객체 안에 있는 것 구분
+			var testFunction = function testFunction(num1, num2) {
+				var sum = num1 + num2;
+				alert(sum);
+			}
+			
+			console.log(testFunction);
+			console.log(typeof(testFunction));
+			
+			var apple;
+			
+			console.log(apple);
+			console.log(typeof(apple));
+			
+			var area1 = document.getElementById("area1");
+			
+			area1.innerHTML += "문자열 변수 : " + name + "<br>";
+			area1.innerHTML += "숫자 변수 : " + age + "<br>";
+			area1.innerHTML += "논리 변수 : " + check + "<br>";
+			area1.innerHTML += "배열 : " + hobby + "<br>";
+			area1.innerHTML += "배열인덱스[0] : " + hobby[0] + "<br>";
+			/* 객체 출력 = [object Object] */
+			area1.innerHTML += "객체 : " + user + "<br>";
+			area1.innerHTML += "객체 속성 접근 : " + user.name + "<br>";
+			area1.innerHTML += "함수 : " + testFunction + "<br>";
+			area1.innerHTML += "정의되지 않은 변수 : " + apple + "<br>";
+		}
+	</script>
+	
+	<h3>동적 타입 테스트</h3>
+	<button onclick="testDynamicType();">실행확인</button>
+	<script type="text/javascript">
+		function testDynamicType() {
+			var testVariable = 123;
+			console.log(typeof(testVariable) + " : " + testVariable);
+			testVariable = "안녕하세요";
+			console.log(typeof(testVariable) + " : " + testVariable);
+		}
+	</script>
+</body>
+</html>

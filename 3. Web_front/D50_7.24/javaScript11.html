@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>강제 형변환</h1>
+	<p>Number(), parseInt(), parseFloat() 함수를 이용하여 강제 형변환 할 수 있다.</p>
+	<button onclick="castingTest();">casting테스트</button>
+	<script type="text/javascript">
+		function castingTest() {
+			var num1 = 2;
+			var num2 = "3";
+			
+			console.log(num1 + num2);
+			console.log(num1 + Number(num2));
+			console.log(num1 + parseInt(num2));
+			console.log(num1 + parseFloat(num2));
+		}
+	</script>
+</body>
+</html>

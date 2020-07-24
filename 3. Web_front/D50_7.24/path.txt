@@ -1,0 +1,3 @@
+web(context) -> index.html
+
+web -> views -> javaScript*.html

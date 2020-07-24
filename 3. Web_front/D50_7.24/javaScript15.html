@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	 <h1> 배열 실습 문제1 </h1>
+    
+	다음 보기에 있는 데이터들은 배열로 받고 하나의 배열로 합쳐보세요.<br>
+        이때 입력 필드에 배열에 있는 데이터를 전송하면 배열의 alert를 통하여<br>
+        배열의 위치를 알려주고, 없으면 "존재하지 않습니다" 를 알려주면 됩니다.<br>
+	<fieldset>
+    	<legend>보기</legend>
+    	<label id="la1">사과,바나나,당근</label><br>
+    	<label id="la2">김밥,치즈,떡볶이,햄버거</label><br>
+    	<label id="la3">환타,사이다,콜라</label><br>
+    	<label id="la4">고양이,강아지</label><br>
+	</fieldset>
+	<br>
+    <input type="text" placeholder="찾을 문자열을 입력하세요" size=100 id="text1">
+	<div id="result1"></div>
+	<button onclick="arrayTest();"> 전송 및 처리 </button>
+	
+	<script>
+    	function arrayTest(){
+    		var div = document.getElementById("result1");
+    		
+    		var arr = [];
+    		var tmp = "";
+    		for (var i = 1; i <= 4; i++) {
+    			tmp = "la" + i;
+    			var str = document.getElementById(tmp).innerHTML.split(',');
+    			arr[i-1] = str;
+    		}
+    		
+    		var find = document.getElementById("text1");
+    		
+    		var r = 0;
+    		var c = 0;
+    		var flag = false;
+    		
+    		if (find.value == "") {
+    			alert("값을 입력해주세요.");
+    			find.focus();
+    		}
+    		else {
+    			for (var i = 0; i < arr.length; i++) {
+        			for (var j = 0; j < arr[i].length; j++) {
+        				if (arr[i][j] === find.value) {
+        					r = i + 1;
+        					c = j + 1;
+        					flag = true;
+        				}
+        			}
+        		}
+    			if (flag) {
+    	    		div.innerHTML = find.value + "는 " + r + "번째 배열 " + c + "번 째에 있습니다.";
+        		}
+    			else {
+    				div.innerHTML = find.value + "는 존재하지 않습니다.";
+    			}
+    		}
+    	}   
+    </script>
+    
+    
+	
+	
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+	.area-big {
+		border: 1px solid red;
+		height: 450px;
+	}
+	.area {
+		border: 1px solid red;
+		height: 150px;
+	}
+</style>
+</head>
+<body>
+	<h1>String과 Math</h1>
+	<h3>String</h3>
+	<p>자바스크립트의 내장객체로 문자열 취급을 위해 사용하는 내장객체이다.</p>
+	<button onclick="showStringMethod();">문자열 처리 메소드</button>
+	<div id="area1" class="area-big"></div>
+	<script type="text/javascript">
+		function showStringMethod() {
+			var str1 = "Apple IPhone";
+			
+			var area1 = document.getElementById("area1");
+			
+			// 대문자, 소문자로 변경해주는 메소드
+			area1.innerHTML += "toUpperCase() : " + str1.toUpperCase() + "<br>";
+			area1.innerHTML += "toLowerCase() : " + str1.toLowerCase() + "<br>";
+			
+			// 문자열의 길이를 리턴하는 속성
+			area1.innerHTML += "length : " + str1.length + "<br>";
+			
+			// 문자열의 n 번째 위치 찾는 메소드
+			area1.innerHTML += "문자열에서 e의 위치 : " + (str1.indexOf('e') + 1) + "번째에 위치 <br>"
+			// 뒤에서 부터 e 찾기..
+			area1.innerHTML += "문자열에서 e의 위치 : " + (str1.lastIndexOf('e') + 1) + "번째에 위치 <br>"
+			
+			// 문자열에서 n번째 인덱스에 해당하는 문자열을 리턴하는 메소드
+			for(var i = 0; i < str1.length; i++) {
+				area1.innerHTML += i + "번째 인덱스 : " + str1.charAt(i) + "<br>";
+			}
+			
+			// 문자열의 일부만 리턴하는 메소드
+			area1.innerHTML += "문자열 일부만 리턴 : " + str1.substring(8, 10) + "<br>";
+			
+			// 문자열을 분리해서 배열로 만들엊는 메소드
+			var str2 = "사과, 바나나, 복숭아, 키위, 파인애플";
+			
+			var fruits = str2.split(", ");
+			area1.innerHTML += "str2 : " + str2 + "<br>";
+			area1.innerHTML += "frtuis : " + fruits + "<br>";
+			
+			console.table(fruits);
+		}
+	</script>
+	
+	<h3>Math</h3>
+	<button onclick="showMathMethod();">숫자 처리 메소드</button>
+	<div id="area2" class="area"></div>
+	<script type="text/javascript">
+		function showMathMethod() {
+			var num1 =-123;
+			
+			var area2 = document.getElementById("area2");
+			
+			area2.innerHTML += "절대값 : " + Math.abs(num1) + "<br>";
+			
+			area2.innerHTML += "임의의 난수 발생 : " + Math.random() + "<br>";
+			
+			/* 출력 -> 123 */
+			area2.innerHTML += "반올림 : " + Math.round(123.456) + "<br>";
+			/* 출력 -> 123.45 */
+			area2.innerHTML += "반올림 : " + Math.round(123.456 * 100) / 100 + "<br>";
+			area2.innerHTML += "내림 : " + Math.floor(123.456) + "<br>";
+			area2.innerHTML += "올림 : " + Math.ceil(123.456) + "<br>";
+			
+		}
+	</script>
+</body>
+</html>
