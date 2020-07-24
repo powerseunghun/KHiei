@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area {
+		border: 1px solid red;
+		height: 100px;
+	}
+</style>
+</head>
+<body>
+	<h1>HTML 태그에 접근하기</h1>
+	<h3>아이디로 접근</h3>
+	<div id="area1" class="area"></div>
+	<button onclick="accessId();" style="background-color:red;">아이디로 접근</button>
+	<script type="text/javascript">
+		function accessId() {
+			var area1 = document.getElementById("area1");
+			
+			area1.style.backgroundColor = "yellow";
+			area1.style.color = "red";
+			area1.innerHTML += "아이디로 접근성공!<br/>"
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>태그명으로 접근</h3>
+	<ul>
+		<li>목록1</li>
+		<li>목록2</li>
+		<li>목록3</li>
+		<li>목록4</li>
+		<li>목록5</li>
+	</ul>
+	<button onclick="accessTagName();">태그명으로 접근</button>
+	<script type="text/javascript">
+		function accessTagName() {
+			var list = document.getElementsByTagName("li");
+			/* console.table(list); */
+			console.log(list);
+			
+			var changeColor = 50;
+			
+			/* length가 undefined */
+			/* for (var i in list) {
+				list[i].style.background = "rgb(130, 220, " + changeColor + ")";
+				changeColor += 50;
+				
+			} */
+			
+			for (var i = 0; i < list.length; i++) {
+				list[i].style.background = "rgb(130, 220, " + changeColor + ")";
+			}
+		}
+	</script>
+	
+	<br/>
+	
+	<!-- when name attribute same?  -->
+	<!-- input tag checkbox... etc -->
+	<h3>name으로 접근</h3>
+	<form>
+		<fieldset>
+			<legend>취미</legend>
+			<table>
+				<tr>
+					<td>
+						<input type="checkbox" name="hobby" value="game" id="game">
+						<label for="game">게임</label>
+					</td>
+					<td>
+						<input type="checkbox" name="hobby" value="music" id="music">
+						<label for="music">음악감상</label>
+					</td>
+					<td>
+						<input type="checkbox" name="hobby" value="movie" id="movie">
+						<label for="movie">영화보기</label>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="checkbox" name="hobby" value="reading" id="reading">
+						<label for="reading">독서</label>
+					</td>
+					<td>
+						<input type="checkbox" name="hobby" value="trip" id="trip">
+						<label for="trip">여행</label>
+					</td>
+					<td>
+						<input type="checkbox" name="hobby" value="sports" id="sports">
+						<label for="sports">운동</label>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+	<div id="area2" class="area"></div>
+	<button onclick="accessName();">name으로 접근</button>
+	<script type="text/javascript">
+		function accessName() {
+			var hobby = document.getElementsByName("hobby");
+			
+			var checkedItem = "";
+			
+			for(var i = 0; i < hobby.length; i++) {
+				if(hobby[i].checked) {
+					checkedItem += hobby[i].value + "선택함<br>";
+				}
+			}
+			
+			document.getElementById("area2").innerHTML = checkedItem;
+		}
+	</script>
+</body>
+</html>

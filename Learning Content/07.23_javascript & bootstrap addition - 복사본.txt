@@ -7,6 +7,6 @@
 2. javascript outline
 
 3. javascript theory & practice
- - 
+ - 04, 05, 06, 07, 08
 
-4.
+4. homepage layout

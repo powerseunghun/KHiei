@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../js/sample.js"></script>
+</head>
+<body>
+	<h1>자바스크립트 개요</h1>
+	<dl>
+		<dt>자바스크립트</dt>
+		<dd>웹 브라우저에서 많이 사용하는 인터프리터 방식의 객체 지향 프로그래밍 언어이다.</dd>
+		<dt>자바스크립트 사용법</dt>
+		<dd>
+			<ol>
+				<li>태그에 직접 간단한 소스코드를 작성해서 실행되게 하는 방법(인라인)</li>
+				<li>script 태그 영역에 작성해서 실행되게 하는 방법</li>
+				<li>별도의 js 파일로 작성해 가져다 사용하는 방법</li>
+			</ol>
+		</dd>
+		<dt>단, 소스코드는 함수 단위로 작성하고 이벤트 속성을 사용해서 구동되게 한다.</dt>
+		<dd>이벤트 속성은 태그마다 차이가 있음<br/>
+		on이벤트명="실행할함수명([전달값]);"</dd>
+	</dl>
+	
+	<hr>
+	
+	<h2>1. 태그에 직접 자바스크립트 코드를 작성해서 실행되게 하는 경우</h2>
+	<button onclick="alert('버튼 클릭 확인');">클릭하세요!</button>
+	
+	<br/>
+	
+	<h2>2. script 태그 안에 함수 단위로 소스 작성하고, 태그에서 on이벤트명="함수명();"으로 사용하는 경우</h2>
+	<button onclick=testfn()>함수 실행 확인용 버튼</button>
+	<script type="text/javascript">
+		function testfn() {
+			window.alert('testfn()함수 실행됨...');
+		}
+	</script>
+	
+	<br/>
+	
+	<h2>3. 별도로 작성된 자바스크립트 함수 사용 테스트</h2>
+	<button onclick="samp();">samp() 실행</button>
+</body>
+</html>

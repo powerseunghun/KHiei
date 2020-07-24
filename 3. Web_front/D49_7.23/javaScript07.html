@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+div {
+	border: 1px solid black;
+	background-color: black;
+	height: 100px;
+	width: 100px;
+}
+</style>
+
+</head>
+<body>
+	<h3>문제 1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보시오</h3>
+
+	<div id="div1"></div>
+
+	<input type="color" id="selectColor">
+	<button onclick="changeColor();">변경</button>
+
+	<script>
+		function changeColor() {
+			var color = document.getElementById("selectColor").value;
+			var div1 = document.getElementById("div1");
+			div1.style.backgroundColor = color;
+		}
+	</script>
+
+	<hr>
+
+	<br>
+	<br>
+
+	<h3>문제 2. 버튼에 따른 크기 조절이 가능하게 만들어 보시오</h3>
+
+	<div id="div2"></div>
+	<button onclick="setHalfSize();">50x50</button>
+	<button onclick="setDefaultSize();">원본(100x100)</button>
+	<button onclick="setDoubleSize();">200x200</button>
+
+
+	<script>
+    	var div2 = document.getElementById("div2");
+    	
+    	function setHalfSize(){
+    		div2.style.width = "50px";
+    		div2.style.height = "50px";
+    	}
+    	
+    	function setDefaultSize(){
+    		div2.style.width = "100px";
+    		div2.style.height = "100px";
+    	}
+    	
+    	function setDoubleSize(){
+    		div2.style.width = "200px";
+    		div2.style.height = "200px";
+    	}
+	</script>
+</body>
+</html>

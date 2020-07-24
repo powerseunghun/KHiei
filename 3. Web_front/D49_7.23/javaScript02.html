@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	function start() {
+		alert('문서가 로딩되었습니다.');
+	}
+</script>
+<style>
+	.area {
+		width: 300px;
+		height:100px;
+		border: 1px solid black;
+	}
+</style>
+</head>
+<!-- <body onload="start()";> -->
+<body>
+	<h1>자바스크립트의 데이터 입출력</h1>
+	<script type="text/javascript">
+		// 웹 페이지의 모든 내용이 로딩된 후에 실행되면, 로딩된 데이터를 지우고 출력하기 때문에 테스트 용으로만 사용된다.
+		// document.write("<h1>document.writer로 출력함</h1>");
+	</script>
+	
+	<h3>innerHTML로 요소의 내용 변경하기</h3>
+	<div id="area1" class="area">자바스크립트에서 태그 엘리먼트의 값을 읽어가거나, 값을 변경할 때 innerHTML 속성을 사용한다.</div>
+	
+	<br/>
+	<button onclick="checkValue();">innerHTML 확인</button>
+	<script type="text/javascript">
+		function checkValue() {
+			var area1 = document.getElementById("area1");
+			console.log(area1);
+			console.log(area1.innerHTML);
+			
+			area1.innerHTML = "innerHTML 속성으로 값 변경함<br/>여러 줄을 작성할 수 있음";
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>console.log()로 개발자 도구 콘솔 화면에 출력하기</h3>
+	<p>개발자 도구 콘솔 화면에 출력하고자 할 때 사용하며, 디버깅할 때 주로 사용한다.</p>
+	<button onclick="printConsole();">z</button>
+	<script type="text/javascript">
+		/* sum이 여기서 선언되야 함수 종료 후 sum 콘솔에서 출력해볼 수 있음 */
+		var sum = 0;
+		function printConsole() {
+			var num1 = 3;
+			var num2 = 3;
+			
+			/* sum이 여기서 선언되면 undefined.. */
+			sum = num1 + num2;
+			/* same (window.console.log)  */
+			console.log(sum);
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>window.confirm()을 이용한 데이터 입력</h3>
+	<p>어떤 질문에 대해 "예/아니오"의 결과를 얻을 때 사용한다.</p>
+	<p>확인 버튼과 취소 버튼이 나타나며, 확인 버튼을 클릭 시 true, 취소 버튼을 클릭 시 false를 리턴한다.</p>
+	<button onclick="checkGender();">성별 확인하기</button>
+	<div id="area2" class="area"></div>
+	<script type="text/javascript">
+		function checkGender() {
+			var gender = ""
+			
+			if(window.confirm("남자면 확인, 여자면 취소버튼을 눌러주세요.")) {
+				gender="남자";
+			}
+			
+			else {
+				gender="여자";
+			}
+			
+			var area2 = document.getElementById("area2");
+			area2.innerHTML += "당신은 " + gender + "입니다.<br/>";
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>window.prompt()를 이용한 데이터 입력</h3>
+	<p>텍스트필드와 확인/취소 버튼이 있는 대화상자를 출력하고, 입력한 메세지 내용을 리턴값으로 돌려받는다.</p>
+	<button onclick="testPrompt();">이름입력</button>
+	<div id="area3" class="area"></div>
+	<script type="text/javascript">
+		function testPrompt() {
+			var result = window.prompt("당신의 이름은 무엇인가요?");
+			
+			console.log(result);
+			
+			var area3 = document.getElementById("area3");
+			
+			area3.innerHTML += "앗! 당신이 소문으로만 듣던 " + result + "님 이시군요! 반갑습니다!";
+			/* area3.innerHTML = window.prompt("your name?"); */
+		}
+	</script>
+	
+	<h3>window.prompt를 이용한 숫자 입력 후 연산</h3>
+	<p>window.prompt()는 입력받은 텍스트를 문자열로 취급한다.</p>
+	<div id="area4" class="area"></div>
+	<button onclick="sumTwoNumber();">계산하기</button>
+	<script type="text/javascript">
+		function sumTwoNumber() {
+			var num1 = window.prompt("첫 번째 숫자 입력");
+			var num2 = window.prompt("두 번째 숫자 입력");
+			
+			var sum = Number(num1) + Number(num2);
+			
+			var area4 = document.getElementById("area4");
+			area4.innerHTML = "두 수의 합은 " + sum + "입니다.";
+		}
+	</script>
+</body>
+</html>
