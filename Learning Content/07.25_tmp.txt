@@ -1,0 +1,9 @@
+1. variable and data type
+
+2. String & Math
+
+3. Data casting
+
+4. basic grammar and operator different java
+
+5. array in js
