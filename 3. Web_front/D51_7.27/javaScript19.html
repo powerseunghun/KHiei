@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+	<style>
+		p {
+			width: 500px;
+			height: 100px;
+			background: lightgray;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<h1>함수(Function)</h1>
+	<h3>function 함수명() {소스코드작성} 로 작성해서 실행하는 방법</h3>
+	<button onclick="test1();">실행확인</button>
+	<p id="p1"></p>
+	<script>
+		/* 
+			호이스팅 : onclick이 먼저 나오지만 버튼을 클릭 후 실행 
+			즉 작성이 먼저 된 후에 함수가 호출됨
+		*/
+		function test1() {
+			var p1 = document.getElementById("p1");
+			
+			p1.innerHTML = "test1()함수 실행됨...";
+		}
+	</script>
+	
+	<h3>함수명 = function() {소스코드작성} : 익명함수 (이벤트 핸들러에서 주로 사용)</h3>
+	<p id="p2"></p>
+	<button onclick="test2();">실행확인</button>
+	<script>
+		test2 = function() {
+			var p2 = document.getElementById("p2");
+			
+			p2.innerHTML = "test2() 함수 실행 확인...";
+		}
+	</script>
+	
+	<h3>스스로 실행하는 함수 : (function(){})()</h3>
+	<p id="p3"></p>
+	<script>
+		// 저장하지 않고 호출
+		(function(){
+			var p3 = document.getElementById("p3");
+			p3.innerHTML += "자동으로 혼자 실행됨...<br/>";
+		})();
+		
+		// 저장하고 호출
+		test = (function(){
+			var p3 = document.getElementById("p3");
+			p3.innerHTML += "자동으로 혼자 실행됨...<br/>";
+		});
+		
+		test();
+	</script>
+	
+	<h3>함수의 전달 인자와 매개변수</h3>
+	<button id="btn1">실행확인</button>
+	<p id="p4"></p>
+	<script>
+		function test4(value) {
+			var p4 = document.getElementById("p4");
+			
+			p4.innerHTML += value + "<br/>"
+			
+			console.log(arguments);
+		}
+		
+		document.getElementById("btn1").onclick = function() {
+			// test4(window.prompt("메세지를 입력하세요"));
+			// 매개변수가 2개라도 '안녕하세요' 출력 가능 (자바는 안 됨)
+			// 지정된 매개변수보다 많은 갯수의 인자를 넣는 것을 허용한다.
+			// 단, 초과된 인자는 무시한다.
+			// 하지만 함수에서 arguments 출력해보면 2개가 넘어온 것을 알 수 있음.
+			//test4('안녕하세요.', '반갑습니다.');
+			
+			// value에 값이 아무것도 전달되지 않았기 때문에. undefined
+			test4();
+		}
+	</script>
+	
+	<h3>함수의 리턴 처리</h3>
+	<button onclick="test5();">실행확인</button>
+	<p id="p5"></p>
+	<script>
+		// 반환형 선언부에 따로 안 적어도 됨
+		function returnFunction() {
+			return Math.floor(Math.random() * 100) + 1;
+		}
+		
+		function test5() {
+			var p5 = document.getElementById("p5");
+			
+			var value = returnFunction();
+			p5.innerHTML = value;
+		}
+	</script>
+	
+	<h3>내부(중첩된) 함수 테스트</h3>
+	<label>삼각형 밑변 : </label>
+	<input type="number" min="1" max="100" id="width"><br/>
+	<label>삼각형 높이 : </label>
+	<input type="number" min="1" max="100" id="height"><br/>
+	<button onclick="test6();">실행확인</button>
+	<br/>
+	<p id="p6"></p>
+	<script>
+		function calc(w, h) {
+			function square(x) {
+				return x * x;
+			}
+			return Math.sqrt(square(w) + square(h));
+		}
+		function test6() {
+			var width = document.getElementById("width").value;
+			var height = document.getElementById("height").value;
+			
+			console.log("width : " + width);
+			console.log("height : " + height);
+			
+			var p6 = document.getElementById("p6");
+			
+			p6.innerHTML += "빗변 길이 : " + calc(width, height);
+		}
+	</script>
+</body>
+</html>
