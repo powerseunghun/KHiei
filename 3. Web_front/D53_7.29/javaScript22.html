@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+</head>
+<body>
+	<h1>JavaScript 내장함수</h1>
+	<h3>인코딩과 디코딩에 관련된 내장 함수</h3>
+	<p>
+	escape() : 영문 알파벳, 숫자, 일부 특수문자(@, *, -, _, ., /)를 제외한 모든 문자를 인코딩한다.<br>
+	encodeURI() : escape()에서 인터넷 주소에 사용되는 일부 특수문자(:, /, =, ?, &)는 변환하지 않는다.<br>
+	encodeURIComponent() : 알파벳과 숫자를 제외한 모든 문자를 인코딩한다.(UTF-8)<br>
+	
+	unescape() : escape()로 인코딩 된 문자를 디코딩한다.<br>
+	decodeURI() : encodeURI()로 인코딩된 문자를 디코딩한다.<br>
+	decodeURIComponent() : encodeURIComponent()로 인코딩된 문자를 디코딩한다.
+	</p>
+	
+	<button onclick="test1();">실행확인</button>
+	<div id="area1" class="area"></div>
+	
+	<script type="text/javascript">
+		function test1() {
+			var area1 = document.getElementById("area1");
+			
+			var uri = "http://www.naver.com?test=한글입니다";
+			
+			var esURI = escape(uri);
+			var enURI = encodeURI(uri);
+			var enURIC = encodeURIComponent(uri);
+			
+			area1.innerHTML += "escape() : " + esURI + "<br>";
+			area1.innerHTML += "encodeURI() : " + enURI + "<br>";
+			area1.innerHTML += "encodeURIComponet() : " + enURIC + "<br>";
+			
+			area1.innerHTML += "unescape() : " + unescape(esURI) + "<br>";
+			area1.innerHTML += "decodeURI() : " + decodeURI(enURI) + "<br>";
+			area1.innerHTML += "decodeURIComponet() : " + decodeURIComponent(enURIC) + "<br>";
+		}
+	</script>	
+	<hr>
+	<h3>eval() 함수</h3>
+	<p>문자열을 자바스크립트 코드로 변환해 실행하는 함수이다.</p>
+	<label>숫자 1 입력 : </label>
+	<input type="text" id="number1"><br>
+	<label>숫자 2 입력 : </label>
+	<input type="text" id="number2"><br>
+	<button onclick="test2();">실행확인</button>
+	<div id="area2" class="area"></div>
+	<script>
+
+		function test2() {
+			var testEval = "";
+			
+			testEval += "var number1 = parseInt(document.getElementById('number1').value);";
+			testEval += "var number2 = parseInt(document.getElementById('number2').value);";
+			
+			testEval += "var sum = 0;";
+			testEval += "sum = number1 + number2;";
+			
+			testEval += "document.getElementById('area2').innerHTML += "
+						+ "number1 + ' 과' + number2 + '의 합은 : ' + sum + '입니다.';";
+						
+			eval(testEval);
+		}
+	</script>
+	<hr>
+	
+	<h3>infinity와 NaN</h3>
+	<p>대부분의 프로그래밍 언어는 0으로 숫자를 나누면 자동으로 오류가 발생하고 프로그램이 종료된다.<br>
+	하지만 자바스크립트는 0으로 숫자를 나누면 infinity라는 값이 들어가게 된다.<br>
+	또한 자바스크립트가 표현할 수 없는 숫자는 NaN(Not A Number)으로 표시된다.</p> 
+	<button onclick="test3();">실행확인</button>
+	<div id="area3" class="area"></div>
+	<script>
+		function test3() {
+			var num1 = 10 / 0;
+			var num2 = 10/ 'a';
+			
+			var area3 = document.getElementById("area3");
+			
+			area3.innerHTML += "10 / 0 : " + num1 + "<br>";
+			area3.innerHTML += "10 / 'a' : " + num2 + "<br>";
+			
+			area3.innerHTML += "isFinitie() : " + isFinite(num3) + "<br>";
+			area3.innerHTML += "num1 == Infinity : " + (num1 == Infinity) + "<br>";
+			
+			var num3 = -10 / 0;
+			
+			// 양의 무한대인지 음의 무한대인지를...
+			area3.innerHTML += "num3 == Infinity : " + (num3 == Infinity) + "<br>";
+			area3.innerHTML += "num3 == -Infinity : " + (num3 == -Infinity) + "<br>";
+			
+			// NaN은 일반 비교연산자로 비교할 수 없다.
+			/* if(num2 == NaN) {
+				area3.innerHTML += "num2는 숫자가 아닙니다.<br>";
+			}
+			else {
+				area3.innerHTML += "num2는 숫자입니다.<br>";
+			} */
+			
+			if(isNaN(num2)) {
+				area3.innerHTML += "num2는 숫자가 아닙니다.<br>";
+			}
+			else {
+				area3.innerHTML += "num2는 숫자입니다.<br>";
+			}
+		}
+	</script>
+	<hr>
+	<h3>Number(), parseInt(), parseFloat()</h3>
+	<p>Number() : 숫자로 바꿀 수 없으면 무조건 NaN을 리턴한다.<br>
+	parseInt(), parseFloat() : 숫자로 변환할 수 있는 부분까지는 모두 숫자로 변환한다.</p>
+	<button onclick="test4();">실행확인</button>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4() {
+			var area4 = document.getElementById("area4");
+			
+			var money = '1000원';
+			var dollor = '1.5$';
+			
+			area4.innerHTML += "Number(money) : " + Number(money) + "<br>";
+			area4.innerHTML += "Number(dollor) : " + Number(dollor) + "<br>";
+			
+			area4.innerHTML += "parseInt(money) : " + parseInt(money) + "<br>";
+			area4.innerHTML += "parseInt(dollor) : " + parseInt(dollor) + "<br>";
+			
+			area4.innerHTML += "parseFloat(money) : " + parseFloat(money) + "<br>";
+			area4.innerHTML += "parseFloat(dollor) : " + parseFloat(dollor) + "<br>";
+			
+			// e는 10의 제곱을 의미 주의해서 써야함.
+			area4.innerHTML += "parseFloat('25.273e5') : " + parseFloat('25.273e5') + "<br>";
+		}
+	</script>
+</body>
+</html>
