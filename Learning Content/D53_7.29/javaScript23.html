@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area {
+		background: lightgray;
+		border: 1px solid black;
+		height: 200px;
+	}
+	
+	.area-big {
+		background: lightgray;
+		border: 1px solid black;
+		height: 400px;
+	}
+</style>
+</head>
+<body>
+	<h1>객체</h1>
+	<h3>객체의 선언 및 호출</h3>
+	<p>객체는 키값을 사용하여 속성을 식별한다.<br>
+	중괄호{}를 사용해서 객체를 생성하고, 속성에는 모든 자료형이 올 수 있다.</p>
+	<button onclick="test1();">실행확인</button>
+	<div id="area1" class="area-big"></div>
+	<script>
+		function test1() {
+			var product = {
+					pName: 'Dry Mango',
+					type: 'Pickel',
+					ingredient:['mango', 'sugar'],
+					origin: 'Pilippines',
+			};
+			console.log(product);
+			
+			var area1 = document.getElementById("area1");
+			
+			area1.innerHTML += "product : " + product + "<br>";
+			
+			area1.innerHTML += "<b>객체명.속성명으로 접근하기</b><br>";
+			area1.innerHTML += "product.pName : " + product.pName + "<br>";
+			area1.innerHTML += "product.type : " + product.type + "<br>";
+			area1.innerHTML += "proudct.ingredient : " + product.ingredient + "<br>";
+			area1.innerHTML += "product.ingredient[0] : " + product.ingredient[0] + "<br>";
+			area1.innerHTML += "proudct.origin : " + product.origin + "<br>";
+			
+			area1.innerHTML += "<b>객체명['속성명']으로 접근하기</b><br>";
+			area1.innerHTML += "product['pName'] : " + product['pName'] + "<br>";
+			area1.innerHTML += "product['type'] : " + product['type'] + "<br>";
+			area1.innerHTML += "product['ingredient'][0] : " + product['ingredient'][0] + "<br>";
+			area1.innerHTML += "product['ingredient'][1] : " + product['ingredient'][1] + "<br>";
+			area1.innerHTML += "product['origin'] : " + product['origin'] + "<br>";
+			
+		}
+	</script>
+	
+	<hr>
+	<h3>객체의 식별자 테스트</h3>
+	<button onclick="test2();">실행확인</button>
+	<div id="area2" class="area"></div>
+	<script>
+		function test2() {
+			var objTest = {
+					/* I Love:"김진호",
+					I Hate !@#$%^&*():"유정훈" */
+					'I Love':"김진호",
+					'I Hate !@#$%^&*()':"유정훈"
+			};
+			console.log(objTest);
+			
+			var area2 = document.getElementById("area2");
+			
+			//대괄호를 이용해야 접근 가능 . 이 아니라 (특수문자 등)
+			/* area2.innerHTML += "I Love : " + objTest.'I Love' + "<br>";
+			area2.innerHTML += "I Hate !@#$%^&*() : " + objTest.'I Hate !@#$%^&*() + "<br>"' */
+			area2.innerHTML += "I Love : " + objTest['I Love'] + "<br>";
+			area2.innerHTML += "I Hate !@#$%^&*() : " + objTest['I Hate !@#$%^&*()'] + "<br>";
+		}
+	</script>
+	
+	<hr>
+	<h3>객체의 메소드 속성</h3>
+	<p>객체의 속성 중 함수 자료형인 속성을 메소드라고 한다.</p>
+	<button onclick="test3();">실행확인</button>
+	<div id="area3" class="area"></div>
+	<script>
+		function test3() {
+			var area3 = document.getElementById("area3");
+			
+			var dog = {
+					name: "바둑이",
+					eat:function(food) {
+						area3.innerHTML += this.name + '가' + food + "을 먹고 있네요~ 멍멍멍멍!!!";
+					}
+			};
+			dog.eat('밥');
+		}
+	</script>
+	<h3>객체와 반복문</h3>
+	<button onclick="test4();">실행확인</button>
+	<p>객체의 속성을 살펴볼 때는 단순 for문으로 접근이 불가능하고<br>
+	for in문을 사용해야 한다.</p>
+	<div id="area4" class="area"></div>
+	<script>
+		function test4() {
+			var game = {
+					title: 'DIABLO 3',
+					price: '35,000원',
+					language: '한국어지원',
+					supportOS: 'window 32/64',
+					service: true
+			};
+			var area4 = document.getElementById("area4");
+			
+			for (var key in game) {
+				area4.innerHTML += key + " : " + game[key] + "<br>";
+			}
+		}
+	</script>
+	<hr>
+	<h3>in과 with</h3>
+	<p>
+	in : 객체 내부에 해당 속성이 있는지 확인하는 키워드<br>
+	with : 코드를 줄여주는 키워드, 호출 시 객체명을 생략할 수 있게 한다.
+	</p>
+	<label>이름 : </label>
+	<input type="text" id="name"><br>
+	<label>국어 : </label>
+	<input type="text" id="kor"><br>
+	<label>영어 : </label>
+	<input type="text" id="eng"><br>
+	<label>수학 : </label>
+	<input type="text" id="math"><br>
+	<button onclick="test5();">실행확인</button>
+	<div id="area5" class="area-big"></div>
+	<script>
+		function test5() {
+			var area5 = document.getElementById("area5");
+			
+			var name = document.getElementById("name").value;
+			var kor = parseInt(document.getElementById("kor").value);
+			var eng = parseInt(document.getElementById("eng").value);
+			var math = parseInt(document.getElementById("math").value);
+			
+			var student = {
+					name:name,
+					kor:kor,
+					eng:eng,
+					math:math
+			};
+			
+			console.log(student);
+			
+			area5.innerHTML += "student객체에 name 속성이 있는지 확인 : " + ('name' in student) + "<br>";
+			area5.innerHTML += "student객체에 sum 속성이 있는지 확인 : " + ('sum' in student) + "<br>";
+			
+			with(student) {
+				area5.innerHTML += "학생이름 : " + name + "<br>";
+				area5.innerHTML += "국어점수 : " + kor + "<br>";
+				area5.innerHTML += "수학점수 : " + math + "<br>";
+				area5.innerHTML += "영어점수 : " + eng + "<br>";
+				area5.innerHTML += "총점 : " + (kor + eng + math) + "<br>";
+				area5.innerHTML += "평균 : " + ((kor + eng + math) / 3) + "<br>"
+			}
+		}
+	</script>
+	<hr>
+	<h3>객체의 속성 추가와 제거</h3>
+	<p>처음 객체 생성 이후 속성을 추가하거나 제거하는 것을 동적으로 속성을 추가하거나 혹은 제거한다고 한다.</p>
+	<button onclick="test6();">실행확인</button>
+	<div id="area6" class="area"></div>
+	<script>
+		function test6() {
+			var area6 = document.getElementById("area6");
+			
+			var student = {};
+			console.log(student);
+			
+			student.name = "김진호";
+			student.hobby = "낚시";
+			student.strength = "귀여움";
+			student.dream = "어부";
+			
+			student.toString = function() {
+				var str = "";
+				
+				for (var key in this) {
+					if(key != 'toString') {
+						str += key + " : " + this[key] + "<br>";
+					}
+				}
+				return str;
+			}
+			area6.innerHTML = "student : " + student + "<br>";
+			
+			delete(student.strength);
+			
+			area6.innerHTML = student;
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area {
+		background: lightgray;
+		border: 1px solid black;
+		height: 210px;
+	}
+</style>
+</head>
+<body>
+	<h1>날짜 처리 관련 객체</h1>
+	<h3>Date 내장 객체</h3>
+	<button onclick="test1()">실행확인</button>
+	<div id="area1" class="area"></div>
+	<script>
+		function test1() {
+			var area1 = document.getElementById("area1");
+			
+			// GMT 시간대(그리니치 평균 시)
+			var date1 = new Date();
+			var date2 = new Date('January 17');
+			var date3 = new Date('January 17, 2018');
+			var date4 = new Date('January 17, 2018 17:31:30');
+			area1.innerHTML += "Date() : " + date1 + "<br>";
+			area1.innerHTML += "date2 : " + date2 + "<br>";
+			area1.innerHTML += "date3 : " + date3 + "<br>";
+			area1.innerHTML += "date4 : " + date4 + "<br>";
+			
+			// UTC 시간대
+			var date5 = new Date(2018, 0, 17);
+			var date6 = new Date(2018, 0, 17, 17, 30, 30, 1);
+			
+			area1.innerHTML += "date5 : " + date5 + "<br>";
+			area1.innerHTML += "date6 : " + date6 + "<br>";
+		}
+	</script>
+	
+	<hr>
+	
+	<button onclick="test2();">실행확인</button>
+	<div id="area2" class="area"></div>
+	<script>
+		function test2() {
+			var area2 = document.getElementById("area2");
+			
+			var date = new Date();
+			
+			area2.innerHTML += "getFullYear() : " + date.getFullYear() + "<br>";
+			area2.innerHTML += "getMonth() : " + (date.getMonth() + 1) + "<br>";
+			area2.innerHTML += "getDate() : " + date.getDate() + "<br>";
+			area2.innerHTML += "getDay() : " + date.getDay() + "<br>";
+			
+			area2.innerHTML += "getHours() : " + date.getHours() + "<br>";
+			area2.innerHTML += "getMinutes() : " + date.getMinutes() + "<br>";
+			area2.innerHTML += "getSecondes() : " + date.getSeconds() + "<br>";
+			area2.innerHTML += "getMilliseconds() : " + date.getMilliseconds() + "<br>";
+			
+			area2.innerHTML += "getTime() : " + date.getTime() + "<br>";
+			
+			var date2 = new Date(new Date(2018, 0, 17, 17, 31, 30, 1).getTime());
+			area2.innerHTML += "date2 : " + date2 + "<br>";
+			
+		}
+	</script>
+	<h3>날짜 사이의 간격 구하기</h3>
+	<button onclick="test3();">실행확인</button>
+	<script>
+		function test3() {
+			var now = new Date();
+			var start = new Date(2020, 4, 15, 9, 0, 0);
+			
+			var interval = now.getTime() - start.getTime();
+			console.log(interval);
+			interval = Math.floor(interval / (1000 * 60 * 60 * 24));
+			
+			alert("개강한지 " + interval + "일 째!");
+			
+			// 종강 일자는 2020년 12월 16일 15:30:00
+			// 종강까지 남은 일수는?
+			
+			var now2 = new Date(2020, 11, 16, 15, 30, 0);
+			var start2 = new Date(2020, 4, 15, 9, 0, 0);
+			
+			var interval2 = now2.getTime() - start2.getTime();
+			interval2 = Math.floor(interval2 / (1000 * 60 * 60 * 24));
+			
+			alert("종강까지 남은 일수는 " + (interval2 - interval) + "일 입니다!");
+		}
+	</script>
+</body>
+</html>

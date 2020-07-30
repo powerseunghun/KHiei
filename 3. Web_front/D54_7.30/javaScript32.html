@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="/js/js/jsTest02.js"></script>
+</head>
+<body>
+	<h1>javascript Test</h1>
+	
+	<fieldset>
+		<legend>문제 1</legend>
+		<h3>input 태그에 숫자를 입력하고 버튼을 클릭하면, +10이 된 값을 alert으로 출력해 주세요</h3>
+		<h5>(input 값 : 5 -> alert으로 출력된 값 : 15 )</h5>
+		<input type="text" id="q01"/>
+		<button onclick="answer01();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 2</legend>
+		<h3>input 태그에 숫자를 입력하고 버튼을 클릭하였을 때, 해당 값이 존재하는지 여부를 출력해 주세요</h3>
+		<h5>(숫자가 있으면 : 해당 숫자 출력, 숫자가 없으면 "해당 숫자는 존재하지 않습니다." 출력)</h5>
+		<input type="text" id="inputVal"/>
+		<button onclick="answer02();">클릭</button>
+		<pre id="numberArr">1 2 4 7 11 16</pre>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 3</legend>
+		<h3>라디오버튼을 클릭하면 value값을 이용해 해당 사이트로 이동해 주세요.</h3>
+		<h5>(location.href 이용)</h5>
+		<input type="radio" name="rdo" value="naver" onclick="answer03();"/>네이버<br/>
+		<input type="radio" name="rdo" value="google" onclick="answer03();"/>구글<br/>
+		<input type="radio" name="rdo" value="w3schools" onclick="answer03();"/>w3schools<br/>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 4</legend>
+		<h3>버튼을 클릭하면, 첫번째 체크박스의 항목을 체크해 주세요</h3>
+		<input type="checkbox" name="subject" />Java<br/>
+		<input type="checkbox" name="subject" />DataBase<br/>
+		<input type="checkbox" name="subject" />Web<br/>
+		<button onclick="answer04();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 5</legend>
+		<h3>1~45 사이의 랜덤한 숫자를 생성해서 input 태그 안에 입력해 주세요.</h3>
+		랜덤 : <input type="text" readonly="readonly" id="randomVAl" />
+		<button onclick="answer05();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 6</legend>
+		<h3>open 메소드를 사용하여, 선택한 select태그의 해당 패이지를 팝업창으로 실행해 주세요.</h3>
+		<h5>(새창, 새탭도 가능)</h5>
+		<select multiple="multiple" id="selOption">
+			<option value="naver">네이버</option>
+			<option value="google">구글</option>
+			<option value="w3schools">w3schools</option>
+		</select>
+		<button onclick="answer06();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 7</legend>
+		<h3>숫자를 유니코드 순으로 출력해 주세요.</h3>
+		숫자 : <span id="numList">1,2,3,11,21,22,214,6</span>
+		<button onclick="answer07();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 8</legend>
+		<h3>선택한 날짜부터 3일 후의 요일을 alert으로 출력해 주세요.</h3>
+		<h5>(getDate(), setDate(), switch를 사용해 주세요)</h5>
+		<input type="date" id="inputDate" />
+		<button onclick="answer08();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 9</legend>
+		<h3>원하는 구구단을 입력하고, alert으로 해당 단을 출력해 주세요.</h3>
+		<h5>입력 예 : 5 -> 출력 : 5*1=5 5*2=10 ...</h5>
+		<input type="text" id="dan" />
+		<button onclick="answer09();">클릭</button>
+	</fieldset>
+	
+	<fieldset>
+		<legend>문제 10</legend>
+		<h3>input 태그에 입력한 문자열과, span 태그의 문자열을 합쳐서 출력해 주세요.</h3>
+		<h5>입력 예 : 홍길동 -> 출력 : "홍길동 님, 안녕하세요"</h5>
+		<input type="text" id="inputName"/>
+		<span id="addVal">님, 안녕하세요</span>
+		<button onclick="answer10();">클릭</button>
+	</fieldset>
+	
+</body>
+</html>

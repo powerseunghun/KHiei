@@ -1,1 +1,9 @@
-1. 
+1. Date related Object
+
+2. window object
+
+3. geolocation
+
+4. DOM(Document Object Model)
+
+5. js total practice

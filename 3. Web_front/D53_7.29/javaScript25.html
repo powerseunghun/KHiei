@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	.area {
+		height:100px;
+		background:lightgray;
+		border: 1px solid black;
+	}
+</style>
+</head>
+<body>
+	<h1>객체 관련 키워드</h1>
+	<h3>new 키워드</h3>
+	<button onclick="test1();">new 확인하기</button>
+	<div id="area1" class="area"></div>
+	<script>
+		function Duck(firstName, lastName) {
+			this.firstName = firstName;
+			this.lastName = lastName;
+		}
+		
+		function test1() {
+			var duck1 = new Duck("Mc", "Donald");
+			
+			var area2 = document.getElementById("area1");
+			
+			area1.innerHTML += "첫 번째 오리의 full name은 " + duck1.firstName + duck1.lastName + "입니다.<br>";
+			
+			// new 키워드가 없다면 단지 Duck() 함수를 호출한 것 뿐
+			// 그렇다면 this 키워드는 윈도우를 가리키게 되고 전역변수가 됨
+			var duck2 = /* new  */Duck("Donald", "Trump");
+			/* area1.innerHTML += "두 번째 오리의  full name은 " + duck2.firstName + duck2.lastName + "입니다.<br>"; */
+			area1.innerHTML += "두 번째 오리의 full name은 " + window.firstName + this.lastName + "입니다.<br>";
+			
+			
+		}
+	</script>
+</body>
+</html>
