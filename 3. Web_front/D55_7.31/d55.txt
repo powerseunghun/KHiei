@@ -6,3 +6,5 @@
 3. database modeling
 
 4. planning
+
+5. project related..
