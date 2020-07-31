@@ -1,0 +1,8 @@
+1. event
+ - traditional event model, inline event model, standard event model
+
+2. regular expression..
+
+3. database modeling
+
+4. planning

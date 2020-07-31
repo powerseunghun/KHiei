@@ -1,0 +1,23 @@
+1. new 키워드와 생성자 함수 사용 예시
+ - new 키워드의 부재는 그냥 함수처리 (this-> 윈도우 돔을 가리킨다.)(javaScript25.html)
+
+2. 날짜 관련 객체
+ - Date(), 날짜 사이의 간격 구하기 (getTime())이용.
+
+3. window 객체
+ - BOM(Browser Object Model), DOM(Document Object Model)
+ - window.open(), window.setTimeOut(); window.setInterval(), clearInterval()
+ - 스크린 객체
+ - navigator 객체
+
+4. 지오로케이션
+ - 현재 위치 가져오기,, getCurrentPosition()
+ - position.coords.latitude, position.coords.longitude
+
+5. DOM
+ - 노드 생성 -> document.createElement("h3");
+ - 텍스트 노드 생성 -> document.createTextNode("HH");
+ - document.createElement("h3").appendChild(document.createTextNode());
+ - 속성 추가 setAttribute()
+ - 삭제 -> remove();
+6. total practice
