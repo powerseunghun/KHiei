@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>입력 양식 필터 선택자</h1>
+	<h3>checkbox의 상태에 따른 선택자</h3>
+	<label>취미 : </label>
+	<input type="checkbox" name="hobby" value="game" id="game">
+	<label for="game">게임</label>
+	<input type="checkbox" name="hobby" value="movie" id="movie">
+	<label for="movie">영화</label>
+	<input type="checkbox" name="hobby" value="music" id="music">
+	<label for="music">음악</label>
+	<script>
+		$("input:checkbox").change(checkedChange);
+		
+		function checkedChange() {
+			console.log($(this).prop("checked"));
+			
+			if($(this).prop("checked")) {
+				$(this).css({"width":"50px", "height":"50px"});
+			} else {
+				$(this).css({"width":"15px", "height":"15px"});
+			}
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>select > option 태그의 상태에 대한 선택자</h3>
+	<select id="national">
+		<option value="한국" selected>한국</option>
+		<option value="미국">미국</option>
+		<option value="일본">일본</option>
+		<option value="중국">중국</option>
+	</select>
+	<label>선택한 나라 : </label><input type="text" id="result">
+	<script>
+		// onload function
+		$(selectChange);
+		
+		$("#national").change(selectChange);
+		function selectChange() {
+			var value = $("option:selected").val();
+			/* $("#result").attr("value", value); */
+			$("#result").val(value);
+		}
+	</script>
+	
+	<hr>
+	
+	<h3>input 상태에 대한 선택자</h3>
+	<label>활성화 텍스트상자 : </label><input type="text"><br/>
+	<label>비활성화 텍스트상자 : </label><input type="text" disabled id="cha"><br/>
+	<label>활성화 버튼 : </label><input type="button" value="활성화"><br/>
+	<label>비활성화 버튼 : </label><input type="button" value="비활성화" disabled><br/>
+	<script>
+		$(function() {
+			$("input:enabled").css("background", "yellow");
+			$("input:disabled").css("background", "red");
+		})
+		
+	</script>
+	
+	<hr>
+	
+	<h3>필터 선택자</h3>
+	<table>
+		<tr><th>이름</th><th>혈액형</th><th>지역</th></tr>
+		<tr><td>김진호</td><td>AAA형</td><td>남양주</td></tr>
+		<tr><td>유병승</td><td>AB형</td><td>안산</td></tr>
+		<tr><td>유정훈</td><td>B형</td><td>전주</td></tr>
+		<tr><td>노민수</td><td>B형</td><td>인천</td></tr>
+		<tr><td>김동현</td><td>A형</td><td>서울</td></tr>
+		<tr><td>유승제</td><td>O형</td><td>서울</td></tr>
+		<tr><td colspan="2" style="text-align:center;">총원</td><td>6</td></tr>
+	</table>
+	<script>
+		$(function() {
+			$("tr:odd").css("background", "yellow");
+			$("tr:even").css("background", "yellow");
+			$("tr:first").css("background", "black").css("color", "white");
+			$("tr:last").css("background", "orangered").css("color", "white");
+		})
+	</script>
+</body>
+</html>

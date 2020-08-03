@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>입력 양식 필터 선택자</h1>
+	<p>input 태그의 type 속성에 따라 문서 객체 선택 가능</p>
+	<label>텍스트 상자 : </label><input type="text"><br/>
+	<label>버튼 : </label><input type="button"><br/>
+	<label>체크박스 : </label><input type="checkbox"><br/>
+	<label>파일 : </label><input type="file"><br/>
+	<label>이미지 : </label><input type="image" src="../image/flower1.PNG"><br/>
+	<label>패스워드 : </label><input type="password"><br/>
+	<label>라디오버튼 : </label><input type="radio"><br/>
+	<label>리셋버튼 : </label><input type="reset"><br/>
+	<label>submit 버튼 : </label><input type="submit"><br/>
+	<script>
+		$(function() {
+			$("input:text").css("background", "red");
+			
+			$("input:button").attr("value", "왕버튼").css({"width":"200px", "height":"100px"});
+			
+			$("input:checkbox").attr("checked", true).css({"width":"50px", "height":"50px"});
+			
+			$("input:file").css("background", "yellowgreen");
+			
+			$("input:image").mouseenter(function(){
+				$(this).attr("src", "../image/river1.PNG");
+			}).mouseout(function(){
+				$(this).attr("src", "../image/flower1.PNG");
+			});
+			
+			$("input:password").css("background", "yellow");
+			
+			$("input:radio").attr("checked", true);
+			
+			$("input:reset").css({"background":"blue", "color":"white"});
+			$("input:submit").css("background", "purple").css("color","white");
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function clear() {
+		$("table *").removeAttr("style");
+	}
+	function click1() {
+		clear();
+		$("tr:nth-child(2) td").not(":first").css("color", "white");
+		/* $("tr:nth-child(2) td").filter(function(idx) {
+			return idx === 1 || idx === 2
+		}).css("color", "red"); */
+	}
+	
+	function click2() {
+		clear();
+		$("tr:nth-child(3) td").not(":first").css("color", "white");
+	}
+	function click3() {
+		clear();
+		console.log($("tr td").filter(function(somang) {
+			return somang === 1 || somang === 4;
+		}).css("color", "yellow"));
+	}
+	function click4() {
+		clear();
+		$("tr td").filter(function(somang) {
+			return somang === 2 || somang === 5;
+		}).css("color", "yellow");
+	}
+</script>
+</head>
+<body>
+	<table border="1">
+		<tr><th>구분</th><th>A</th><th>B</th></tr>
+		<tr><td>가</td><td>10</td><td>10</td></tr>
+		<tr><td>나</td><td>20</td><td>20</td></tr>
+		<tr><td>계</td><td>30</td><td>30</td></tr>
+	</table>
+	<input type="button" value="[가]색 변경" onclick="click1()"/>
+	<input type="button" value="[나]색 변경" onclick="click2()"/>
+	<input type="button" value="[A]색 변경" onclick="click3()"/>
+	<input type="button" value="[B]색 변경" onclick="click4()"/>
+</body>
+</html>
