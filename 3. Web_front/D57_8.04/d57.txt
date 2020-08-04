@@ -1,0 +1,15 @@
+1. Function Type Filter Selector
+
+2. exploration method
+ - Ancestors
+ - Descendants
+ - sideways
+
+3. Filter practice 1, 2
+
+4. JQuery Method
+
+5. content add Method
+
+-- responsive web .. jquery mobile
+-- xmind tool -> mind map 

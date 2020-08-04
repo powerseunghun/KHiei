@@ -1,0 +1,33 @@
+1. 함수 형태의 필터선택자
+ - eq(), nth-child(), gt(), lt(), contains(), has(), not()..
+ - filter(function() {}), flter(:even...)
+2. 순회(탐색) 메소드
+ - Ancestors (선택된 요소의 상위 요소를 선택할 수 있는 메소드)
+   - .parent(), .parents(), .parentsUntil()
+
+ - Descendants (선택된 요소의 하위 요소를 선택할 수 있는 메소드)
+   - .children(), .find(),
+
+ - Sideways
+   - sibilings(), siblings(tagname)
+   - next(), nextAll(), nextUntil()
+   - prev(), prevAll(), prevUntil()
+
+3. Filter 실습1, 2
+
+4. 제이쿼리 메소드
+ - each(), is(), ** $.noConflict()
+   - <!-- <script src="jquery-1.11.1.js">
+		var jb = jQuery.noConflict();
+	</script>
+	<script src="jquery-2.1.1.js">
+		var hs = jQuery.noConflict();
+	</script>
+	 -->
+ - attr(), css()
+
+5. content 추가 메소드
+ - html(), text()
+
+-- 반응형으로 만든다면 jquery mobile도 확인..
+-- xmind 툴 이용해서 마인드맵 해보기도 좋다.
