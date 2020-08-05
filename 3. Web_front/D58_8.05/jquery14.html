@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	/* onload function 안하면 동작 안함 */
+	$("#test1").click(function() {
+		alert("이벤트 동작");
+	});
+</script>
+<style>
+	#test2, #test3 {
+		width: 300px;
+		height: 300px;
+		background:orangered;
+	}
+</style>
+</head>
+<body>
+	<h1>이벤트</h1>
+	<h3>이벤트 연결 메소드</h3>
+	<h4>bind() : 현재 존재하는 문서 객체에만 이벤트 연결<br>
+	unbind() : bind()로 연결된 이벤트 제거</h4>
+	<h1 id="test1">마우스를 올려보세요.</h1>
+	<!-- <head>에다가 밑의 스크립트를 넣으면 작동 안함-->
+	<!-- 왜냐하면 헤드를 읽고 나서 바디가 업로드 되니까 선택자가 선택 안하고 
+	없는 엘리멘트에 이벤트 부여 함. 그래서 <head>에 작성하면 온로드 function 사용해야함
+	$(function(){})
+	body에서 <script>먼저 선언 하고 엘리멘트 들을 사용하면 마찬가지로 안댐 
+	onload function 사용해야함 -->
+	<!-- <script>
+		$("#test1").click(function() {
+			alert("이벤트 동작");
+		});
+	</script> -->
+	
+	<script>
+		$("#test1").bind('mouseenter', function(){
+			$(this).css({"background":"black", "color":"hotpink"});
+		}).bind('mouseleave', function() {
+			$(this).css({"background":"white", "color":"black"});
+		});
+		
+		$("#test1").bind('click', function() {
+			$(this).unbind('mouseenter')
+				   .unbind('mouseleave')
+				   .css({"background":"white", "color":"black"});
+		});
+	</script>
+	
+	<h4>on() : bind() 대신에 on()으로 대체됨<br>
+	off() : on()으로 연결된 이벤트 제거</h4>
+	<div id="test2">기본상태</div>
+	<script>
+		$(function() {
+			$("#test2").on({'mouseenter':function(){
+				$(this).css({"background":"yellowgreen"}).text("마우스 올라감");
+			}, 'mouseleave':function(){
+				$(this).css({"background":"yellow"}).text("마우스 내려감");
+			}, 'click':function(){
+				$(this).off('mouseenter').off('mouseleave').css({"background":"orangered"}).text("기본상태");
+			}});
+		});
+	</script>
+	
+	<hr>
+	
+	<div id="test3">기본상태</div>
+	<script>
+		// 2번째 매개변수에 객체 넣을 수 있음
+		// 그 값은 event.data.키
+		$(function() {
+			$("#test3").on("click", {name: "김진호"}, function(event) {
+				alert(event.data.name + "님 환영합니다!");
+			});
+		})
+	</script>
+	
+	<hr>
+	
+	<div id="wrap">
+		<h2>Header</h2>
+	</div>
+	<script>
+		$(function() {
+			/* 생성되는 Header - 1은 이벤트가 안 된다. */
+			/* $("h2").on("click", function() { */
+			$(document).on("click", "h2", function(){
+				var length = $("h2").length;
+				var targetHTML = $(this).html();
+				
+				$("#wrap").append("<h2>" + targetHTML + " - " + length + "</h2>");
+			});
+		});
+	</script>
+	
+	<hr>
+	
+	<h3>one() 메소드</h3>
+	<p>이벤트를 한 번만 연결할 때 사용한다.</p>
+	<h1 id="test4">클릭하세요</h1>
+	<script>
+		$(function(){
+			$("#test4").one('click', function() {
+				alert("이벤트 발생!");
+			});
+		});
+		
+	</script>
+</body>
+</html>

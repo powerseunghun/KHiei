@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.trg {
+		width: 100px;
+		height: 100px;
+		background: orangered;
+		text-align: center;
+		cursor: pointer;
+	}
+	
+	.increment {
+		background: black;
+		width: 100px;
+		height: 25px;
+		color: white;
+		text-align: center;
+		margin-top: 20px;
+		cursor: pointer;
+	}
+</style>
+</head>
+<body>
+	<h1>입력 양식 이벤트</h1>
+	<div id="wrap">
+		<h1 align="center">회원 가입</h1>
+		<form>
+			<table align="center">
+				<tr>
+					<td><label>이름</label></td>
+					<td><input type="text" name="name" id="name"></td>
+					<td><label id="nameResult"></label></td>
+				</tr>
+				<tr>
+					<td><label>아이디</label></td>
+					<td><input type="text" name="userId" id="userId"></td>
+					<td><input type="button" value="중복확인"></td>
+				</tr>
+				<tr>
+					<td><label>비밀번호</label></td>
+					<td><input type="password" name="pwd1" id="pwd1"></td>
+				</tr>
+				<tr>
+					<td><label>비밀번호확인</label></td>
+					<td><input type="password" name="pwd2" id="pwd2"></td>
+					<td><label id="pwdResult"></label></td>
+				</tr>
+				<tr>
+					<td><label>이메일</label></td>
+					<td><input type="email" name="email" id="email"></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="reset"> &nbsp; <input type="submit"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<script>
+		$(function() {
+			$("#name").change(function() {
+				var regExp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/g;
+				
+				if(!regExp.test($(this).val())) {
+					$("#nameResult").html("한글로 입력하세요").css({"color":"red"});
+					$(this).focus().css("background", "red");
+				}
+				
+				else {
+					$("#nameResult").html("정상입력").css({"color":"green"});
+					$(this).css("background", "white");
+				}
+			});
+			
+			/* focus() -> 요소의 마지막에 커서 들어감 */
+			/* select() -> 요소가 전체 선택이 되며 포커스 */
+			$("#pwd2").change(function() {
+				if($("#pwd1").val() != $(this).val()) {
+					$("#pwdResult").html("비밀번호가 불일치").css("color", "red");
+					$("#pwd2").val('');
+					$("#pwd2").select();
+				}
+				else {
+					$("#pwdResult").html("비밀번호일치").css("color", "green");
+				}
+			});
+			
+			$("#name").focus(function(){
+				console.log("focus 이벤트 가동");
+			}).focusin(function() {
+				console.log("focusin 이벤트 가동");
+			}).focusout(function() {
+				console.log("focusout 이벤트 가동");
+			}).blur(function() {
+				console.log("blur 이벤트 가동");
+			}).change(function() {
+				console.log("change 이벤트 가동");
+			}).select(function() {
+				console.log("select 이벤트 가동");
+			});
+		})
+	</script>
+	
+	<hr>
+	
+	<h3>trigger() 메소드</h3>
+	<div class="trg" id="trg">
+		click Num : <span>0</span>
+	</div>
+	<div class="increment" id="increment">click me!</div>
+	<script>
+		var ctn = 0;
+		
+		$(function() {
+			$("#trg").on("click", function() {
+				ctn++;
+				$("span").text(ctn);
+			});
+			
+			$("increment").click(function() {
+				$("#trg").trigger('click');
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.item {
+		width: 200px;
+		height: 200px;
+		display: inline-block;
+		margin: 5px;
+	}
+	
+	#item1 {
+		background: yellowgreen;
+	}
+	#item2 {
+		background: cyan;
+	}
+	#item3 {
+		background: blue;
+	}
+	
+	
+</style>
+</head>
+<body>
+	<h1>객체 생성 및 제거 메소드</h1>
+	<h1>삽입메소드 part1</h1>
+	
+	<p>
+	<!-- A : <p></p> -->
+	<!-- B : <h1>asd</h1> -->
+	$(A).appendTo(B) : A를 B의 요소 내 뒷부분에 추가<br/>
+	<!-- <h1>asd<p></p></h1> -->
+	$(B).prependTo(B) : A를 B의 요소 내 앞부분에 추가<br/>
+	<!-- <h1><p></p>asd</h1> -->
+	$(A).insertAfter(B) : A를 B의 요소 뒤에 추가<br/>
+	<!-- <h1>asd</h1><p></p> -->
+	$(A).insertBefore(b) : A를 B의 요소 앞에 추가
+	<!-- <p></p><h1>asd</h1> --> 
+	</p>
+	<h1 id="test1"><label>기준텍스트</label></h1>
+	<h1 id="test2"><label>기준텍스트</label></h1>
+	<h1 id="test3"><label>기준텍스트</label></h1>
+	<h1 id="test4"><label>기준텍스트</label></h1>
+	<script type="text/javascript">
+		/*$(function() {
+			var interval = setInterval(function(){
+				// $("<label>") 이 의미는 create element
+				// 만들자마자 선택
+				$("<label>추가텍스트</label>").appendTo($("#test1"));
+				$("<label>추가텍스트</label>").prependTo($("#test2"));
+				$("<label>추가텍스트</label>").insertAfter($("#test3"));
+				$("<label>추가텍스트</label>").insertBefore($("#test4"));
+				
+				setTimeout(function(){
+					clearInterval(interval);
+				}, 5000);				
+			}, 1000);
+		});*/
+	</script>
+	
+	<hr>
+	
+	<h3>삽입메소드 part2</h3>
+	<p>
+	<!-- A : <h1>asd</h1> -->
+	<!-- B : <p></p> -->
+	$(A).append(B) : B를 A요소 내 뒷부분에 추가<br/>
+	<!-- <h1>asd<p></p></h1> -->
+	$(B).prepend(B) : B를 A요소 내 앞부분에 추가<br/>
+	<!-- <h1><p></p>asd</h1> -->
+	$(A).after(B) : B를 A요소 뒤에 추가<br/>
+	<!-- <h1>asd</h1><p></p> -->
+	$(A).before(b) : B를 A요소 앞에 추가
+	<!-- <p></p><h1>asd</h1> --> 
+	</p>
+	<h1 id="test5"><label>기준텍스트</label></h1>
+	<h1 id="test6"><label>기준텍스트</label></h1>
+	<h1 id="test7"><label>기준텍스트</label></h1>
+	<h1 id="test8"><label>기준텍스트</label></h1>
+	<script>
+		/* $(function() {
+			var interval = setInterval(function(){
+				
+				$("#test5").append("<label>추가텍스트</label>");
+				$("#test6").prepend("<label>추가텍스트</label>");
+				$("#test7").after("<label>추가텍스트</label>");
+				$("#test8").before("<label>추가텍스트</label>");
+				
+				
+				setTimeout(function(){
+					clearInterval(interval);
+				}, 5000);
+			}, 1000);
+		}); */
+	</script>
+	
+	<hr>
+	
+	<h3>객체 복사와 제거 메소드</h3>
+	<p>clone() : html 내부에 있는 요소를 복사하는 메소드<br>
+	clone(true) : 이벤트까지 같이 복사</p>
+	<div id="clone-test">
+		<div id="item1" class="item">
+			<button class="copy">복사하기</button>
+			<button class="delete">삭제하기</button>		
+		</div>
+		<div id="item2" class="item">
+			<button class="copy">복사하기</button>
+			<button class="delete">삭제하기</button>		
+		</div>
+		<div id="item3" class="item">
+			<button class="copy">복사하기</button>
+			<button class="delete">삭제하기</button>		
+		</div>
+	</div>
+	<div id="result"></div>
+	<script>
+		$(function() {
+			$(".copy").click(function() {
+				$(this).parent().clone(true).appendTo($("#result"));
+			})
+		})
+		$(function() {
+			$('.delete').click(function() {
+				$(this).parent().remove();
+			})
+		})
+	</script>
+</body>
+</html>

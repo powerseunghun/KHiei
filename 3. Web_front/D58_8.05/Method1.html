@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>03-1</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function add() {
+		var title = $("input[name=title]");
+		var content = $("input[name=content]");
+		var owner = $("input[name=owner]");
+		
+		var result = "<tr><td>" + title.val() + "</td><td>" 
+		+ content.val() + "</td><td>" + owner.val() + "</td></tr>";
+		$("table").append(result);
+		
+		title.val('');
+		content.val('');
+		owner.val('');
+	}
+</script>
+</head>
+<body>
+	제목 : <input type="text" name="title"><br/>
+	내용 : <input type="text" name="content"><br/>
+	작성자 : <input type="text" name="owner"><br/>
+	<input type="button" value="테이블에 추가" onclick="add();"/>
+	<table border="1">
+		<tr>
+			<td>제목</td>
+			<td>내용</td>
+			<td>작성자</td>
+		</tr>
+	</table>
+</body>
+</html>

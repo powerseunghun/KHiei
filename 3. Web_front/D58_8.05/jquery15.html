@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.outer {
+		width: 200px;
+		height: 200px;
+		background: orange;
+		padding: 50px;
+	}
+	
+	.inner {
+		width: 100%;
+		height: 100%;
+		background:red;
+	}
+	
+	.reverse {
+		background: black;
+		color: white;
+	}
+</style>
+</head>
+<body>
+	<h1 id="test">이벤트 연결 메소드</h1>
+	<h3>mouseover와 mouseenter</h3>
+	<div class="outer">
+		<div class="inner">
+		</div>
+	</div>
+	<script>
+		//mouseover는 요소에 마우스 포인터가 진입하면 발생(직접 이벤트를 걸지 않은 자식 요소에 포인터가 와도 발생함)
+		//mouseenter는 오로지 자기 자신에게 마우스 포인터가 와야만 발생함
+		$(function() {
+			$(".outer").mouseover(function() {
+				console.log("OVER!");
+			});
+			$(".outer").mouseenter(function() {
+				console.log("ENTER!");
+			});
+		});
+	</script>
+	
+	<h3>hover() 메소드</h3>
+	<p>mouseenter와 mouseleave를 동시에 사용하는 효과이다.</p>
+	<h1 id="test1">hover 테스트</h1>
+	<script>
+		$(function() {
+			$("#test1").hover(function(){
+				$(this).addClass("reverse");
+			}, function(){
+				$(this).removeClass("reverse");
+			});
+		});
+	</script>
+	
+	<h3>키보드 이벤트</h3>
+	<p>
+	keydown : 키보드가 눌려질 때<br/>
+	keypress : 글자가 입력될 때<br/>
+	keyup : 키보드가 떼어질 때
+	</p>
+	<h4>동적으로 글자 수 세기</h4>
+	<div>
+		<h1 id="counter">150</h1>
+		<textarea cols="70" rows="5"></textarea>
+	</div>
+	<script>
+		$(function() {
+			$("textarea").keydown(function() {
+				var inputLength = $(this).val().length;
+				var remain = 150 - inputLength;
+				
+				$("#counter").html(remain);
+				
+				if(remain >= 0) {
+					$("#counter").css("color", "black");
+				}
+				else {
+					$("#counter").css("color", "red");
+				}
+			})
+		});
+	</script>
+</body>
+</html>

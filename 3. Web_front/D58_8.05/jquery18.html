@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>hide and show</h1>
+	<button id="show">보여주기</button>
+	<button id="hide">숨기기</button>
+	<img id="river" src="../image/river1.PNG">
+	<hr>
+	<script>
+		// show, hide, toggle
+		// fadeIn, fadeOut, fadeToggle
+		// 매개변수는 ms만큼
+		$(function() {
+			$("#show").click(function() {
+				$("#river").show(1000);
+			});
+			$("#hide").click(function() {
+				$("#river").hide(1000);
+			});
+		});
+	</script>
+	
+	<hr>
+	
+	<button id="toggle">토글하기</button>
+	<br>
+	<img id="forest" src="../image/forest1.PNG">
+	<script>
+		$(function() {
+			$("#toggle").click(function(){
+				$("#forest").toggle(3000, function() {
+					alert("토글완료");
+				});
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,1 +1,28 @@
-1. 
+1. 객체 생성 및 추가 메소드
+ - appendTo(), prependTo(), insertAfter(), insertBefore()
+ - append(), prepend(), after(), before()
+
+2. 객체 복사와 제거 메소드
+ - clone() / clone(true) -> true = 이벤트까지 복사
+ - remove()
+
+3. 이벤트 연결, 해제
+ - bind(), unbind()
+ - 대체 -> on(), off()
+ - event.data.name (event -> 매개변수)
+ - $(document).on("click") .... 클릭 이벤트도 넘어감
+ - one() : 이벤트 한 번만 연결
+
+4. 이벤트 연결
+ - mouseover와 mouseenter 차이
+ - hover() -> mouseenter + mouseleave
+ - 키보드 이벤트 : keydown, keypress, keyup
+
+5. 입력 양식 이벤트
+ - change() 정규식 사용..가능
+ - focus(), focusin(), blur(), change(), select()
+ - trigger() 
+
+6. Effect 메소드
+ - 페이지 내에 애니메이션 효과를 만들기 위한 메소드 집합
+ - animate() 메소드
