@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.high_light_0 {background:yellow;}
+	.high_light_1 {background:orange;}
+	.high_light_2 {background:blue;}
+	.high_light_3 {background:green;}
+	.high_light_4 {background:red;}
+</style>
+</head>
+<body>
+	<h1>메소드</h1>
+	<h3>each() 메소드</h3>
+	<script>
+		/* $(function() {
+			var arr = [
+				{name: "A", link: "http://www.naver.com"},
+				{name: "B", link: "http://www.google.com"},
+				{name: "C", link: "http://www.w3c.com"},
+				{name: "D", link: "http://www.daum.net"}
+			];
+			
+			$.each(arr, function(index, item) {
+				var output = "";
+				output += "<a href=" + item.link + ">";
+				output += "<h2>" + item.name + "</h2>";
+				output += "</a>";
+				
+				document.body.innerHTML += output;
+			})
+		}) */
+	</script>
+	
+	<hr>
+	
+	<div id="wrap">
+		<h1>item-0</h1>
+		<h1>item-1</h1>
+		<h1>item-2</h1>
+		<h1>item-3</h1>
+		<h1 id="item4">item-4</h1>
+	</div>
+	<script>
+		$(function() {
+			$("#wrap").children().each(function(index, item) {
+				$(this).addClass("high_light_" + index);
+				
+				if (index == 2) {
+					$(this).removeClass("high_light_" + index);
+				}
+			});
+			
+			$("#item4").click(function() {
+				$(this).toggleClass("high_light_4");
+			});
+		});
+	</script>
+	
+	<hr>
+	
+	<h3>문서 객체의 특징 판별 : is()</h3>
+	<p>매개변수로 선택자를 입력하고, 선택한 객체가 선택자와 일치하는지 판단하여 boolean 리턴</p>
+	<h3 class="test">test1</h3>
+	<h3>test2</h3>
+	<h3 class="test">test3</h3>
+	<h3 class="test">test4</h3>
+	<h3>test5</h3>
+	<h3 class="test">test6</h3>
+	<script>
+		$(function() {
+			$("h3").each(function() {
+				if($(this).is(".test")) {
+					$(this).css({"background":"orangered", "color":"white"});
+				}
+			})
+		});
+	</script>
+	
+	<hr>
+	
+	<h3>$.noConflict()</h3>
+	<p>다른 라이브러리나 다른 버젼의 jquery와 '$'의 충돌 방지를 위해 사용한다.</p>
+	<h1 id="test">noConflict() 테스트</h1>
+	<script>
+		/* var jq = $.noConflict();
+		jq(function(){
+			jq("#test").css("color","red");
+		}); */
+	</script>
+	
+	<!-- <script src="jquery-1.11.1.js">
+		var jb = jQuery.noConflict();
+	</script>
+	<script src="jquery-2.1.1.js">
+		var hs = jQuery.noConflict();
+	</script>
+	 -->
+</body>
+</html>

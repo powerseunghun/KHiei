@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02-1</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function checkBtn() {
+		/* var check = $("input[name=check]").filter(function(idx) {
+			return true;
+		});
+		
+		for(var i = 0; i < check.length; i++) {
+			if (check[i].checked) {
+				console.log(check[i].value + "번!");
+			}
+		} */
+		
+		var check = $("input[name=check]");
+		check.filter(function(idx) {
+			if (check[idx].checked) {
+				console.log($(this).val() + "번!");
+				console.log(check[idx] + "번!!")
+			}
+		})
+	}
+</script>
+</head>
+<body>
+	<input type="checkbox" name="check" value="1" /> 1번
+	<input type="checkbox" name="check" value="2" /> 2번
+	<input type="checkbox" name="check" value="3" /> 3번
+	<input type="checkbox" name="check" value="4" /> 4번
+	<br />
+	<input type="button" value="체크 버튼 확인" onclick="checkBtn()"/>
+</body>
+</html>

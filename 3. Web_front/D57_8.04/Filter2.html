@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>02-2</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+	function selectBtn() {
+		console.log();
+		var arr = $("option");
+		arr.filter(function(idx) {
+			if (arr[idx].selected) {
+				/* console.log(arr[idx].innerHTML); */
+				console.log($(this));
+			}
+		}); 
+	}
+</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>content 추가 메소드</h1>
+	<h3>html() 메소드</h3>
+	<p>선택된 요소의 content 영역을 리턴하거나 설정하는 메소드이다.<br/>
+	html 태그를 태그로 인식한다.</p>
+	<h1 id="test1"><a>네이버로 이동</a></h1>
+	<h1 id="test2"></h1>
+	<script>
+		$(function() {
+			var temp = $("#test1").html();
+			console.log(temp);
+			
+			$("#test2").html(temp);
+			
+			$("#test2").children("a").attr("href", "http://www.naver.com");
+		});
+	</script>
+	
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<script>
+		$(function() {
+			$(".test").html(function(index, html) {
+				$(this).html("<h1>test" + index + "</h1>");
+			});
+		});
+	</script>
+	<hr>
+	<h3>text() 메소드</h3>
+	<p>선택된 요소의 content 영역을 리턴하거나 설정하는 메소드이다.<br/>
+	html 태그를 문자로 인식한다.</p>
+	<h1 id="test3"><a>구글로 이동</a></h1>
+	<h1 id="test4"></h1>
+	<script>
+		$(function(){
+			var temp = $("#test3").html();
+			console.log(temp);
+			$("#test4").text(temp);
+		});
+	</script>
+	<div class="test2"></div>
+	<div class="test2"></div>
+	<div class="test2"></div>
+	<script>
+		$(function(){
+			$(".test2").text(function(index, text){
+				$(this).text("<h1>test" + index + "</h1>");
+			})
+		});
+	</script>
+</body>
+</html>

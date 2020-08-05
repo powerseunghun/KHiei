@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.first {color:red;}
+	.second {color:hotpink;}
+	.third {color:orange;}
+</style>
+</head>
+<body>
+	<h1>메소드2</h1>
+	<h3>attr() 메소드</h3>
+	<p>문서 객체의 특정 속성값을 알아내거나 속성을 추가할 때 사용한다.</p>
+	<img src="../image/flower1.PNG" width="400px" height="300px">
+	<script>
+		// attr()과 prop()
+		// attr() -> html 속성
+		// prop() -> js 객체 속성
+		$(function() {
+			var img = $("img").attr("src");
+			console.log("사진 경로 : " + img);
+			
+			$("img").attr("src", "../image/flower2.PNG");	
+			
+			$("img").attr("src", function(index, value) {
+				console.log(index, value);
+			});
+			
+			$("img").attr({"width":"100px", "height":"50px"});
+			
+			$("img").removeAttr("width").removeAttr("height");
+			
+		});
+	</script>
+	
+	<hr>
+	
+	<h3>css() 메소드</h3>
+	<p>문서 객체의 스타일을 검사하거나 변경할 때 사용한다.</p>
+	<h1 class="first">test-0</h1>
+	<h1 class="second">test-1</h1>
+	<h1 class="third">test-2</h1>
+	<script>
+		$(function() {
+			console.log($(".first").css("color"));
+			
+			$(".first").css("color", "black");
+			
+			$(".first").css("color", function(index, value) {
+				console.log(index, value);
+			});
+			
+			$(".first").css({"font-size":"3em", "background":"orange"});
+			
+		});
+	</script>
+</body>
+</html>

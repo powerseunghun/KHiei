@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+	<h1>필터링 메소드</h1>
+	<h1>메소드 형태로 제공되는 선택자</h1>
+	<h4 class="test">test-1</h4>
+	<h4 class="test">test-2</h4>
+	<h4 class="test">test-3</h4>
+	<h4 class="test">test-4</h4>
+	<h4>test-5</h4>
+	<h4 class="test">test-6</h4>
+	<script>
+		$(function() {
+			$("h4").filter(":even").css({"background":"orangered", "color":"white"});
+			
+			$("h4").filter(function(index) {
+				return index % 2 == 1;
+			}).css({"background":"yellowgreen", "color":"black"});
+			
+			$("h4").first().css("font-size", "1.5em");
+			$("h4").last().text("마지막요소");
+			
+			/* $("h4").eq(3).text($("h4").eq(2).text()); */
+			$("h4").eq(3).text("eq()로 선택됨");
+			
+			$("h4").not(".test").css({"background":"yellow", "color":"black"});
+		});
+		
+	</script>
+</body>
+</html>

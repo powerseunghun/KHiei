@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<style>
+	.wrap, .wrap * {
+		display: block;
+		border: 1px solid lightgray;
+		color: lightgray;
+		padding: 5px;
+		margin: 15px;
+	}
+</style>
+</head>
+<body>
+	<h1>순회(탐색) 메소드</h1>
+	<h3>sideways 메소드</h3>
+	<div class="wrap">div(parent)
+		<p>p</p>
+		<span>span</span>
+		<h2>h2</h2>
+		<h3>h3</h3>
+		<p>p</p>
+	</div>
+	<script>
+		$("h2").siblings().css({"color":"red", "border":"2px solid red"});
+		$("h2").siblings("p").css({"color":"orange", "border":"2px solid orange"});
+		
+		$("h2").next().css({"color":"blue", "border":"2px solid blue"});
+		$("h2").nextAll().css({"font-size":"2em"});
+		$("h2").nextUntil("p").css("border", "dashed");
+		
+		$("h2").prev().css("background", "yellow");
+		$("h2").prevAll().css({"background":"cyan"});
+		$("h2").prevUntil("p").css("border", "dotted");
+	</script>
+</body>
+</html>
