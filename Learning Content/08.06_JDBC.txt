@@ -1,1 +1,14 @@
-1. 
+1. ORACLE UTF-8  뷰 UTF-8 이므로 자바도 똑같이 UTF-8로 셋팅
+ - Workspace, Web -> html, css, jsp.. , Spelling, JSON  UTF-8로
+ - ojdbc6.jar 파일은 Properties에서 AddExternal JAR
+
+2. JDBC 개요
+ - JDBC 코딩 절차
+
+3. Model -> VO, DAO
+ - VO -> Value Object = DTO(Data Transfer Object)
+   - 여러 타입의 값을 하나로 묶어 모든 계층에 데이터를 전달할 목적으로 사용되는 객체
+ - DAO -> Database Access Object
+   - 데이베이스 접근용 메소드를 모아놓은 클래스
+
+4. SELECT 문 실습

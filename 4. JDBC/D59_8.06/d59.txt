@@ -1,0 +1,10 @@
+1. Eclipse setting
+
+2. JDBC Outline
+ - JDBC Coding Sequence
+
+3. model -> vo, dao
+ - vo -> value object = dto(data transfer object)
+ - dao -> database access object
+
+4. select practice
