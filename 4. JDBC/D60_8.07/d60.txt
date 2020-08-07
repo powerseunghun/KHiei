@@ -1,0 +1,8 @@
+1. execute query update syntax
+ - insert, update, delete syntax
+
+2. Statement -> PreParedStatement
+ - forward value index of ?
+
+3. Other Computer's DB Access to remote
+ - CRUD Test

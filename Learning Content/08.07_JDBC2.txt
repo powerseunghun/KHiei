@@ -1,0 +1,8 @@
+1. executeQuery 업데이트문
+ - INSERT, UPDATE, DELETE문
+
+2. Statement -> PreParedStatement
+ - ? 의 인덱스 값에다 value 전달
+
+3. 원격으로 다른 컴퓨터 데이터 베이스 접속
+ - CRUD 실행
