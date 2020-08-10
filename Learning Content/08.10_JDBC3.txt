@@ -1,8 +1,32 @@
-1. executeQuery 업데이트문
- - INSERT, UPDATE, DELETE문
+1. 커넥션 중복, 자원 close() 분리 
 
-2. Statement -> PreParedStatement
- - ? 의 인덱스 값에다 value 전달
+2. MVC 패턴 (other design pattern : MVP, MVVM)
+ - Model : 백그라운드에서 동작하는 로직..
+   - java
+ - View : 사용자에게 입력.. 입력 값들을 Controller로 넘김 
+   - HTML, CSS, JavaScript
+ - Controller : 입력 값 검증, service로 넘기기 전 가공, View로 리턴될 때 적합한 페이지로 연결
+   - Servlet
 
-3. 원격으로 다른 컴퓨터 데이터 베이스 접속
- - CRUD 실행
+ - service -> business logic(제일 중요 로직) 
+    - MVC 가장 핵심 Connection, Trasaction
+ - dao -> CRUD.. Service쪽으로 return
+
+ - view -> controller -> service -> dao -> DB
+ - return : DB -> dao -> service -> controller -> view
+
+--- Flow Chart ---
+--- Controller 에서 서비스 호출한 후에 서비스는 DAO 호출 후 리턴 받는다.
+--- Service는 DAO로 부터 리턴 받은 값을 다시 Controller로 리턴.
+--- 즉 처음 Controller에서 Service를 호출했을 때 리턴 받는 값으로
+--- 사용자에게 view 표시
+--- * Connection은 Service에서 관리할 수 있도록.. (connection 할당 받고 close하고)
+
+ - service 쪽에 비지니스 로직을 뭉쳐놓으면
+ - 만약 service에서 바로 DB를 가면 1번 서비스 작업하고 업데이트 코드 작성
+ - 2번 코드 작성하고 업데이트 코드 작성.. 이렇게 코드 중복
+ - 서비스 쪽에서는 필요한 dao를 묶어서 로직을 만든다
+ - 1번만 만들어놨던 dao 메소드를 재사용 가능
+
+ - 장점 : 요소들이 서로 영향이 적도록 분리
+ - 단점 : 뷰와 모델의 의존성
