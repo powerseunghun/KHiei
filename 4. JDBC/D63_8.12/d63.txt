@@ -5,3 +5,5 @@
    - query
       - query use property value(read in property)
 
+2. use GUI Component DB Interaction
+
