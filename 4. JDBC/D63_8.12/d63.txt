@@ -1,0 +1,7 @@
+1. properties file use
+   - DB ACCESS
+      - Class.forName() -> driver name
+      - DriverManager.getConnection() -> url, user, password
+   - query
+      - query use property value(read in property)
+
