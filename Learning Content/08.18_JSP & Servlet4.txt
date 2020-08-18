@@ -1,1 +1,32 @@
-1. Servlet & JSP DIFF
+1. JSP 내장 객체 7가지
+ - request : HttpServletRequest 객체 참조 변수
+ - response : HttpServletResponse 객체 참조 변수
+ - out : jspWriter 객체 참조 변수
+ - session : HttpSession 객체 참조 변수
+ - application : Servletcontext 객체 참조 변수
+ - page : 현재 JSP 페이지에 대한 참조 변수
+ - exception : 발생하는 Throwable 객체에 대한 참조 변수
+
+2. JSP 개요
+* JSP와 서블릿 차이
+ - Servlet은 수정 시 서버 재부팅 필요
+ - jsp는 동적으로 컴파일하기 때문에 서버 리붓 필요없이 유연한 작업
+
+- Servlet -> Business 로직 처리에 적합
+- JSP -> 화면 로직 처리에 적합
+- .jsp -> _jsp.java (Translate)
+- _jsp.java -> .class (Compile)
+- 태그 엘리먼트 5가지와지시자 종류 include, page, taglib
+- JSP도 서블릿이다..
+
+sendRedirect -> 301 / 302 코드 (Redirect 코드)
+ex ) insert 요청 시 연결을 끊어주지 않고 새로고침 하면
+계속 insert되니까 Redirect로 끊어줘야 한다.
+요청 -> 응답(Redirect) -> 응답 받았으므로 다시 요청 -> 응답(view페이지)
+req 다르다
+       &ref -> 3_1. 서블릿과 메소드 PDF
+
+3. JSP 디버깅 에러 발생 시점
+ - Translate -> JSP 태그 오류
+ - Compile -> Java 문법 오류
+ - Run -> Runtime Exception

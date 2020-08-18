@@ -1,1 +1,7 @@
-1. 
+1. JSP embedded Object
+
+2. JSP Outline
+ /therefore -> JSP is Servlet too
+
+3. JSP Debugging Error Occured Point
+
