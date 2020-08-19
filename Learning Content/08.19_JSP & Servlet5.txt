@@ -1,1 +1,10 @@
-1. 
+1. 데이터베이스 연결
+
+static 메소드 자동으로 처리할 수 있는
+preference -> favorite
+
+String fileName = JDBCTemplate.class.getResource("/sql/driver.properties").getPath();
+		System.out.println(fileName);
+작성한 properties랑
+WEB-INF의 properties랑 다를 때
+서버 멈추고 비우고 WEB-INF/classes 지우고 Project -> Clean
