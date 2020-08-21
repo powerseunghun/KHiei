@@ -1,0 +1,5 @@
+1. JSP 액션태그
+ - forward, include, useBean, setProperty, getProperty
+
+2. EL(Expression Language)
+ - ${}, ${requestScope.}, ${ requestScope.vo(class).name(field)}
