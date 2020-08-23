@@ -3,3 +3,23 @@
 
 2. EL(Expression Language)
  - ${}, ${requestScope.}, ${ requestScope.vo(class).name(field)}
+ - attribute 우선순위 page > request > session > application
+
+3. junit
+ - Test Driven Development (TDD)
+    - Calculator 클래스가 없을 때, Create Class -> Calculator하고 메소드 오류난 부분 자동완성
+    - 한 가지 케이스라도 통과하기 위해 return 8, -> return first + second;
+    - 이 방식을 junit 프레임워크 사용해서.. 클래스 이름 네이밍 규칙 -> 일반적으로 Test하려는 클래스이름Tests(메소드들의 집합)
+    - 메소드는 무조건 void .. test실행할메소드명_한글로 어떤 매개변수들어가서 결과 확인(배포 안하므로 한글 써도 무방)
+    - Annotation Test(Junit4 library)
+    - assertEquals(기대값, 실제값); & assertEquals(기대값, 실제값, 오차범위)ㅣ
+       - assertEquals(7, result(8), 1) -> true 반환
+    - 결과에 따라 초록색, 빨간색으로 구분되어 나옴
+    - 결과 시나리오를 엑셀에 잘 정리해놓으면..
+
+    - Before Annotation - 보통 셋업할 떄 사용(공통 내용 등)
+    - Before 실행 후 -> test1 실행 -> Before 실행 후-> test2 실행 테스트 실행 전 마다
+
+    - Ignore Annotation - 테스트 하지 않음 Test Annotation이 없으면 목록에도 나오지 않는다.
+
+    - 만약 Before Annotation에서 객체가 잘 생성되었는지 확인해보고 싶다면 assertNotNull()사용.
