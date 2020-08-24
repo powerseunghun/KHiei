@@ -1,0 +1,4 @@
+1. JSTL(JSP Standard Tag Library)
+ - core, formatting, functions
+
+2. Database 모델링
