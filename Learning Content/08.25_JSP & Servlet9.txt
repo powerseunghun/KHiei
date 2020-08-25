@@ -1,3 +1,6 @@
 1. JSP & Servlet 종합
  - 회원가입 부터 로그인 까지
  - 디렉터리 세분화 root context 밑에 resources 외부 자원들(css, js, image들..)
+
+2. 필터 클래스
+ - 한글처리. 로그 등 공통 작업 들 pattern /* 와일드카드로 모두 설정할 수 있도록
