@@ -1,0 +1,3 @@
+1. JSP & Servlet 종합
+ - 회원가입 부터 로그인 까지
+ - 디렉터리 세분화 root context 밑에 resources 외부 자원들(css, js, image들..)
