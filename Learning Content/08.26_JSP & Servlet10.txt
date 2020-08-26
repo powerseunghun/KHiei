@@ -1,0 +1,25 @@
+1. 멤버 회원가입
+ - insertMember
+
+2. 멤버 업데이트
+ - updateMember -> selectChangeMemberInfo  -> return (Member);
+
+3. 필터 우선순위
+ - web.xml로 설정 가능하다, 어노테이션 방식으로는 불가
+
+4. Wrapper (HttpServletRequestWrapper)
+ - 기본 생성자가 아니라 constructor(HttpServletRequest request)
+ - HttpServletRequest 조작하기 위함.(가공 -> 메소드 오버라이딩)
+ - doFilter(request, response)를 doFilter(lw, response)로 호출하면 우리가 만든 lw(login wrapper)가 전달..
+ - getParameter("") 우리가 오버라이딩 한 메소드 사용가능
+
+ - 암호화
+   - apple -> asdfkalsdjfklzxcv 암호화. 평문 -> 다이제스트
+   - asdfkalsdjfklzxcv -> apple 복호화.
+   - 암호화 -> 복호화 양방향 암호화 알고리즘
+   - 암호화 -> 복호화(x) 단방향 암호화 알고리즘
+ - 어떤 단어가 들어오더라도 똑같은 길이의 다이제스트 반환 -> 해시 알고리즘
+ - 비크립트(bcrypt)알고리즘 -> salting(솔팅) 소금 친다..
+
+ - Sha512 -> 단방향 해시 암호화 알고리즘
+ 
