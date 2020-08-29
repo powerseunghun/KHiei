@@ -8,3 +8,6 @@
      - 업데이트 실패하면 조회까지 갈 필요가 없음.
      - SELECT가 INSERT보다 부하가 적고
      - 조회 실패하면 ROLLBACK 되니 증가는 안한다.
+
+-- 폼태그에서 jquery를 사용하여
+ - $("Selector").attr("action", path);로 다른 경로로 submit가능
