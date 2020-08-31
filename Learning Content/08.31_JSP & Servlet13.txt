@@ -1,0 +1,4 @@
+1. 게시판 페이징 처리
+
+* url mapping주소가 유일하지 않다면 톰캣 에러 발ㄹ생
+ - project explorer에서 Deployement Descriptor -> Servlet Mapping에서 목록 확인 가능
