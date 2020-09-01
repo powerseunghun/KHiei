@@ -1,0 +1,31 @@
+1. 사진 게시판
+ - 파일이 있는 경우에 get방식 전송 불가
+ - 폼에 추가 enctype="multipart/form-data" (파일이 있다. 마임타임)
+ - 사진 전송, div 눌러도 파일 업로드 동작하게(jquery)
+   - click 이벤트에 click() 후 input type="file" 숨기기
+ - request.getSession().getServletContext().getRealPath("/") 했을 때 .metadata가 포함된 경로가 나온다면
+   - Tomcat 설정 -> Overview 탭 -> Server Options -> Serve modules without publishing 체크
+ - 파일 업로드 -> cos.jar 라이브러리 사용
+   - MultipartRequest multiRequest = new MultipartRequest(request, filePath, maxSize, "UTF-8", new DefaultFileRenamePolicy());
+   - request : request
+   - filePath : 저장 경로
+   - maxSize : 파일 용량 제한
+   - UTF-8 : 인코딩 방식
+   - DefaultFileRenamePolicy : 파일 이름 변경 정책
+     - 사용자가 올린 파일명을 그대로 저장하지 않는게 일반적이다.
+     - 1. 같은 파일명이 있는 경우 이전 파일을 덮어 쓸 수 있다.
+     - 2. 한글로 된 파일명, 특수 기호나 띄어쓰기 등은 서버에 따라 문제가 생길 수 있다.
+     - DefaultFileRenamePolicy는 cos.jar 안에 존재하는 기본적인 파일 이름을 변경하는 방식이 지정된 클래스이다.
+       - 동작 방식
+       - 같은 파일명이 존재하는지를 검사하고, 있을 경우 파일명 뒤에 숫자를 붙여주는 방식
+       - 예) aaa.zip, aaa1.zip, aaa2.zip..
+     - MyFileRenamePolicy implements FileRenamePolicy 로 리네임 정책 커스텀
+   - 파일에 전송된 이름을 반환 : Enumeration<String> files = multiRequest.getFileNames();
+   - while(files.hasMoreElements()) {
+				String name = files.nextElement();
+
+				System.out.println("name : " + name);
+
+				saveFiles.add(multiRequest.getFilesystemName(name));
+				originFiles.add(multiRequest.getOriginalFileName(name));
+			}

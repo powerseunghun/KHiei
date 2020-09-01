@@ -1,0 +1,2 @@
+1. thumbnail board
+   - detail: Learning Content
