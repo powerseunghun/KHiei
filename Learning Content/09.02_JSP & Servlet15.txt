@@ -1,0 +1,10 @@
+1. 사진 게시판 view
+ - selectOnethumb.. -> 일대다 조인 Board, AttachMent에 나누어서 저장
+ - Board와 Attachment * 4(ArrayList)  Map에 담아서 반환
+ - 파일 다운로드
+   - 스트림 (BufferedInputStream, FileInputStream, ServletOutputStream) 이용
+   - 응답 헤더 설정
+     - response.setContentType("text/plain; charset=UTF-8");
+		 - response.setContentLength((int)downFile.length());
+		 - response.setHeader("Content-Disposition", "attachment; filename=\"" + new String(file.getOriginName().getBytes("UTF-8"), "ISO-8859-1") + "\"");;
+       - "attachment" -> "inline"  미리보기
