@@ -1,0 +1,23 @@
+1. Ajax
+  - 페이지 전체가 아닌 부분 갱신..ex) 깃허브 회원 가입 시 아이디 입력 마다 유효성 검사
+  - 장점 : 페이지 리로딩 없이 처리 .. 빠르다
+  - 단점 : 한 페이지에 지속적으로 사용 시 리소스가 쌓여 페이지 느려짐.. 디버깅 어렵다. 보안에 취약 소스코드 공개.
+    - 리소스 : 서버로부터 응답받는 메세지
+  - JavaScript ajax
+    - XMLHttpRequest 사용한다.. 처리절차 PDF
+  - JQuery ajax 브라우저 호환성 해결 라이브러리 -> JQuery..
+    - $.ajax({}); 꼭 필요한 속성 -> url
+    - 서버에 전달하는 값은 1개 (객체), 전달 받는 값도 1개
+  - Java JSON String to Object -> response.setContentType("application/json; charset=UTF-8");
+    - json 스트링을 리턴 하면 클라이언트 측에서 jsonobject로 인식한다..
+    - toString() 메소드를 JSON String을 리턴할 수 있도록 해놓으면 객체이름 만으로 jsonString 전달 가능
+    - json simple 라이브러리를 이용할 수도 있음. JSON Object 객체를 만들고 put메소드를 통해 키:밸류 쌍 삽입
+      - 그러나 이 방식은 setContentType("application/json; charset=UTF-8");이 없으면 스트링으로
+  - JS JSON String to Object -> JSON.parse(jsonString);
+  - ajax GET 방식인데 왜..?URL ->  개발자모드에서 Network 확인해보면.. 요청 주소 보임.. 숨겨져 있따.
+
+  - JSON String을 []로 감싸서 객체 배열을 만들 수 있다.
+    - JSONArray를 사용해서도 가능.
+    - .add(Object)를 하고.. .toJSONString()으로 JSONString 전송
+    - JSONObject.put(Array)를 여러 번 하여 배열 들을 전송할 수도 있음
+  - mvnrepository에서.. gson library 사용
