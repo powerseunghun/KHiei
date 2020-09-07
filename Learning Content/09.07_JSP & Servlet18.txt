@@ -1,0 +1,8 @@
+1. 세미프로젝트 진행..
+ - adoptionBoard.jsp
+ - missingBoard.jsp
+ - freeBoardWriteForm.jsp
+ - missingBoardWriteForm.jsp
+ - adoptionBoardWriteForm.jsp
+
+ - 뷰페이지 추가 ..
