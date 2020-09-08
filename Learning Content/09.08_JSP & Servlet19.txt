@@ -1,1 +1,8 @@
 1. 세미프로젝트 진행
+- EncodingFilter
+- InsertAdotionBoardServlet
+- SelectAdoptionBoardListServlet
+- SelectFreeBoardListServlet
+지도 API 위 경도,, 전송
+
+추가적으로 DB NULL값들에 대한 writeForm들 validation추가
