@@ -1,0 +1,24 @@
+1. 스프링 세팅 디렉터리 및 구조
+ - src - main - java  ->  자바
+ - src - resources -> 설정파일 ..
+ - src - main - webapp -> 웹 파일들
+ - src - main - webapp - resources -> js, css등
+ - src - main - webapp - WEB-INF - spring -> 스프링 설정파일
+ - target 폴더에는 결과물.. classes등.
+ - project - pom.xml (Project Object Model) 프로젝트 들 관리
+   - <version> SNAPSHOT 개발 중 -> 개발 완료 RELEASE
+   - <dependencies>가 중요.. 라이브러리 관
+     - maven repository에서 가져옴.
+     - maven repository에서 검색해서 라이브러리 추가 가능
+   - <properties> - <java-version>  1.8로 변경
+   - <plugin> - <groupId> org.apache.maven.plugins - <configuration> - <source> <target> - 1.8로 변경
+   - <properties> <org.springframework-version>에 5.2.9.RELEASE로 변경
+     - spring.io 에서 project - spring framework 에서 current 버전 이름 복사. 현재 5.2.9.RELEASE
+
+   - 메이븐 레포지토리 경로
+     - setting.xml에 <localRepository>보면..
+     - home directory (C:\ user\사용자) 에서 .m2 repository가 기본
+     - apache-maven-(version)에 repository 폴더 생성 후 <localRepository>안에 경로 추가
+        - /usr/local/Cellar/maven/3.6.3_1/libexec/repository
+     - sts - preferences에서 Maven - User Setting 에서 user setting - browse를 ....conf/setting.xml열기 해주기
+     - setting.xml <localRepository> 경로 잡아놨으면 레포지토리 자동으로 잡아주는데 잘 못잡으면 update setting, reindex 눌러보기
