@@ -1,0 +1,1 @@
+1. spring setting & directory architecture
