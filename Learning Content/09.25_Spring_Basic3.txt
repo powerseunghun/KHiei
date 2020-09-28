@@ -1,0 +1,32 @@
+1. Spring DI(Dependency Injection)
+ - 결합도.. 만약에 Owner 클래스가 필드로 Dog 가지고 있는데 Cat으로 바꾸면 수정해야할 코드가 많아짐
+ - 자바에서 다형성으로 문제를 해결했었음
+ - 만약 Cat에도 필드가 추가된다면 전체 필드를 사용하는 생성자를 수정해야 하는 등 결합도가 높다
+ - xml방식으로 하면 property 태그만 추가하면 됨.
+ - XML 방식 src - main - resources에 xml 파일 추가
+   - <constructor-arg>를 사용할 경우 (생성자를 통한)
+     - @AllArgsConstructor 있어야 함 (매개변수를 통한 생성자)
+     - 생성자에 있는 값 모두 넣어줘야함
+   - <property>를 사용할 경우 (setter를 통한)
+     - @NoArgsConstructor 있어야 함 (기본 생성자)
+     - 기본 생성자를 통해 객체 생성 후 setter 사용하기 때문
+     - 필요없는 필드는 값 설정하지 않아도 됨.
+   - ApplicationContext context = new GenericXmlApplicationContext("pet-context.xml"(applicationcontext xml file..));
+   - owner = (Owner) context.getBean("owner");
+		 owner = context.getBean("owner", Owner.class); 두 가지 방식으로
+
+   - 결합도.. 만약에 Owner 클래스가 필드로 Dog 가지고 있는데 Cat으로 바꾸면 수정해야할 코드가 많아짐
+     - 자바에서 다형성으로 문제를 해결했었음
+     - 만약 Cat에도 필드가 추가된다면 전체 필드를 사용하는 생성자를 수정해야 하는 등 결합도가 높다
+     - xml방식으로 하면 property 태그만 추가하면 됨.
+   - c, p 네임스페이스... 노테이션 사용
+     - xmlns:c="http://www.springframework.org/schema/c"  constructor-argument
+  	 - xmlns:p="http://www.springframework.org/schema/p"  property
+
+2. Spring Annotation
+  - @Component Bean으로 사용할 때 if class name = Human, id = human
+    - beans의 id="" 명시적으로 해주는 것과 다름
+  - HomeController.java에서 private Human human; 위에 @Autowired
+    - 관계 맺어주는 것 = 와이어링.. 이걸 자동으로 해주겠다.
+    - 없을 경우 null값이 출력된다..
+  - @Autowired, @Component, @Qualifier

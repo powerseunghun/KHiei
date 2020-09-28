@@ -1,0 +1,49 @@
+1. 스프링 basic
+  - classpath : 프로젝트 option + Enter
+    - deployment assembly에 있는 클래스패스들..
+    - resource="classpath:...context.xml"
+    autowired 주석 시 주입 안되면 null pointer
+    @Autowired
+  	public Human(@Qualifier("wizard") Job job) {
+  		this.job = job;
+  	}
+
+2. Spring MVC
+  - request -> Dispatcher Servlet, HandlerMapping(컨트롤러 정보) -> Controller -> Business Logic Exec
+  - Controller -> Dispatcher Servlet -> View Resolever(뷰 선택) -> Client 웹 브라우저
+
+  - web.xml
+    - Dispatcher Servlet -> Front Controller spring 패키지에 있는 거 가져다 씀
+  - servlet-context.xml
+    - Resolves views있고.. annotation-driven
+    - @Controller가 붙어있다면 HandlerMapping에서 관리하는 컨트롤러가 된다.(HomeController포함)
+
+  - @RequestMapping(value="" method=(ex)RequestMethod.GET)로 매핑 설정
+  @RequestMapping(value = "/member/list", method=RequestMethod.GET)
+	public String list() {
+		return "member/list";
+	}
+  servlet-context.xml
+  <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+  에서 앞에 /WEB-INF/views/ 붙이고.. 뒤에 .jsp 붙여서 리턴
+
+  Controller Method1
+  @RequestMapping(value="/member/list")
+  Controller Method2
+  @RequestMapping(value="/member/{id}")
+  라면 Class에 @RequestMapping("/member")해주면
+  value="/list", value="/{id}" 사용 가능
+  {id} -> path variable {} -> placeholder
+
+  클라이언트에서 요청을 입력받는 방법
+  1. 쿼리파라미터로 요청 받기
+    - /member/list?pageNum=2&size=10
+    - @RequestParam 어노테이션을 통해서 사용 가능
+  2. 패스 변수로 요청 받기
+    - 패스에 있는 값을 담아내기 위해 {}플레이스홀더를 사용하여 패스에 있는 값을 담아낸다.
+    - /member/{id}
+    - @PathVariable 어노테이션을 통해서 사용 가능
+  3. form을 통해서 요청 받기
