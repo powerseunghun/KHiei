@@ -1,0 +1,10 @@
+1. Spring Basic
+ - pom.xml dependency Setting
+ - web.xml 설정
+   - 스프링의 코어 : DispatcherServlet -> servlet-context.xml에 설정
+ - root-context 설정
+   - bean태그
+ - 스프링에서 새로운 기능을 쓰고 싶을 때 적용 순서
+   - pom.xml에서 협력업체(dependency) 등록
+   - 설정파일에 도구를 등록
+   - 원하는 곳에서 사용(@Autowired)
