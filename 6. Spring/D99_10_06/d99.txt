@@ -1,0 +1,5 @@
+1. Spring Basic
+ - pom.xml dependency Setting
+ - web.xml 설정
+   - 스프링의 코어 : DispatcherServlet -> servlet-context.xml에 설정
+ - root-context 설정
