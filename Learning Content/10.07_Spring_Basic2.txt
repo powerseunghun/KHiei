@@ -1,0 +1,17 @@
+1. mybatis setting & practice
+ - 스프링의 도움 없이 독자적으로 사용
+   - mybatis 설정 파일, 매퍼 파일 작성
+ - 구문 호출 시 데이터 전달 규칙
+   - 반드시 데이터는 1 묶음으로 전달해야 한다.
+   - (1) Map으로 묶어서 전달
+   - (2) 클래스의 객체로 묶어서 전달
+ - parameterType -> optional 생략 가능
+   - 명시해주는게 좋음 (typealias로 별칭 가능)
+ - <select>의 resultType="vo"
+   - selectList, selectOne처럼 메소드가 구분 되어있기 때문에 list가 아니라 vo로 명시.. setter등.. 자동으로
+   - 단일 조회를 하던.. 리스트 조회를 하던
+     - 자바 리플렉션
+ - like, instr
+   - like : 시작 검색이 빠름. 앞에 %가 붙으면 성능저하가 발생
+   - instr : 전반적인 검색이 빠름
+ - Spring 도움 없이 독자적으로 mybatis CRUD 실행
