@@ -1,1 +1,18 @@
-1. 
+1. Mybatis Select
+ - Lombok @Builder Annotation
+   - Class.Builder().build()
+   - Builder()와 build()사이에 변수명으로 set
+ - mapper CRUD 태그 안에서 <if test="">로 조건에 맞는 쿼리 가능
+ - 복합 조건은 where태그..
+ - 조건 정렬은 order by ${} ${} 정적 바인딩 정수, 스트링
+ - foreach태그로 in절 구현
+ - 단일 조회는 겹치면 오류 발생
+   - Primary Key or Unique
+   - 결과 형태는 VO/DTO
+
+2. Spring with Mybatis
+ - <bean id="" class="org.mybatis.spring.SqlSessionFactoryBean">
+   - <property> dataSource, configlocation, mapperLocations
+     - value="classpath:/" classpath 소스(src)의 최상위 경로
+ - <bean id="" class="org.mybatis.spring.SqlSessionTemplate">
+   - <constructor-arg index="0" ref="SqlSessionFactoryBean's id">
