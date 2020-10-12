@@ -1,0 +1,29 @@
+1. CRUD
+
+컨트롤러(메뉴판)
+- 사용자가 선택하여 요청(주문) 가능
+- 사용자에게 제공하는 기능을 이용할 수 있도록 매핑(메뉴)을 준비
+
+CRUD를 위해 필요한 매핑(메뉴) 정리하기
+- C(insert) 상품 등록(정보 부족) + 추가 페이지 필요
+- R(select) 상품 조회(목록)
+  - R(select) ?번 상품 조회(단일항목) + 추가 페이지 필요
+- U(update) 상품 수정(정보 부족) + 추가 페이지 필요
+- D(delete) 상품 삭제(정보 부족) + 추가 페이지 필요
+      = 총 필요한 매핑(메뉴) 개수 = 9개
+
+상품 등록
+= 정보 입력 매핑    = 정보 등록 처리 매핑
+= /insert[GET]   = /insert[POST]
+
+* Spring Explorer가 제대로 안나오는 경우
+- properties -> srping -> Bean Support에서 설정파일 확인
+  - Scan 누르고 servlet-context.xml , root-context.xml 확인
+- window -> show view -> spring explorer 에서 등록 확인
+  - servlet-context.xml에서 <context:component-scan/> base-package 확인
+  - @Controller 어노테이션 확인, 저장 확인
+  - Maven Update 체크
+
+@RequestParam과 @ModelAttribute
+- @RequestParam은 안들어오면 거절할 수 있음
+- @ModelAttribute 는 쿼리스트링 없어도 들어가짐
