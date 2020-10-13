@@ -1,0 +1,16 @@
+1. 파일업로드
+- application/form-x-www-urlencoded : 이름 하나에 데이터 한 개를 붙여서 보내는 방식(기본방식)
+  - 파일은 정보 많으므로 보낼 수 없음
+- multipart/form-data
+- 파일 업로드가 이루어질 경우 컨트롤러에서는 MultiPartFile형태로 수신한다.
+- servlet-context.xml에 bean 등록(multipartResolver)
+- RequestParam 으로.. ModelAttribue랑은 차이가 있음
+  - ModelAttribute는 덩어리
+  - RequestParam은 이름 가지고 하나.
+- 메뉴 저장 -> 메뉴 이미지(파일 정보) 저장
+
+2. DAO
+- @Repository : 영속성 관리
+  - 파일, 데이터베이스
+- interface -> implements 중계역할.. 추상화 구조를 갖도록 구성
+  - 직접 연결이 아니라 중계하기 때문에 교체가 쉽고 각종 AOP 기능이 적용된다.
