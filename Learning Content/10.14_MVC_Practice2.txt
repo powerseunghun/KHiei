@@ -1,1 +1,29 @@
-1. 
+1. 파일 업로드 복기
+- servlet-context.xml에 beans(multipartResolver) 등록하는 이유
+  - 사용자의 요청시에만 사용하기 때문
+- service, repository를 추상화 구조를 가지도록 하는 이유
+  - 약결합(의존성 약화)
+  - aop등 스프링의 간섭을 위해 후에 배울 proxy 기초
+- ..Service(interface) -> ..ServiceImple
+  - 어노테이션이 impl에 붙어있으므로 ..Service에 @Autowired하면 impl이 할당
+  - Service는 회사, Impl은 직원으로 생각..
+  - @Repository도 마찬가지
+
+2. 파일 다운로드
+- VO 정보 불러오기
+- 실제 파일 불러오기
+- 헤더 추가
+- 파일 전송
+
+3. Controller에서 Service로 이동.. 매개변수와 반환형을 생각 말로 하듯이..
+
+4. 스프링 트랜잭션
+- 트랜잭션 도구 생성 및 설정
+  - 트랜잭션 관련 설정 활성화(tx namespace 설정 후 작성)
+	  - @Transactional 이라는 설정이 정상적으로 작동함
+	- 트랜잭션 관리 도구 등록
+    - org.springframework.jdbc.datasource.DataSourceTransactionManager
+    - 데이터베이스 연결 도구가 주입되어야 함
+- @Transactional 속성
+  - propagation, isolation, Read-only, No-rollback-for-예외
+  - 전파와 격리 나중에..상황
