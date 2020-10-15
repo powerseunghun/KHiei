@@ -1,0 +1,70 @@
+1. 파일 다운로드 복기
+- 클래식 : HttpServletResponse를 직접 제어하여 파일을 전송, 모듈화 힘들며, 스프링 지원 받기 어려움(서블릿/JSP)
+- 스프링 : ResponseEntity<ByteArrayResource>를 DispatcherServlet에 전달
+
+2. 트랜잭션 설정 복기
+- 데이터베이스에 insert, update, delete가 연속적으로 일어나야 할
+  경우 중간에 오류 발생 시 rollback에 대한 처리를 어떻게 할 것인지
+- 순서
+  - spring-tx 의존성 추가
+  - transactionManager 등록
+  - 활성화 태그 : <tx:annotation-driven/>
+  - @Transacational 추가
+
+3. 로깅(Logging)
+- Log(로그)를 남기는 행위
+- 로그(Log)
+  - 발생하는 사건(이벤트)에 대한 기록
+  - 좋은 기록, 안 좋은 기록, 소소한 기록
+  - System.out, System.err 만으로는 기록을 남기거나 관리하는데 한계가 있기 때문
+  - 체계적인 메세지 관리 수행
+  - java.util에도 존재하지만 성능이 그리 좋지 않음
+  - 라이브러리들이 많이 존재(Log4J, Logback)
+  - Spring에서는 모든 종류의 Logging 도구들을 통합해서 slf4j라는 라이브러리로 추상화 해놓았다.
+- Logger : 실제 로그를 남기는 도구
+- Appender : 로그를 남길 위치를 지정하는 도구
+- Message Level : 메세지의 수준(심각도)
+  - TRACE : 직접 작성 불가. 프로그램 내에서 발생하는 사소한 작업들에 대한 기록
+	- DEBUG : 개발자가 개발 당시 필요에 의해서 확인하는 부분에 대한 기록
+	- INFO : 사용자에게 알려줄 정보를 기록하는 용도
+	- WARN : 예외는 발생하지 않지만 지속될 경우 문제가 생기는 경우를 기록하는 용도(ex: 메모리 누수)
+	- ERROR : 프로그램 실행 중에 예외로 인해 중단된 경우를 기록하는 용도(ex: Exception)
+	- FATAL : 직접 작성 불가. 시스템에 치명적인 오류를 기록하는 용도
+
+	- <logger>와 <root>에 보고싶은 메세지의 심각도를 명시할 수 있다.
+    - logger 설정 : 특정 영역(패키지)에 대한 출력 수준을 설정
+    - root(최상위 설정) : logger에서 설정된 내용을 제외하고 나머지가 모두 적용
+	- ex : info 로 설정하면 info와 info보다 심각한 메세지가 나온다(info, warn, error, fatal)
+  - 주요 형식
+  	- 부호는 방향을 의미, 숫자는 자리수를 의미
+  	- %p : priority
+  	- %c : category. 로그 출력을 싫행한 대상의 위치정보를 출력할 자리
+  	- %m : message. 실제 출력 메시지
+  	- %n : new-line
+  	- %d : date. 날짜를 출력할 자리
+
+	- Appender 종류
+  	- ConsoleAppender : 콘솔 출력 도구
+  	- FileAppender : 파일 출력 도구(xml, txt, ...)
+  	- DailyRollingAppender : 날짜별로 용량을 지정해서 출력하는 도구
+
+4. 예외처리
+- @ControllerAdvice : 오류 처리 전담 컨트롤러
+  - 사용자가 요청할 수 없고 컨트롤러에서 오류가 발생하면 자동으로 호출되어야 함
+  - 컨트롤러라고 볼 수는 없지만 비슷한 기능을 가진다.
+  - 컨트롤러에 간섭(Advice)을 수행하는 도구
+- @ExceptionHadler(Exception.class or Throwable)
+  - 내가 만든 코드를 실행 -> Exception
+  - 남이 만든 코드를 실행 -> Throwable(ex: 코테, 오타 났을지도 모름)
+  - 실제로 오류가 발생하면 수행될 매핑과 유사한 형태의 메소드
+
+5. 비밀번호 암호화
+- security-core 의존성 사용
+- 미지의 대상이 내가 관리하는 정보에 접근해도 못 알아보도록 변조/복원하는 과정
+  - 양방향 암호화와 단방향 암호화로 나뉨
+  - 중요한 정보를 저장할 때에는 항상 유출되도 문제가 안 되는 방식을 선정해야함(단방향)
+  - java 표준 라이브러리에도 암호화 알고리즘 라이브러리가 있음
+  - spring에서는 security라는 프레임워크를 만들어 웹 보안의 전반적인 처리를 위임
+  - spring-security에 암호화 알고리즘이 구현되어 있음(Scrypt, Bcrypt, ...)
+- 직접 비교가 아니라 encoder를 통해 비교
+  - encoder.matches(password, result) 무조건 원시 비밀번호가 왼쪽.. 아니면 안 됨
