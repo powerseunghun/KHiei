@@ -1,0 +1,37 @@
+1. 암호화 로그인
+- 암호화 되어 DB에 저장되어 있기 때문에 직접 비교 구문 불가
+- 아이디를 가지고 정보를 불러와 encoder를 이용해서 비교
+- JUnit assert 구문으로 기대치 설정 가능
+
+2. 계층형 조회
+- N개의 게시글의 댓글 조회
+- N개의 게시글 -> N+1번의 Select
+- City, Zone, CityWithZone
+- ResultMap 사용해보자
+
+3. resultMap
+- resultType은 반환되는 데이터의 자료형을 설정
+- resultMap은 반환되는 데이터의 매핑(연결)을 설정
+  - ex : city_no를 no에 넣어라!
+  - 복잡한 데이터(계층형)에 대한 처리도 설정할 수 있음
+- list는 현재는 설정할 수 없으니 구문을 알려줄테니 찾아서 실행해서 넣으세요
+- <collection property="list" column="city_no"
+				javaType="java.util.List" ofType="com.kh.spring12.entity.Zone"
+				select="zoneList">
+  - javaType : java.util.List 형태(javaType) 이며
+  - ofType : 내용물(ofType)로 zone을 가지고 있는
+  - property : list라는 변수(property)에다가
+  - column : city_no라는 항목(column) 값을 이용해서
+  - select : zoomList구문(select) 을 실행하세요
+
+4. Asynchronous processing
+- 아이디 중복검사를 비동기 처리로
+- 비동기 통신은 vanillaJS, jquery, axios 등으로 보낼 수 있다.(선택)
+- regexper.com -> 정규표현식 집어넣고 display 그림으로 보여줌
+- regexr.com -> 정규표현식에 따라 검출되는 것 보여줌.
+- @RestController -> @Controller + @ResponseBody
+  - jsp 없이 데이터만 전송하는 컨트롤러
+  - 최근에 증가 추세인 프론트엔드 프레임워크(React, Vue, Angular, ...)와 세트로 사용
+- 객체 형태 {"key":value}로 만들기 위해 Jackson-databind 의존성 추가
+  - jackson-databind가 있으면 자바의 모든 형태가 전부다 json으로 변환
+	- 없으면 String만 반환 가능
