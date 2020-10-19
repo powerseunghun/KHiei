@@ -1,1 +1,74 @@
-1. 
+1. Middleware
+- 요청 -> DispatcherServlet 사이 간섭하는 필터
+
+- 컨트롤러 실행 전 -> (컨트롤러 실행 후 -> 뷰 실행 전) -> 뷰 실행 후 이 3단계를 간섭하는 인터셉터
+
+- DispatcherServlet, root-context.xml, ...Controller, ... jsp 가 스프링 관련.
+- 즉 인터셉터는 스프링 내부에 배치, 필터는 스프링 외부에 배치
+
+2. Filter
+- 필터 설정 방법
+  - web.xml <filter> 설정
+  - WebFilter annotation (classic filter)
+    - urlpatterns 2가지
+      - *가 마지막에 배치되는 경우(특정 영역을 검사)
+      - *가 첫번째에 배치되는 경우(확장자 검사)
+      - * 사용 안하는 경우(일일이 페이지 지정)
+    - Spring에서 관리가 안되기 때문에 @Autowired 등 스프링 기능 모두 사용 불가
+- 스프링에서 제공하는 필터 등록법
+  - Filter는 Servlet/JSP 규약 상 무조건 web.xml에 등록하도록 되어 있다.
+  - 상속은 동일하게 받지만 @WebFilter가 아니라 Spring Bean으로 등록해야 한다
+  - 실제 형태가 아니라 가짜 필터를 등록(프록시 필터)
+  - 문제점 : 모든 annotation 등록이 servlet-context.xml에 된다는 것
+		- 원하는 파일로 자동으로 나눠서 등록되도록 구분할 필요가 있다.
+		- @Controller : servlet-context.xml에 등록(요청 처리)
+		- @Service : root-context.xml, 요청과 무관하게 실행이 가능해야 한다.
+		- @Repository : root-context.xml
+		- @Component : root-context.xml
+  - servlet-context.xml
+    - com.kh.spring14는 기본 필터 제외하고 @Controller만 불러오도록
+      - <context:component-scan base-package="com.kh.spring14" use-default-filters="false">
+      - <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+      - </context:component-scan>
+
+  - root-context.xml
+    - context 모듈(namespace 에서 추가)
+    - 기본 필터로 모두 불러온 뒤 @Controller만 제외하도록
+      - <context:component-scan base-package="com.kh.spring14" use-default-filters="false">
+  		- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+  	  - </context:component-scan>
+
+  - web.xml에 필터 등록
+    - 어떤 필터든지 스프링에서 등록할 경우 형태가 고정
+		- org.springframework.web.filter.DelegatingFilterProxy
+    - 이름은 무조건 등록시킬 필터의 bean id 를 적도록 되어있다.
+      - @Component("beanid") 명시하지 않으면 첫 글자가 소문자로 바뀌어서 등록
+
+3. Interceptor
+- 요청 중간중간을 가로채서 간섭하거나 감시하는 도구
+- 총 세 가지 시점에 대해 간섭이 가능
+  - [1] 컨트롤러 실행 전
+    - request : 사용자 요청 정보
+   	- response : 서버 응답 정보
+  	- handler : 실행될 대상 정보(일반적으로 컨트롤러)
+  - [2] 컨트롤러 실행 후
+    - request : 사용자 요청 정보
+    - response : 서버 응답 정보
+    - handler : 실행될 대상 정보(일반적으로 컨트롤러)
+    - modelAndView :view 페이지 정보와 전달되는 model 정보
+  - [3] 뷰 렌더링 후
+    - request : 사용자 요청 정보
+    - response : 서버 응답 정보
+  	- handler : 실행될 대상 정보(일반적으로 컨트롤러)
+  	- ex : 실행 중에 DispatcherServlet에서 발생한 오류 정보가 담긴다.
+- DispatcherServlet의 일거수 일투족을 감시한다 -> servlet-context.xml
+- 인터셉터 설정도 servlet-context.xml에 수행
+- interceptor는 spring bean 이므로 자동으로 스프링의 모든 기능 사용 가능
+- 인터셉터 등록 및 설정
+  - bean은 annotation을 설정해도 됨
+    - <beans:bean id="loginInterceptor" class="">
+    - 후에 <interceptors>안에 <interceptor>안에 <beans:ref>로 사용 가능
+	- 필터와 다르게 특정 범위의 주소에서 뺄셈이 가능(exclude-mapping)
+	- 이중 와일드카드 사용 가능
+    - /* : 해당 패키지 내용의 전부(하위 패키지 포함 안됨)
+		- /** : 해당 패키지 및 하위 패키지 내용의 전부
