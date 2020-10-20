@@ -6,6 +6,9 @@
 - DispatcherServlet, root-context.xml, ...Controller, ... jsp 가 스프링 관련.
 - 즉 인터셉터는 스프링 내부에 배치, 필터는 스프링 외부에 배치
 
+- 사용자의 요청에 따라 간섭 -> servlet-context.xml
+- 사용자의 요청에 관계없이 간섭 -> root-context.xml
+
 2. Filter
 - 필터 설정 방법
   - web.xml <filter> 설정
@@ -72,3 +75,15 @@
 	- 이중 와일드카드 사용 가능
     - /* : 해당 패키지 내용의 전부(하위 패키지 포함 안됨)
 		- /** : 해당 패키지 및 하위 패키지 내용의 전부
+
+- 필터와 인터셉터 차이 sysout.co.kr 문서 정리 되어 있음
+
+4. AOP
+- 원천기술
+  - org.aspectj.aspectjrt
+  - org.aspectj.aspectjweaver
+- 연결기술
+  - spring-aop
+- 인터페이스의 존재 이유
+  - 약결합
+  - 프록시객체
