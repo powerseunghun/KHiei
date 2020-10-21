@@ -1,0 +1,23 @@
+1. 이메일
+- 이메일 서비스 : SMTP 프로토콜을 기반으로 구현
+- 사용자 -> 웹서버(WAS) http
+- 웹서버(WAS) -> 메일 서버(SMTP) 메일을 보내라..
+- 메일 서버(SMTP) -> 사용자 SMTP
+- 직접 메일서버를 구축한 후 보내면 불확실한 도메인으로 인해 못 받을 확률이 높음
+
+- JavaMailSender, JavaMailSenderImpl
+  - 간단한 메일 : SimpleMailMessage
+    - setter로 옵션 설정
+  - 복잡한 메세지 : MimeMessage, MimeMessageHelper
+    - 미리 만들어둔 템플릿을 불러와 전송
+    - helper를 이용하여 첨부파일 추가
+		  - javax.activation.DataSource : 자원
+		  - javax.sql.DataSource : DB연결자원
+      - helper.addAttachment("name", DataSource)로 헬퍼에 설정
+
+2. 이메일 인증
+- 인증 테이블 생성(cert)
+  - 누구에게(회원번호) - 외래키이자 기본키
+  - 어떤번호를(인증번호) - 문자열
+  - 언제(발송시간) - 날짜
+- merge into 구문으로 cud 구분
