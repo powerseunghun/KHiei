@@ -1,1 +1,3 @@
 1. email
+
+2. email certification
