@@ -1,1 +1,21 @@
-1.
+1. 이메일 인증
+- DecimalFormat을 이용한 자리수 지정
+  - 0은 숫자가 없어도 자리를 잡는 역할
+  - #은 숫자가 없으면 자리를 비우는 역할
+- 비동기 통신으로 인증번호 전송, 요청 확인
+
+2. 스케줄러
+- 만약 인증을 하지 않고 브라우저 종료 시 DB에 cert정보가 남아있음.
+- 주기적인 청소를 위해서 스케줄러사용
+- task namespace
+  - task:annotation-driven 으로 @Scheduled 어노테이션 활성화
+- cron 표현식
+
+3. 정적 자원들 불러오기
+- servlet-context에 <resources mapping="/resources/**" location="/resources/" />
+  - location : 실제 폴더의 위치
+  - mapping : 주소의 패턴
+
+4. api
+- 우편번호 api
+- 지도 api
