@@ -1,0 +1,38 @@
+1. websocket group
+* xml vs json
+- xml
+  - 용량이 큼
+  - 복잡한 데이터 구조에서 탐색이 쉽다.
+  - 자료형 개념이 없다(무조건 String)
+
+- json
+  - 용량이 작음
+  - 복잡한 구조일 때 탐색이 어렵다.
+  - 자료형 개념이 있다(Number, String, Boolean)
+
+- Map을 이용해 방과 방번호를 분리
+- [1] 사용자가 보낸 payload를 읽는다.
+- {"room":1, "type":"message", "content":"안녕하세요"}
+- 따라서 수신한 JSON을 객체로 변환해줘야 한다(jackson-databind)
+- [2] 읽은 데이터의 종류에 따라 다르게 처리하도록 구성
+- [3] 각각의 상황에 맞는 처리를 구현
+	 - enter : storage에서 방번호를 찾아서 없으면 방을 생성해서 사용자를 추가
+	   - 방이 없으면 방을 생성한 뒤 사용자를 추가
+	   - 방이 있으면 사용자를 추가
+	 - leave : storage에서 방번호를 찾은 뒤 사용자를 제거
+			- 사용자를 제거
+			- 사용자가 다 사라졌다면 방을 제거
+	 - message : storage에서 방번호를 찾은 뒤 해당 방 사용자에게 전송
+			- 방번호가 0이면 모두에게 전송
+
+- 기존에 Map<Integer, Set<WebSocketSession>> users 를 Room 클래스를 만들어 Map<Integer, Room> users 로 대체
+- 그 후 Map을 매개변수로 가지는 Channel 클래스 생성 후 구조화
+
+- HttpSessionHandshakeInterceptor
+  - 실제로 웹소켓에 들어있는 HttpSession 의 정보를 확인
+	- 실제로 다른 통신이기 때문에 공유되는 것은 불가능 하지만
+	- Spring에서 제공해주는 Interceptor가 이것을 가능하게 해준다.
+	- 단, 웹소켓 연결 전에 반드시 세션에 데이터가 존재해야 한다.
+  <websocket:handshake-interceptors>
+  	<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+  </websocket:handshake-interceptors>
