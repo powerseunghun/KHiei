@@ -1,1 +1,5 @@
 1. 카카오페이 api 승인
+- /confirm[post] -> /success
+- redirect 페이지이므로 세션에 데이터 추가(kakaopayApproveReady)
+
+- 결제 후 취소까지
