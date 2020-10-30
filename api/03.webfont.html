@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*
+        리셋 스타일
+        브라우저마다 기본 여백 등 설정값이 다르므로
+        프론트엔드에서는 디자인의 통일성을 주기 위해 일반적으로 다음과 같이 작업을 한다.
+        <link rel="./reset.css">
+        */
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+        /* 
+        필수 선정
+        - 글꼴(font-family, font-size)
+        - 폭 산정 기준(box-sizing)
+          - content-box : 내용물을 기준으로 폭을 설정하므로 padding, border도 폭으로 계산(default)
+          - border-box : 테두리를 기준으로 폭을 설정하므로 margin만 폭으로 계산
+        */
+        /*
+            모든 사용자가 다운받아서 표시하도록 만들어주는 웹폰트(Web Font)
+            - 절대경로 작성이 불가능하다(절대경로는 JSP/Servlet/Controller에서만 가능)
+        */
+        @font-face {
+             font-family: 빙그레체;
+             src: url("./font/Binggrae.ttf");
+        }
+        * {
+            font-family: 빙그레체;
+             box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div style="border: 10px solid black; width:95%; padding:50px; background-color: yellow;"
+</body>
+</html>
