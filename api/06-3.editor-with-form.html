@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast UI Editor Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+<body>
+    <form action="06-3.editor-with-form.html" method="get">
+        <div id="editor"></div>
+        <br/><br/>
+        <input type="submit" value="등록" id="sm">
+        <!-- <input type="hidden" id="content" name="content"> -->
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script>
+        // 문제: 등록을 누르면 작성한 내용이 전송되지 않는다는 것!
+        // 해결책: input, textarea, select만 전송 되므로 input[type=hidden]을 생성하여 값 복사
+        var editor = new toastui.Editor({
+            el: document.getElementById("editor"),
+            
+        });
+
+        // 일단 뒤에 input[type=hidden]이 있는지 파악하고 없다면 생성
+        $("#editor").after("<input type='hidden' name='content'>");
+
+        editor.on("blur", function(arguments) {
+            var value = editor.getMarkdown();
+            
+            $("#editor").next("input[name=content]").val(value);
+        });
+        // $("#sm").on("click", function(e) {
+        //     $("#content").val(editor.getHtml());    
+        // });
+        // console.log($("#content").val());
+        
+        // console.log($("#content").val());
+        // editor.setHtml("<h1>Hello TOAST UI Editor!</h1>");
+        // alert(editor.getHtml());
+
+        // 만약 입력이 안되면 전송을 불가능하게 하고 싶다면 form에 submit 이벤트를 설정해야 한다.
+        // - 에디터에 설정하는 것이 아님
+        $("form").submit(function(e) {
+            var content = $(this).find("input[name=content]").val();
+            // 쓸데없는 여백을 지운 뒤 content 값이 없거나 비어있다면
+            if(!content.trim()) {
+                alert("값..");
+                // 기본 진행 이벤트 차단
+                e.preventDefault();
+                return;
+            } 
+            this.submit();
+        });
+    </script>
+</body>
+</html>

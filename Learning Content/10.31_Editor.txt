@@ -1,0 +1,14 @@
+1. 에디터
+- nhn toast ui editor
+- toast ui editor css 의존성
+  - codemirror : 웹 브라우저에서 코드 편집 기능을 사용할 수 있도록 하는 라이브러리
+  - toastui-editor : 에디터 관련 라이브러리
+- toast ui editor 생성 시 부여 가능한 옵션들
+  - el : 적용대상
+  - usageStatistics : 사용 통계 전송 여부 설정
+  - previewStyle: 세로모드(vertical), 가로모드(horizontal, 기본값)
+  - height: 에디터 높이 설정
+  - initialEditType: 최초에 활성화될 편집기 유형(markdown, wysiwyg)
+- 값 가져오는 법
+  - editor.getMarkdown(): 내부적으로 관리되는 문법(Markdown)
+  - editor.getHtml(): 실제 표시되는 모양(HTML)

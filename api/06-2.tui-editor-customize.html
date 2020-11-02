@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast UI Editor Example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+<body>
+    <div id="editor"></div>
+
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script>
+        /*
+            toast ui editor 생성 시 부여 가능한 옵션들
+            - el : 적용대상
+            - usageStatistics : 사용 통계 전송 여부 설정
+            - previewStyle: 세로모드(vertical), 가로모드(horizontal, 기본값)
+            - height: 에디터 높이 설정
+            - initialEditType: 최초에 활성화될 편집기 유형(markdown, wysiwyg)
+        */
+        var editor = new toastui.Editor({
+            el: document.getElementById("editor"),
+            usageStatistics: false,
+            //previewStyle: "vertical",
+            height: "400px",
+            initialEditType: "markdown",
+        })
+    </script>
+</body>
+</html>

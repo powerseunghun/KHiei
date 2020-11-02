@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에디터의 필요성</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        /*
+            textarea는 html과 호환이 되지 않는다.
+            - 개행도 \n으로 처리(html은 br)
+            - 띄어쓰기도 html에서 적용되지 않는다(html에서는 &nbsp;)
+            - pre 태그와 같이 사용하면 문제는 되지 않지만
+            - 디자인은 어쩔건가? (제목, 표, 이미지, 링크, 코드, ...)
+        */
+        $(function() {
+            $("textarea").on("input", function() {
+                var value = $(this).val();
+                $(".result1, .result2").html(value);
+            })
+        })
+    </script>
+</head>
+<body>
+    <h1>TextArea와 HTML의 차이</h1>
+    <!-- 일반적인 입력은 textarea로 진행한다 -->
+    <textarea rows="5" cols="60"></textarea>
+
+    <div class="result1"></div>
+    <pre class="result2"></pre>
+</body>
+</html>
