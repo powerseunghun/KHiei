@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast ui viewer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+<body>
+    <!-- 
+        tui editor는 자체적인 문법(markdown)을 사용하기 때문에 이를 보여줄 전용 뷰어가 필요
+        - value와 같은 옵션들은 html에서 사용하는 옵션이므로 쓰지 말아야 한다.
+        - 옵션을 만들 때에는 앞에 data-를 붙여서 사용자가 추가한 옵션임을 표기하는 것을 권장
+        - 
+    -->
+    <div id="viewer" data-content="# hello"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script>
+        $(function() {
+            var content = $("#viewer").data("content");
+            $("#viewer").data("content", "");
+
+            var viewer = toastui.Editor.factory({
+                el: document.getElementById("viewer"),
+                viewer: true,
+                initialValue: content,
+            });
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="http://fullcalendar.io/js/fullcalendar-2.3.2/fullcalendar.min.css">
+    <script src='http://fullcalendar.io/js/fullcalendar-2.3.2/lib/moment.min.js'></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.3.2/lib/jquery.min.js'></script>
+    <script src="http://fullcalendar.io/js/fullcalendar-2.3.2/lib/jquery-ui.custom.min.js"></script>
+    <script src='http://fullcalendar.io/js/fullcalendar-2.3.2/fullcalendar.min.js'></script>
+    
+    <script>
+        $(function() {
+            var list;
+
+            $.ajax({
+                url: "http://localhost:3000/schedule",
+                async: false,
+                type: "get",
+                dataType: "json",
+                success: function(result) {
+                    list = result;
+                    console.log(list);
+                }
+            });
+            $("#calendar").fullCalendar({
+                // defaultDate: "2021-01-01"
+                // defaultDate: new Date()
+                defaultDate: moment(), // 현재를 기준으로 생성
+                events: list,
+                eventClick: function(info, e) {
+                    console.log(arguments);
+                    console.log(info);
+                    window.alert(info.title);
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="calendar"></div>
+</body>
+</html>

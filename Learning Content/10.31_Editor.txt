@@ -1,4 +1,4 @@
-1. 에디터
+1. 에디터 & 뷰어
 - nhn toast ui editor
 - toast ui editor css 의존성
   - codemirror : 웹 브라우저에서 코드 편집 기능을 사용할 수 있도록 하는 라이브러리
@@ -12,3 +12,17 @@
 - 값 가져오는 법
   - editor.getMarkdown(): 내부적으로 관리되는 문법(Markdown)
   - editor.getHtml(): 실제 표시되는 모양(HTML)
+- 마크다운 문법을 표시해줄 뷰어
+  - toastui.Editor.factory 속성에서 viewer:true,로 하면 설정 가능
+  - initialValue 값으로 생성 시 값 초기화 가능
+- value와 같은 옵션들은 html에서 사용하는 옵션이므로 쓰지 말아야 한다.
+  - 옵션을 만들 때에는 앞에 data-를 붙여서 사용자가 추가한 옵션임을 표기하는 것을 권장
+
+2. 이미지 업로드
+- hooks : 'addImageBlobHook': function(blob, callback)
+  - blob : 파일 정보
+  - callback : 파일 저장 후 실행할 함수(매개변수로 이미지 URL 추가)
+
+3. 차트
+- chart js document
+- canvas, context 사용

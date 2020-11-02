@@ -1,1 +1,5 @@
-1. editor
+1. editor & viewer
+
+2. image upload
+
+3. chart

@@ -31,15 +31,12 @@
             var value = editor.getMarkdown();
             
             $("#editor").next("input[name=content]").val(value);
+
+            // localStorage를 사용하면 작성중인 글을 임시저장할 수 있음
+            // - window.localStorage.setItem("이름", "데이터");
+            // - window.localStorage.getItem("이름") -> 데이터;
+            window.localStorage.setItem("이름", value);
         });
-        // $("#sm").on("click", function(e) {
-        //     $("#content").val(editor.getHtml());    
-        // });
-        // console.log($("#content").val());
-        
-        // console.log($("#content").val());
-        // editor.setHtml("<h1>Hello TOAST UI Editor!</h1>");
-        // alert(editor.getHtml());
 
         // 만약 입력이 안되면 전송을 불가능하게 하고 싶다면 form에 submit 이벤트를 설정해야 한다.
         // - 에디터에 설정하는 것이 아님

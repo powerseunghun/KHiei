@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function() {
+            // canvas는 그림을 그릴 수 있는 태그
+            // - 그림을 그리려면 반드시 context 객체가 있어야 함
+
+            var ctx = document.getElementById("chart").getContext("2d");
+
+            // ctx를 알려주면서 차트를 생성
+            // type : 차트의 유형
+            // data : 차트를 구성하는 데이터
+            //    - labels: 축의 제목
+            
+            var chart = new Chart(ctx, {
+                type: "bar",
+                data: {
+                    labels: ["1월", "2월", "3월", "4월", "5월" ,"6월"],
+                    datasets: [
+                        {
+                            label: "철수",
+                            data: [60, 65, 65, 70, 80, 75],
+                            backgroundColor: "rgba(255, 99, 132, 0.2)",
+                            borderColor: "#ffeaa7",
+                        },
+                        {
+                            label: "영희",
+                            data: [75, 80, 80, 60, 90, 75],
+                            backgroundColor: "#55efc4",
+                            borderColor: "#55efc4",
+                        }
+                    ]
+                },
+                options: {
+                    maintainAspectRatio: true,
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                suggestedMin: 0,
+                                suggestedMax: 100
+                            }
+                        }]
+                    }
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+    <canvas id="chart"></canvas>
+</body>
+</html>

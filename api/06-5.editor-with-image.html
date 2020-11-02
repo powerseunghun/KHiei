@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast UI Editor Example</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"/>
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+</head>
+<body>
+    <div id="editor"></div>
+
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        var editor = new toastui.Editor({
+            el:document.getElementById("editor"),
+            height: "500px",
+
+            // 이미지를 글에 첨부시키기 위한 처리 코드를 작성
+            // - 이미지를 드래그 해서 놓을 때마다 서버에 업로드 시킨 뒤 <img>태그를 생성해서 추가
+            // - blob : 파일 정보
+            // - callback : 파일 저장 후 실행할 함수(매개변수로 이미지 URL 추가)
+
+            // 1. blob에 들어있는 파일의 내용을 서버에 업로드
+            // 2. 서버로부터 다운로드가 가능한 url을 받아온다.
+            // 3. callback 함수를 실행시키면서 2번에서 받아온 url을 넣어주면 끝!
+            // 1번부터 3번까지를 ajax로 처리
+            hooks: {
+                'addImageBlobHook': function(blob, callback) {
+                    // jquery ajax를 이용하여 파일 업로드(multipart/form-data)
+                    // - FormData를 사용
+                    var fd = new FormData();
+                    fd.append("im", blob);
+
+                    $.ajax({
+                        url: 'http://localhost:8089/spring18/toast/upload',
+                        processData: false,
+                        contentType: false,
+                        type: 'POST',
+                        data: fd,
+                        success: function(result) {
+                            //callback("업로드된 이미지를 가져올 수 있는 주소");
+                            callback(result);
+                        }
+                    })
+
+                    // console.log(blob, callback);
+                    
+                }
+            },
+        })
+    </script>
+</body>
+</html>
