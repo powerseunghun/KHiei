@@ -1,3 +1,14 @@
 1. Arduino
+- 사물인터넷(IoT, IoE)
+  - Internet of Things
+  - Internet of Everything
+  - 미세먼지 측정 시스템
+  - 인건비가 비싸지기 때문에 등장하게 된 개념
+  - 의료, 농업, 제조업, ...
+- 아두이노(Arduino)
+  - IoT를 구현할 수 있는 기술 중 하나
+  - 오픈 소스 / 가격이 매우 저렴
+- digitalWrite / digitalRead
+- Serial Object
 
 2. Project Day14
