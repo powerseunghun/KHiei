@@ -1,3 +1,8 @@
 1. Arduino
+- piezo buzzer
+- pir sensor
+- analogwrite
+- mq2
+- dht11
 
-2. Project Day16
+2. Project Day15
