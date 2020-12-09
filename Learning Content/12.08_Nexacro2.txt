@@ -1,0 +1,70 @@
+1. Nexacro With Spring
+- 넥사크로 17 UI Adapter Version 설정
+  - <properties>태그 안에 <nexacro.uiadapter.version>1.0.0-SNAPSHOT</nexacro.uiadapter.version>
+- 넥사크로 저장소
+  - <properties>태그 밑에
+  - <repositories> ->
+    <repository>
+      <id>tobesoft</id>
+      <name>tobesoft-nexacro</name>
+      <url>http://mangosteen.tobesoft.co.kr/nexus/repository/maven-public</url>
+    </repository>
+- 넥사크로 의존성 추가(3개)
+  <dependency>
+    <groupId>com.nexacro.uiadapter17.spring</groupId>
+    <artifactId>uiadapter17-spring-core</artifactId>
+    <version>${nexacro.uiadapter.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>com.nexacro.uiadapter17.spring</groupId>
+    <artifactId>uiadapter17-spring-dataaccess</artifactId>
+    <version>${nexacro.uiadapter.version}</version>
+  </dependency>
+  <dependency>
+    <groupId>com.nexacro.uiadapter17.spring</groupId>
+    <artifactId>uiadapter17-spring-excel</artifactId>
+    <version>${nexacro.uiadapter.version}</version>
+  </dependency>
+- nexacro-root-context.xml 파일 추가
+  - nexacro bean을 이용하기 위해서 applicationContextProvider 등록
+  - <bean id="applicationContextProvider" class="com.nexacro.uiadapter17.spring.core.context.ApplicationContextProvider"></bean>
+- nexacro-servlet-context.xml 파일 추가
+  - Dispatcher Servlet이 넥사크로 관련 요청을 처리하기 위한 도구 등록 (nexacroInterceptor)
+  - <beans:bean id="nexacroInterceptor" class="com.nexacro.uiadapter17.spring.core.servlet.NexacroInterceptor"></beans:bean>
+- nexacro-servlet-context.xml 안에 NexacroFileView / NexacroView 등록
+  - <beans:bean id="nexacroFileView" class="com.nexacro.uiadapter17.spring.core.view.NexacroFileView"></beans:bean>
+	- <beans:bean id="nexacroView" class="com.nexacro.uiadapter17.spring.core.view.NexacroView">
+		  <beans:property name="defaultContentType" value="PlatformXml"></beans:property>
+		  <beans:property name="defaultCharset" value="UTF-8"></beans:property>
+	- </beans:bean>
+- nexacro-servlet-context.xml안에 NexacroMappingExceptionResolver 등록
+  - <beans:bean id="exceptionResolver" class="com.nexacro.uiadapter17.spring.core.resolve.NexacroMappingExceptionResolver">
+		  <beans:property name="view" ref="nexacroView"></beans:property>
+		  <beans:property name="shouldLogStackTrace" value="true"></beans:property>
+		  <beans:property name="shouldSendStackTrace" value="true"></beans:property>
+		  <beans:property name="defaultErrorMsg" value="fail.common.msg"></beans:property>
+	  </beans:bean>
+- 실제 요청과 응답에 대한 해석/변환 클래스를 지정
+- 기존의 mvc:annotaion-driven 설정을 삭제하고 넥사크로 관련 설정을 추가하여 재설정
+- 해석 : com.nexacro.uiadapter17.spring.core.resolve.NexacroMethodArgumentResolver
+- 변환 : com.nexacro.uiadapter17.spring.core.resolve.NexacroHandlerMethodReturnValueHandler
+  - <annotation-driven>
+		  <argument-resolvers>
+			  <beans:bean class="com.nexacro.uiadapter17.spring.core.resolve.NexacroMethodArgumentResolver"></beans:bean>
+		  </argument-resolvers>
+		  <return-value-handlers>
+			  <beans:bean class="com.nexacro.uiadapter17.spring.core.resolve.NexacroHandlerMethodReturnValueHandler">
+				  <beans:property name="view" ref="nexacroView"></beans:property>
+				  <beans:property name="fileView" ref="nexacroFileView"></beans:property>
+			  </beans:bean>
+		  </return-value-handlers>
+	  </annotation-driven>
+
+- 넥사크로는 jquery ajax 대신 this.transaction으로 비동기 통신
+  - resDs = "dsEmp=list";
+  - this.transaction(id, url, reqDs, resDs, args, callback);
+
+- 서버에서 데이터 수신 시 RequestParam, ModelAttribute 사용 불가 , ParamVariable, ParamDataset 사용
+  - 이름 반드시 지정
+
+2. Project Day 25

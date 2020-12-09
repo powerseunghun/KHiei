@@ -1,0 +1,13 @@
+1. Nexacro
+- XJS : nexacro용 공통 자바스크립트
+- XCSS : nexacro용 공통 스타일 시트
+- XPROJ : nexacro 프로젝트 정보파일
+- XFDL : nexacro 화면(폼) 정보파일
+
+이 파일들을 HTML, CSS, Javascript등.. 기존 웹프로젝트 변환
+generate : 미리보기가 가능하도록 파일 작성
+deploy : 배포하는 형태로 파일을 압축하여 작성
+deploy(packing) 후에 sts workspace에 추가
+json expected value 1:0 -> json validator 체크 해제
+
+2. Project Day 26
