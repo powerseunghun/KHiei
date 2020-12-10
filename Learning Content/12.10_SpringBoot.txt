@@ -1,3 +1,44 @@
-1. SpringBoot
+1. Spring Boot
+- Spring Legacy에서 발생하는 문제점을 보완하기 위한 새로운 체계 (new -> spring starter project)
+- 전원버튼처럼 원터치 방식을 추구
+- 점점 복잡해지는 설정, 의존성, 구조를 간소화
+- packaging(배포 형태) -> War(하이브리드) Jar(서버 없어야함)
+- 기본적으로 사용할 의존성 (Spring Web, Lombok, Spring Boot DevTools, Oracle Driver, mybatis)
+  - DevTools 스프링 부트 단독 실행 시 main함수 부분이 실행되며.. 두 번 실행할 수 없음(포트 사용)
+  - DevTools를 사용하면 프로젝트 변경 시(소스 작성...등) 저절로 갱신되도록
 
+Spring Legacy <--> Spring SpringBoot
+Spring Legacy
+- pom.xml에 프로젝트 정보 등록
+- web.xml에 설정파일 등록
+- Spring 설정파일에 bean 등록 (root,servlet-context.xml)
+- 기타 코드 작성
+
+Spring Boot
+- pom.xml에 프로젝트 정보 등록 (의존성 통합 관리. 버전도 부트가 관리, 최소화)
+- web.xml을 대신하는 ServletInitializer.java(web.xml 역할 수행)
+  - Spring boot는 xml 형식을 싫어한다.
+  - xml은 자바 문법을 따르지 않는다(별도의 자체 규약을 사용 -DTD/XSD)
+  - 부가적인 설정들은 별도의 자바파일인 @Configuration으로 설정하도록 강제
+- Spring 설정파일이 변경
+  - property/yml 형식
+  - @Configuration
+    - 메소드를 형태로 Bean을 생성해서 반환하도록 만들면 자동으로 Spring에 등록되는 구조
+
+- RESTful 방식의 컨트롤러 설계
+  - SOA : Service Oriented Architecture
+  - ROA : Resource Oriented Architecture
+  - 기존 방식은 SOA /list, /add, /edit, /delete ..등등
+
+  - ROA는 GET / POST / PUT / DELETE
+  - C : POST    /member/[POST] POST, PUT은 BODY를 가질 수 있음. 대규모 데이터 전송은 C랑 U
+  - R : GET     /member/[GET] GET-> 제일 쉬움 (디비 변동 없음. 데이터가 뚫리더라도 사라지지 않음)
+    - 상세 조회 : /member/{PK} [GET]
+  - U : PUT     /member/[PUT]
+  - D : DELETE  /member/{PK}[DELETE]
+  - 이렇게 해야 프론트엔드랑 협업이 좋다.
+
+- Get / Post 이외는 별도의 테스팅도구 필요
+  - POSTMAN
+  - SWAGGER
 2. Project Day 27
