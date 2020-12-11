@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vuejs의 값 연동</title>
+    <!-- 
+        VueJS는 두 가지로 활용이 가능하다.
+        1. 라이브러리처럼 불러서 사용(단일 페이지 내에서 사용 가능)
+        2. Webpack 등의 관리 프레임워크를 이용해서 프로젝트화 시켜서 사용이 가능
+     -->
+
+</head>
+<body>
+    <!-- VueJS의 관리영역 -->
+    <div id="app">
+        <!-- 입력창은 id라는 이름의 데이터와 "양방향" 연결하겠다. -->
+        <input type="text" v-model="id">
+
+        <!-- 표시 영역은 id라는 이름의 디에티의 값을 "단방향"으로 표시하겠다. -->
+        <div class="copy">{{id}}</div>
+        <div class="len">{{id.length}}</div>
+        <div class="judge">{{id.length >= 8 && id.length <= 20}}</div>
+    </div>
+    <!-- VueJS는 Lazy Loading을 권장한다. -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                id: "",
+            },
+        });
+    </script>
+</body>
+</html>

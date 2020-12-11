@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+</head>
+<body>
+    <!-- 
+        VueJS의 관리영역 
+        - 화면을 구현하고 필요한 옵션을 부여
+
+        - v-model : vue의 데이터와 입력창을 "양방향" 연결할 때 사용
+
+        - {{식}} : 표현식이라 부르며 vue의 데이터를 출력할 때 사용
+    -->
+    <div id="app">
+        <h1>회원가입</h1>
+        ID<br>
+        <input type="text" v-model="id">
+        <br/><br/>
+        password<br>
+        <input type="password" v-model="password">
+        <br/><br/>
+
+        Password re-input<br/>
+        <input type="password" v-model="passwordRe">
+        <br/><br/>
+
+        <label>
+            <input type="checkbox" v-model="agree">
+            동의합니다.
+        </label>
+        <br><br/>
+
+        <button v-bind:disabled="!isFormValid">다음 단계로 이동</button>
+    </div>
+
+    <!-- VueJS는 Lazy Loading을 권장한다. -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        // vue 영역을 제어할 Vue model 생성
+        var app = new Vue({
+            el: "#app",
+            data: {
+                id: "",
+                password: "",
+                passwordRe: "",
+                agree: false,
+            },
+            computed: {
+                isIdValid: function() {
+                    return this.id.length >= 8 && this.id.length <= 20;
+                },
+                isPasswordValid: function() {
+                    return this.password.length >= 8 && this.password.length <= 16
+                },
+                isPasswordReValid: function() {
+                    return this.isPasswordValid && (this.password === this.passwordRe);
+                },
+                isFormValid: function() {
+                    return this.isIdValid && this.isPasswordValid && this.isPasswordReValid && this.agree
+                }
+            }
+        });
+    </script>
+</body>
+</html>

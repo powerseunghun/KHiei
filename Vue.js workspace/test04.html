@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+</head>
+<body>
+    <div id="app">
+        <h1>NAVER</h1>
+        <div class="row">
+            <label>
+                <input type="checkbox" v-model="all" v-on:change="changeAgree">
+                네이버 이용약관 모두 동의
+            </label>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" v-model="agree[0]">
+                동의1
+            </label>
+            <textarea>찬미를 살았으며, 꽃이 현저하게 피어나는 고행을 스며들어 봄바람이다. 거친 있으며, 몸이 피에 피다. 가지에 풍부하게 창공에 인생을 원대하고, 같지 가진 피가 사막이다. 커다란 가는 열락의 천자만홍이 청춘의 뿐이다. 위하여, 그들에게 되려니와, 것이다.보라, 쓸쓸한 유소년에게서 피가 철환하였는가? 피에 우리 사랑의 이상을 목숨이 사막이다. 기관과 커다란 고동을 보라. 품었기 있으며, 같으며, 만물은 고행을 기관과 우리 가지에 것이다. 놀이 듣기만 피고 때문이다.
+            </textarea>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" v-model="agree[1]">
+                동의2
+            </label>
+            <textarea>찬미를 살았으며, 꽃이 현저하게 피어나는 고행을 스며들어 봄바람이다. 거친 있으며, 몸이 피에 피다. 가지에 풍부하게 창공에 인생을 원대하고, 같지 가진 피가 사막이다. 커다란 가는 열락의 천자만홍이 청춘의 뿐이다. 위하여, 그들에게 되려니와, 것이다.보라, 쓸쓸한 유소년에게서 피가 철환하였는가? 피에 우리 사랑의 이상을 목숨이 사막이다. 기관과 커다란 고동을 보라. 품었기 있으며, 같으며, 만물은 고행을 기관과 우리 가지에 것이다. 놀이 듣기만 피고 때문이다.
+            </textarea>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" v-model="agree[2]">
+                동의3
+            </label>
+            <textarea>찬미를 살았으며, 꽃이 현저하게 피어나는 고행을 스며들어 봄바람이다. 거친 있으며, 몸이 피에 피다. 가지에 풍부하게 창공에 인생을 원대하고, 같지 가진 피가 사막이다. 커다란 가는 열락의 천자만홍이 청춘의 뿐이다. 위하여, 그들에게 되려니와, 것이다.보라, 쓸쓸한 유소년에게서 피가 철환하였는가? 피에 우리 사랑의 이상을 목숨이 사막이다. 기관과 커다란 고동을 보라. 품었기 있으며, 같으며, 만물은 고행을 기관과 우리 가지에 것이다. 놀이 듣기만 피고 때문이다.
+            </textarea>
+        </div>
+        <div class="row">
+            <label>
+                <input type="checkbox" v-model="agree[3]">
+                동의4
+            </label>
+            <textarea>찬미를 살았으며, 꽃이 현저하게 피어나는 고행을 스며들어 봄바람이다. 거친 있으며, 몸이 피에 피다. 가지에 풍부하게 창공에 인생을 원대하고, 같지 가진 피가 사막이다. 커다란 가는 열락의 천자만홍이 청춘의 뿐이다. 위하여, 그들에게 되려니와, 것이다.보라, 쓸쓸한 유소년에게서 피가 철환하였는가? 피에 우리 사랑의 이상을 목숨이 사막이다. 기관과 커다란 고동을 보라. 품었기 있으며, 같으며, 만물은 고행을 기관과 우리 가지에 것이다. 놀이 듣기만 피고 때문이다.
+            </textarea>
+        </div>
+        <div class="row">
+            <button class="btn btn-secondary">취소</button>
+            <button class="btn btn-success" :disabled="!allAgree">성공</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                all: false,
+                agree: [false, false, false, false],
+                check: [],
+            },
+            computed: {
+                allAgree: function() {
+                    // var total = true;
+                    // for (var i = 0; i < this.agree.length; i++) {
+                    //     total &&= this.agree[i];
+                    // }
+                    // return total;
+                    // return agree[0] && agree[1] && agree[2] && agree[3];
+                    return this.agree.reduce((a, c) => a && c);
+                },
+                
+            },
+            methods: {
+                changeAgree: function() {
+                    for(var i = 0; i < this.agree.length; i++) {
+                        this.agree[i] = this.all;
+                    }
+                },
+            },
+        });
+    </script>
+</body>
+</html>

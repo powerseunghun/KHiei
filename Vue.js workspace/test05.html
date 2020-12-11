@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+</head>
+<body>
+    <div id="app">
+        <!-- <div v-for="(number, i) in numbers"></div> -->
+        <div v-for="(number, index) in numbers">
+            <input type="text" v-model="numbers[index]">
+            <button v-on:click="removeItem(index)">삭제</button>
+        </div>
+
+        <button v-on:click="addItem">추가</button>
+        <!-- <input type="text" v-model="numbers[0]"><br/><br/>
+        <input type="text" v-model="numbers[1]"><br/><br/>
+        <input type="text" v-model="numbers[2]"><br/><br/>
+        <input type="text" v-model="numbers[3]"><br/><br/>
+        <input type="text" v-model="numbers[4]"><br/><br/> -->
+    </div>
+    <!-- VueJS는 Lazy Loading을 권장한다. -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+        // vue 영역을 제어할 Vue model 생성
+        var app = new Vue({
+            el: "#app",
+            data: {
+                numbers: [1, 2, 3, 4, 5],
+            },
+            computed: {
+                
+            },
+            methods: {
+                addItem: function() {
+                    this.numbers.push("");
+                },
+                removeItem : function(index) {
+                    console.log(index);
+                    this.numbers.splice(index, 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
