@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+</head>
+<body>
+    <div id="app">
+        <h1>직원 등록</h1>
+
+        <form action="http://localhost:7777/emp/" method="post" v-on:submit.prevent="sendData">
+            emp_no : <input type="text" v-model="emp.emp_no"><br/><br/>
+            emp_name : <input type="text" v-model="emp.emp_name"><br/><br/>
+            emp_serial : <input type="text" v-model="emp.emp_serial"><br/><br/>
+            salary : <input type="text" v-model="emp.salary"><br/><br/>
+            hire_date : <input type="text" v-model="emp.hire_date"><br/><br/>
+            position : <input type="text" v-model="emp.position"><br/><br/>
+            department : <input type="text" v-model="emp.department"><br/><br/>
+            <input type="submit" value="등록">
+        </form>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                emp: {
+                    emp_no: 0,
+                    emp_name: "",
+                    emp_serial: "",
+                    hire_date: "",
+                    position: 0,
+                    salary: 0,
+                    department: "",
+                }
+            },
+            computed: {
+                
+            },
+            methods: {
+                sendData: function() {
+                    axios.post("http://localhost:7777/emp/", this.emp).then(result => {
+                        alert("등록 완료");
+                    });
+                }
+            },
+            
+        });
+    </script>
+</body>
+</html>

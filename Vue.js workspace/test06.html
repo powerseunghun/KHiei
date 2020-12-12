@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue.js</title>
+
+</head>
+<body>
+    <div id="app">
+        <div class="emp-info" v-for="(emp, idx) in list">
+            {{emp.emp_no}}
+            {{emp.emp_name}}
+            {{positionList[emp.position]}}
+            {{emp.department}}
+        </div>
+    </div>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                positionList: {
+                    1: "사장", 2: "상무", 3: "이사", 4: "부장", 5: "차장",
+                    6: "과장", 7: "대리", 8: "주임", 9: "사원", 10: "인턴"
+                },
+                // list: [
+                //     {
+                //         "emp_no": 1,
+                //         "emp_name": "이순신",
+                //         "emp_serial": "800101-2234567",
+                //         "department": null,
+                //         "position": 1,
+                //         "hire_date": "2005-01-01",
+                //         "salary": 10000000
+                //     },
+                //     {
+                //         "emp_no": 2,
+                //         "emp_name": "세종대왕",
+                //         "emp_serial": "820202-1234567",
+                //         "department": "경영지원",
+                //         "position": 2,
+                //         "hire_date": "2008-01-01",
+                //         "salary": 8000000
+                //     },
+                //     {
+                //         "emp_no": 3,
+                //         "emp_name": "장보고",
+                //         "emp_serial": "830303-2234567",
+                //         "department": "미래전략",
+                //         "position": 3,
+                //         "hire_date": "2010-01-01",
+                //         "salary": 7000000
+                //     },
+                //     {
+                //         "emp_no": 4,
+                //         "emp_name": "대조영",
+                //         "emp_serial": "900101-1234567",
+                //         "department": "신기술개발",
+                //         "position": 4,
+                //         "hire_date": "2012-01-01",
+                //         "salary": 6000000
+                //     },
+                //     {
+                //         "emp_no": 5,
+                //         "emp_name": "강감찬",
+                //         "emp_serial": "921220-2234567",
+                //         "department": "미래전략",
+                //         "position": 6,
+                //         "hire_date": "2015-01-01",
+                //         "salary": 3500000
+                //     },
+                //     {
+                //         "emp_no": 6,
+                //         "emp_name": "테스트",
+                //         "emp_serial": "121212-1234567",
+                //         "department": "미래전략",
+                //         "position": 9,
+                //         "hire_date": "2020-10-30",
+                //         "salary": 2000000
+                //     },
+                //     {
+                //         "emp_no": 7,
+                //         "emp_name": "이소룡",
+                //         "emp_serial": "111111-1111111",
+                //         "department": "미래전략",
+                //         "position": 10,
+                //         "hire_date": "2020-12-10",
+                //         "salary": 1500000
+                //     }
+                // ],
+                list: [],
+            },
+            computed: {
+                
+            },
+            methods: {
+
+            },
+            created: function() {
+                // 처음 시작한 뒤 데이터가 초기화되어 list가 접근 가능해지면 처리 수행
+                // console.log(this.list);
+                axios.get("http://localhost:7777/emp/")
+                .then(result => {
+                    this.list = result.data;
+                    console.log(result.data[0].emp_name);
+                })
+            }
+        });
+    </script>
+</body>
+</html>
